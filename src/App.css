@@ -33,3 +33,10 @@ hr {
   padding: 1%;
   margin: 0 auto;
 }
+
+/* AddProfile */
+.ProfileForm > * {
+  display: block;
+  margin: 1%;
+  padding: 1%;
+}

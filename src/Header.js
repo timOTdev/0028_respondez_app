@@ -12,8 +12,8 @@ class Header extends Component {
 
             <div>
               <p><Link to='/'>Show Events</Link></p>
+              <p><Link to='/add-profile'>Add Profile</Link></p>
               <p><Link to='/add-event'>Add Event</Link></p>
-              <p><Link to='/add-rsvp'>Add My RSVP</Link></p>
             </div>
           </header>
         </div>
