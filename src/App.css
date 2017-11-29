@@ -1,8 +1,18 @@
 /* Defaults */
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 hr {
   max-width: 70%;
 }
 
+.MyPicture img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 10%;
+}
 
 /* Events */
 .App {
@@ -10,11 +20,11 @@ hr {
 }
 
 .App-header {
-  background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
+  color: black;
   font-size: 1em;
+  display: inline-block;
 }
 
 .events {
