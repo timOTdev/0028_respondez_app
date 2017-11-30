@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import AddProfile from './AddProfile'
 
 class ShowProfile extends Component {
   render() {
@@ -14,9 +15,8 @@ class ShowProfile extends Component {
           <p>My Interests: {this.props.userProfile.myInterests || "None"}</p>
           <p>Picture URL: <a href={this.props.userProfile.profileUrl} target="_blank">Link</a></p>
         </div>
-        
-        <button>Add Profile</button>
-        <button onClick={this.props.removeProfile}>Remove</button>
+
+        <AddProfile updateProfile={this.props.updateProfile} />
       </div>
     );
   }

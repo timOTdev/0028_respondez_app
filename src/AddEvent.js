@@ -6,7 +6,7 @@ class AddEvent extends Component {
       return (
         <div>
           <h1>Add Event</h1>
-          <form ref={(input) => this.formReset = input} className="ProfileForm" onSubmit={this.saveProfile}>
+          <form ref={(input) => this.formReset = input} className="eventForm" onSubmit={this.saveProfile}>
             <label>Event Name:
               <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Event Name" required />
             </label>

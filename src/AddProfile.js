@@ -12,11 +12,11 @@ class AddProfile extends Component {
     alert('You saved your profile!')
     
     const profile = {
-      profileUrl: this.profileUrl.value,
       firstName: this.firstName.value,
       lastName: this.lastName.value,
       aboutMe: this.aboutMe.value,
       myInterests: this.myInterests.value,
+      profileUrl: this.profileUrl.value,
     }
 
     console.log(profile);
@@ -27,13 +27,9 @@ class AddProfile extends Component {
   render() {
     return (
       <div>
-        <form ref={(input) => this.formReset = input} className="ProfileForm" onSubmit={this.saveProfile}>
+        <h1>Update Profile</h1>
 
-          <label>Profile Picture URL:
-            <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Picture URL" required />
-            <p>Recommend using your twitter picture URL as this is easiest but other social media sites are possible.</p>
-          </label>
-
+        <form className="profileForm" ref={(input) => this.formReset = input}  onSubmit={this.saveProfile}>
           <label>First Name:
             <input type="text" ref={(input) => {this.firstName = input}} placeholder="First Name" required />
           </label>
@@ -56,8 +52,14 @@ class AddProfile extends Component {
             </select>
           </label>
 
-          <button type="submit">Save Changes</button>
+          <label>Profile Picture URL:
+            <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Picture URL" required />
+            <p>Recommend using your twitter picture URL as this is easiest but other social media sites are possible.</p>
+          </label>
+
+          <button type="submit">Save Profile</button>
         </form>
+
       </div>
     );
   }

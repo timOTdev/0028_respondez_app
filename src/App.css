@@ -6,35 +6,40 @@ body {
 }
 
 hr {
-  max-width: 70%;
+  max-width: 90%;
 }
 
 .left, .center, .right { 
-  border: 1px solid red;
+  width: 20%;
   display: inline-block;
   vertical-align: top;
-  word-wrap: break-word; 
+  word-wrap: break-word;
+  margin: 0 auto; 
+  padding: 0 1%;
 }
 
 .center {
-  width: 50%;
-}
-
-.left, .right {
-  width: 23%;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+  width: 40%;
+  padding: 0 1%;
 }
 
 button {
   padding: 1%;
   margin: 2% auto;
   font-size: 1em;
+  text-align: center;
+  margin: 0 auto;
 }
 
 /* Top */
-header button {
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
+header button, input {
+  display: inline-block;
+  margin: 0.5% 0.5%;
+  padding: 0%;
+  font-size: 0.75em;
+  text-align: center;
 }
 .currentProfile {
   font-size: 0.75em;
@@ -46,18 +51,22 @@ header button {
 }
 
 /* Left */
-.ProfileForm > * {
+.profileForm > * {
   display: block;
   margin: 1%;
   padding: 1%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 /* Center */
 
 /* Right */
-
+.eventForm > * {
+  display: block;
+  margin: 1%;
+  padding: 1%;
+  text-align: center;
+  margin: 0 auto;
+}
 /* Events */
-
-
-
-/* AddProfile */

@@ -37,8 +37,8 @@ class App extends Component {
   render() {
     return (
         <div>
-            <Header {...this.state} loadProfile={this.loadProfile} />
-            <Main {...this.state} loadEvents={this.loadEvents} updateProfile={this.updateProfile} removeProfile={this.removeProfile}/>
+            <Header {...this.state} loadProfile={this.loadProfile} removeProfile={this.removeProfile} />
+            <Main {...this.state} loadEvents={this.loadEvents} updateProfile={this.updateProfile} />
         </div>
     )
   }
