@@ -6,12 +6,14 @@ class MyProfile extends Component {
       return (
         <div className="MyProfile">
           <div className="MyPicture">
-            <img src={this.props.userProfile.profileUrl} alt={this.props.userProfile.firstName + " " + this.props.userProfile.lastName} />
+            <img src={this.props.userProfile.profileUrl} alt={"Picture of " + (this.props.userProfile.firstName || "") + " " + (this.props.userProfile.lastName || "") } />
           </div>
           <div className="MyInfo">
             <p>Name: {this.props.userProfile.firstName} {this.props.userProfile.lastName}</p>
             <p>About Me: {this.props.userProfile.aboutMe}</p>
             <p>Interests: {this.props.userProfile.myInterests}</p>
+
+            <button onClick={this.props.loadProfile}>Load sample profile</button>
           </div>
 
           <hr id="divider" />
