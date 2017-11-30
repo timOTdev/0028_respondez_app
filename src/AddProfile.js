@@ -32,7 +32,7 @@ class AddProfile extends Component {
 
           <label>Profile Picture URL:
             <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Picture URL" required />
-            <p>Recommend using your twitter picture as this is easiest but other social media sites are possible.</p>
+            <p>Recommend using your twitter picture URL as this is easiest but other social media sites are possible.</p>
           </label>
 
           <label>First Name:

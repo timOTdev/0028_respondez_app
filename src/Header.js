@@ -15,6 +15,8 @@ class Header extends Component {
               <p><Link to='/add-profile'>Add Profile</Link></p>
               <p><Link to='/add-event'>Add Event</Link></p>
             </div>
+
+            <hr id="divider" />
           </header>
         </div>
       )

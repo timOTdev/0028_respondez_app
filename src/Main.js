@@ -6,15 +6,12 @@ import AddEvent from './AddEvent';
 import AddProfile from './AddProfile'; 
 
 class Main extends Component {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <main>
         <Switch>
-            <Route exact path='/' component={ShowEvents} />
-            <Route path='/add-profile' render={()=><AddProfile updateProfile={this.props.updateProfile}/>} />
+            <Route exact path='/' render={ () => <ShowEvents loadEvents={this.props.loadEvents} /> } />
+            <Route path='/add-profile' render={ () => <AddProfile updateProfile={this.props.updateProfile} /> } />
             <Route path='/add-event' component={AddEvent} />
         </Switch>
       </main>

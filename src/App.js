@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Header from './Header'
 import Main from './Main';
+import sampleEvents from './sampleEvents'
 
 class App extends Component {
   constructor() {
@@ -14,13 +15,19 @@ class App extends Component {
         lastName: "Hoang",
         aboutMe: "I'm super-duper cool!",
         myInterests: "Web Development",
-      }
+      },
+      eventsList: {}
     }
     this.updateProfile = this.updateProfile.bind(this);
+    this.loadEvents = this.loadEvents.bind(this);
   }
-
+  
   updateProfile(profile) {
     this.setState({ userProfile: profile })
+  }
+  
+  loadEvents() {
+    this.setState({ eventsList: sampleEvents })
   }
 
   render() {
@@ -28,7 +35,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
             <Header {...this.state}/>
-            <Main updateProfile={this.updateProfile} />
+            <Main updateProfile={this.updateProfile} loadEvents={this.loadEvents} />
         </div>
       </BrowserRouter>
     )

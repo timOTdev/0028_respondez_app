@@ -17,7 +17,6 @@ class ShowEvents extends Component {
   render() {
     return (
       <div className="events">
-        <hr id="divider" />
         <Event id="11" 
                name="Code & Coffee #09"
                time="Saturday, December 2, 2017, 12PM"
@@ -30,32 +29,7 @@ class ShowEvents extends Component {
                topics="ReactJS, JavaScript, Productivity Hacks, Job Hunting"
         />  
         <hr id="divider" />
-        <Event id="10" 
-               name="Code & Coffee #08"
-               time="Sunday, November 25, 2017, 12pm"
-               location="Starbucks at One Loudoun"
-               desc="Happy Thanksgiving everyone!
-               Come share company with us over some coffee. We thankful for this space and the people that make up FCCA.
-               
-               Come hang out with us and discuss whatever projects you're working on or just to talk tech! Stay short or long, make friends, and get coding!"
-               topics="React, ES6, Messenger Bots, Applying for jobs"
-        />  
-        <hr id="divider" />
-        <Event id="9" 
-               name="FIELD TRIP: DC Networking Event"
-               time="Sunday, November 11, 2017"
-               location="Starbucks at One Loudoun"
-               desc="Link to the MeetUp event here: https://www.meetup.com/ITprofessionals/events/244235345/
-               
-               Hey guys, we're headed to a social/networking event for tech folks. We won't be having our Code and Coffee #08 this week obviously.
-               
-               - Leaving Wiehle-Reston East Metro station at 11AM
-               - Arriving at Foggy-Bottom GWU station and walk over to the event
-               - No specified end time for the event so I think we will stay until 3PM
-               - Message me on PM or Flock if you need my phone number to link up
-               
-               -Tim"
-        />  
+        <button onClick={this.props.loadEvents}>Load sample events</button>
       </div>
     )
   }
