@@ -6,12 +6,15 @@ class ShowEvents extends Component {
   render() {
     return (
       <div className="events">
-        { 
-          Object
-          .keys(this.props.eventsList)
-          .map(key => <Event key={key} details={this.props.eventsList[key]} />)
-        }
-        <button onClick={this.props.loadEvents}>Load sample events</button>
+        <h1>Events</h1>
+        <div>
+          { 
+            Object
+            .keys(this.props.eventsList)
+            .map(key => <Event key={key} details={this.props.eventsList[key]} />)
+          }
+        </div>
+        <button onClick={this.props.loadEvents}>Load Samples</button>
       </div>
     )
   }

@@ -15,6 +15,7 @@ class App extends Component {
     this.loadProfile = this.loadProfile.bind(this);
     this.loadEvents = this.loadEvents.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.removeProfile = this.removeProfile.bind(this);
   }
   
   loadProfile() {
@@ -29,11 +30,15 @@ class App extends Component {
     this.setState({ userProfile: profile })
   }
 
+  removeProfile() {
+    this.setState({ userProfile: {} })
+  }
+
   render() {
     return (
         <div>
             <Header {...this.state} loadProfile={this.loadProfile} />
-            <Main {...this.state} updateProfile={this.updateProfile} loadEvents={this.loadEvents} />
+            <Main {...this.state} loadEvents={this.loadEvents} updateProfile={this.updateProfile} removeProfile={this.removeProfile}/>
         </div>
     )
   }

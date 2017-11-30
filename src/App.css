@@ -15,14 +15,27 @@ hr {
   vertical-align: top;
   word-wrap: break-word; 
 }
+
 .center {
   width: 50%;
 }
+
 .left, .right {
   width: 23%;
 }
 
+button {
+  padding: 1%;
+  margin: 2% auto;
+  font-size: 1em;
+}
+
 /* Top */
+header button {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+}
 .currentProfile {
   font-size: 0.75em;
 }
@@ -39,17 +52,7 @@ hr {
   padding: 1%;
 }
 
-.ProfileForm button {
-  display: inline-block;
-  margin: 0 auto;
-}
-
 /* Center */
-.events {
-  display: inline-block;
-  padding: 1%;
-  margin: 0 auto;
-}
 
 /* Right */
 

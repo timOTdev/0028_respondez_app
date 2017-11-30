@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import ShowEvents from './ShowEvents';
-import AddProfile from './AddProfile'; 
+import ShowProfile from './ShowProfile'; 
 import AddEvent from './AddEvent';
 
 class Main extends Component {
@@ -10,7 +10,7 @@ class Main extends Component {
     return (
       <div className="main">
         <div className="left">
-          <AddProfile {...this.props} updateProfile={this.props.updateProfile} />
+          <ShowProfile {...this.props} updateProfile={this.props.updateProfile} />
         </div>
         <div className="center">
           <ShowEvents {...this.props} loadEvents={this.props.loadEvents} />
