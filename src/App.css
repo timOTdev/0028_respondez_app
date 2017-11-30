@@ -4,14 +4,9 @@ body {
   padding: 0;
   text-align: center;
 }
+
 hr {
   max-width: 70%;
-}
-
-.MyPicture img {
-  display: inline-block;
-  border-radius: 50%;
-  width: 5%;
 }
 
 .left, .center, .right { 
@@ -27,26 +22,17 @@ hr {
   width: 23%;
 }
 
-/* Events */
-.App {
-  text-align: center;
+/* Top */
+.currentProfile {
+  font-size: 0.75em;
 }
-
-.App-header {
+.currentPicture img {
   display: inline-block;
-  height: 150px;
-  padding: 20px;
-  color: black;
-  font-size: 1em;
+  border-radius: 50%;
+  width: 5%;
 }
 
-.events {
-  display: inline-block;
-  padding: 1%;
-  margin: 0 auto;
-}
-
-/* AddProfile */
+/* Left */
 .ProfileForm > * {
   display: block;
   margin: 1%;
@@ -57,3 +43,18 @@ hr {
   display: inline-block;
   margin: 0 auto;
 }
+
+/* Center */
+.events {
+  display: inline-block;
+  padding: 1%;
+  margin: 0 auto;
+}
+
+/* Right */
+
+/* Events */
+
+
+
+/* AddProfile */

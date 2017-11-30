@@ -9,19 +9,19 @@ class AddEvent extends Component {
           <form ref={(input) => this.formReset = input} className="ProfileForm" onSubmit={this.saveProfile}>
 
           <label>Event Name:
-            <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Picture URL" required />
+            <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Event Name" required />
           </label>
 
           <label>Date:
-            <input type="text" ref={(input) => {this.firstName = input}} placeholder="First Name" required />
+            <input type="text" ref={(input) => {this.firstName = input}} placeholder="Date" required />
           </label>
 
           <label>Time:
-            <input type="text" ref={(input) => {this.lastName = input}} placeholder="Last Name" required />
+            <input type="text" ref={(input) => {this.lastName = input}} placeholder="Time" required />
           </label>
 
-          <label>Description:
-            <textarea ref={(input) => {this.aboutMe = input}} placeholder="Tell us about your favorite coding languages and what you would like to get out of the group." required />
+          <label>Details:
+            <textarea ref={(input) => {this.aboutMe = input}} placeholder="Details" required />
           </label>
 
           <label>Created By:{this.props.userProfile.firstName} {this.props.userProfile.lastName}
