@@ -13,7 +13,6 @@ class MyProfile extends Component {
             <button onClick={this.props.loadProfile}>Load sample profile/Log In</button>
           </div>
 
-          <hr id="divider" />
         </div>
       );
     }

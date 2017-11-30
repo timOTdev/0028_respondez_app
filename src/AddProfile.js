@@ -27,17 +27,17 @@ class AddProfile extends Component {
   render() {
     return (
       <div>
+          <h1>Add Profile</h1>
         <div>
           <p>Current information:</p>
           <p>Profile Picture URL: {this.props.userProfile.profileUrl || "None"}</p>
           <p>First Name: {this.props.userProfile.firstName || "None"}</p>
           <p>Last Name: {this.props.userProfile.lastName || "None"}</p>
           <p>About Me: {this.props.userProfile.aboutMe || "None"}</p>
-          <p>My Interestes: {this.props.userProfile.myInterests || "None"}</p>
+          <p>My Interests: {this.props.userProfile.myInterests || "None"}</p>
           
         </div>
         <form ref={(input) => this.formReset = input} className="ProfileForm" onSubmit={this.saveProfile}>
-          <h1>Add Profile</h1>
 
           <label>Profile Picture URL:
             <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Picture URL" required />

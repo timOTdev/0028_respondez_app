@@ -10,11 +10,11 @@ class Header extends Component {
           <header>
             <MyProfile {...this.props}/>
 
-            <div>
+            {/* <div>
               <p><Link to='/'>Show Events</Link></p>
               <p><Link to='/add-profile'>Add Profile</Link></p>
               <p><Link to='/add-event'>Add Event</Link></p>
-            </div>
+            </div> */}
 
             <hr id="divider" />
           </header>
