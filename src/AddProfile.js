@@ -5,17 +5,22 @@ class AddProfile extends Component {
   constructor() {
     super();
     this.saveProfile = this.saveProfile.bind(this);
-
   }
 
   saveProfile(e) {
     e.preventDefault();
     alert('You saved your profile!')
-    console.log(this.profilePic.value)
-    console.log(this.firstName.value)
-    console.log(this.lastName.value)
-    console.log(this.aboutMe.value)
-    console.log(this.myInterests.value)
+    
+    const profile = {
+      profileUrl: this.profileUrl.value,
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      aboutMe: this.aboutMe.value,
+      myInterests: this.myInterests.value,
+    }
+
+    console.log(profile);
+    this.props.updateProfile(profile);
     this.formReset.reset();
   }
 
@@ -26,7 +31,7 @@ class AddProfile extends Component {
           <h1>Add Profile</h1>
 
           <label>Profile Picture URL:
-            <input type="text" ref={(input) => (this.profilePic = input)} placeholder="Picture URL" required />
+            <input type="text" ref={(input) => (this.profileUrl = input)} placeholder="Picture URL" required />
             <p>Recommend using your twitter picture as this is easiest but other social media sites are possible.</p>
           </label>
 
@@ -43,12 +48,12 @@ class AddProfile extends Component {
           </label>
 
           <label>My Interests:
-            <select ref={(input) => {this.myInterests = input}} >
+            <select ref={(input) => {this.myInterests = input}}>
               <option defaultValue>Web Development</option>
               <option>Mobile Development</option>
-              <option>Dev Ops</option>
               <option>UI/UX Design</option>
               <option>Project Management</option>
+              <option>Dev Ops</option>
             </select>
           </label>
 

@@ -40,3 +40,7 @@ hr {
   margin: 1%;
   padding: 1%;
 }
+
+.ProfileForm button {
+  margin: 0 auto;
+}

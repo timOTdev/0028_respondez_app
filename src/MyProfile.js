@@ -10,8 +10,9 @@ class MyProfile extends Component {
             <img src={tim} alt="Tim"/>
           </div>
           <div className="MyInfo">
-            <p>Name: Timothy Hoang</p>
-            <p>Interests: JavaScript, ES6, React</p>
+            <p>Name: {this.props.userProfile.firstName} {this.props.userProfile.lastName}</p>
+            <p>About Me: {this.props.userProfile.aboutMe}</p>
+            <p>Interests: {this.props.userProfile.myInterests}</p>
           </div>
         </div>
       );

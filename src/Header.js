@@ -8,7 +8,7 @@ class Header extends Component {
       return (
         <div>
           <header>
-            <MyProfile />
+            <MyProfile {...this.props}/>
 
             <div>
               <p><Link to='/'>Show Events</Link></p>
