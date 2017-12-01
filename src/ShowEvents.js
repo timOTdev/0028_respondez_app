@@ -11,7 +11,7 @@ class ShowEvents extends Component {
           { 
             Object
             .keys(this.props.eventsList)
-            .map(key => <Event key={key} details={this.props.eventsList[key]} />)
+            .map(key => <Event key={key} details={this.props.eventsList[key]}/>)
           }
         </div>
         <button onClick={this.props.loadEvents}>Load Samples</button>
