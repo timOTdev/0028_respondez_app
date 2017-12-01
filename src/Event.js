@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 class Event extends Component {
-  render() {
+  render() { 
     return (
     <div className="event">
       <h1>{this.props.details.eventName}</h1>
@@ -11,6 +11,8 @@ class Event extends Component {
       <p>Location: {this.props.details.location}</p>
       <p>Details: {this.props.details.details}</p>
       <p>CreatedBy: {this.props.details.createdBy}</p>
+
+      <button onClick={(e) => this.removeEvent(e)}>Remove Event</button>
       <hr id="divider" />
     </div>
     )

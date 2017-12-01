@@ -13,7 +13,7 @@ class Main extends Component {
           <ShowProfile {...this.props} updateProfile={this.props.updateProfile} />
         </div>
         <div className="center">
-          <ShowEvents {...this.props} loadEvents={this.props.loadEvents} />
+          <ShowEvents {...this.props} loadEvents={this.props.loadEvents} removeEvents={this.props.removeEvents} removeEvent={this.props.removeEvent} />
         </div>
         <div className="right">
           <AddEvent {...this.props} addEvent={this.props.addEvent}/>

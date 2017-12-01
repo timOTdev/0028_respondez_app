@@ -15,9 +15,11 @@ class App extends Component {
     }
     this.loadProfile = this.loadProfile.bind(this);
     this.loadEvents = this.loadEvents.bind(this);
+    this.removeEvents = this.removeEvents.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
     this.removeProfile = this.removeProfile.bind(this);
     this.addEvent = this.addEvent.bind(this);
+    this.removeEvent = this.removeEvent.bind(this);
   }
   
   loadProfile() {
@@ -36,11 +38,21 @@ class App extends Component {
     this.setState({ userProfile: {} });
   }
 
-  addEvent(event) {
+  removeEvents() {
+    this.setState({ eventsList: {} });
+  }
+
+  addEvent(key) {
     const events = {...this.state.eventsList};
     const timeStamp = Date.now();
-    events[`event-${timeStamp}`] = event;
+    events[`event-${timeStamp}`] = key;
     this.setState({eventsList: events })
+  }
+  
+  removeEvent(key) {
+    const events = {...this.state.eventsList};
+    delete events[key];
+    this.setState({eventsList: events})
   }
 
   render() {
@@ -48,7 +60,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
             <Header {...this.state} loadProfile={this.loadProfile} removeProfile={this.removeProfile} />
-            <Main {...this.state} loadEvents={this.loadEvents} updateProfile={this.updateProfile} addEvent={this.addEvent}/>
+            <Main {...this.state} loadEvents={this.loadEvents} removeEvents={this.removeEvents} updateProfile={this.updateProfile} addEvent={this.addEvent} removeEvent={this.removeEvent} />
         </div>
       </BrowserRouter>
     )
