@@ -1,3 +1,19 @@
+<figure><img src="respondez-app.png" alt="The Respondez App" style="width: 60%; display: block; margin-left: auto; margin-right: auto;"/><figcaption style=" text-align: center;">Still in early stages but we're going far!</figcaption></figure>
+
+# About
+- Hello World! The Respondez App was named off of the popular express "respondez s'il vous plait", or R.S.V.P. for short. I want to built this out of the desire for our Free Code Camp Ashburn Group so we can manage our events external of popular platforms such as Facebook or Meetup.
+
+- This is my first React app. I am building the basic components to have a profile and an event list that you can apply CRUD operations on. I do have many ideas that will be built upon our foundation here. It's not perfect but we'll learn along the way! Cheers!
+
+# To run this project
+1. Have NPM and NodeJS installed on your computer
+2. Copy the URL address this repo: https://github.com/timh1203/respondez-app.git
+3. Open the terminal and go to the directory of choice, then run `git clone https://github.com/timh1203/respondez-app.git` 
+3. Run `npm install` to install all the depedencies of the app
+4. Run `npm start` to start the server
+5. The app should auto-load with Create React App, otherwise, navigate to `localhost:3000` on your browser.
+
+==========
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
