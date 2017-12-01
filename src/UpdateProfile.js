@@ -26,10 +26,10 @@ class UpdateProfile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="profileForm">
         <h1>Update Profile</h1>
-
-        <form className="profileForm" ref={(input) => this.formReset = input}  onSubmit={(e) => this.saveProfile(e)}>
+        
+        <form ref={(input) => this.formReset = input}  onSubmit={(e) => this.saveProfile(e)}>
           <label>First Name:
             <input type="text" ref={(input) => {this.firstName = input}} placeholder="First Name" required />
           </label>

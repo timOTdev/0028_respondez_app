@@ -16,7 +16,7 @@ class Main extends Component {
           <ShowEvents {...this.props} loadEvents={this.props.loadEvents} removeEvents={this.props.removeEvents} removeEvent={this.props.removeEvent} />
         </div>
         <div className="right">
-          <AddEvent {...this.props} addEvent={this.props.addEvent}/>
+          <AddEvent {...this.props} addEvent={this.props.addEvent} updateEvent={this.props.updateEvent}/>
         </div>
       </div>
 

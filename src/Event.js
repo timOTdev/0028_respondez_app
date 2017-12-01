@@ -10,7 +10,7 @@ class Event extends Component {
       <p>Time: {this.props.details.time}</p>
       <p>Location: {this.props.details.location}</p>
       <p>Details: {this.props.details.details}</p>
-      <p>CreatedBy: {this.props.details.createdBy}</p>
+      <p>Creator: {this.props.details.creator}</p>
 
       <button onClick={(e) => this.removeEvent(e)}>Remove Event</button>
       <hr id="divider" />

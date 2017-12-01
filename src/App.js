@@ -17,6 +17,7 @@ class App extends Component {
     this.loadEvents = this.loadEvents.bind(this);
     this.removeEvents = this.removeEvents.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.updateEvent = this.updateEvent.bind(this);
     this.removeProfile = this.removeProfile.bind(this);
     this.addEvent = this.addEvent.bind(this);
     this.removeEvent = this.removeEvent.bind(this);
@@ -32,6 +33,12 @@ class App extends Component {
 
   updateProfile(profile) {
     this.setState({ userProfile: profile });
+  }
+
+  updateEvent(key, updatedEvent) {
+    const events = {...this.state.eventsList};
+    events[key] = updatedEvent;
+    this.setState({ eventsList: events});
   }
 
   removeProfile() {
@@ -59,8 +66,20 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-            <Header {...this.state} loadProfile={this.loadProfile} removeProfile={this.removeProfile} />
-            <Main {...this.state} loadEvents={this.loadEvents} removeEvents={this.removeEvents} updateProfile={this.updateProfile} addEvent={this.addEvent} removeEvent={this.removeEvent} />
+            <Header 
+              {...this.state} 
+              loadProfile={this.loadProfile} 
+              removeProfile={this.removeProfile} 
+            />
+            <Main 
+              {...this.state} 
+              loadEvents={this.loadEvents} 
+              removeEvents={this.removeEvents} 
+              updateProfile={this.updateProfile} 
+              updateEvent={this.updateEvent}
+              addEvent={this.addEvent} 
+              removeEvent={this.removeEvent} 
+            />
         </div>
       </BrowserRouter>
     )
