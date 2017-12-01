@@ -74,8 +74,8 @@ class AddEvent extends Component {
             <textarea ref={(input) => {this.details = input}} placeholder="Details" required />
           </label>
 
-          <label>
-            <p ref={(input) => {this.creator = input}}>Creator: {this.props.userProfile.firstName} {this.props.userProfile.lastName}</p>
+          <label>Creator:
+            <input ref={(input) => {this.creator = input}} placeholder="Creator" required/>
           </label>
           <button type="submit">Save Changes</button>
         </form>
