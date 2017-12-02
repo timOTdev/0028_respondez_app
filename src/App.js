@@ -28,7 +28,8 @@ class App extends Component {
   }
   
   loadEvents() {
-    this.setState({ eventsList: sampleEvents })
+    const events = {...this.state.eventsList, ...sampleEvents};
+    this.setState({ eventsList: events })
   }
 
   updateProfile(profile) {
