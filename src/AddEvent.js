@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import './react-datetime.css'
+import Calendar from 'react-datetime';
 
 class AddEvent extends Component {
   constructor() {
@@ -11,17 +13,20 @@ class AddEvent extends Component {
   saveEvent(e) {
     e.preventDefault();
     alert('You saved your event!')
-    
+    const dateExtract = e.target[1].getAttribute("value");
+    const timeExtract = e.target[2].getAttribute("value");
+
     const event = {
       eventName: this.eventName.value,
-      date: this.date.value,
-      time: this.time.value,
+      date: dateExtract,
+      // date: this.date.value,
+      time: timeExtract,
+      // time: this.time.value,
       location: this.location.value,
       details: this.details.value,
       creator: this.creator.value,
     }
 
-    console.log(event);
     this.props.addEvent(event);
     this.formReset.reset();
   }
@@ -40,30 +45,35 @@ class AddEvent extends Component {
     return(
       <div className="renderEvents" key={key}>
           <input type="text" name="eventName" defaultValue={event.eventName} placeholder="Event Name" onChange={(e) => this.handleChange(e, key)} required />
-          <input type="text" name="date" defaultValue={event.date} placeholder="Date" onChange={(e) => this.handleChange(e, key)} required />
-          <input type="text" name="time" defaultValue={event.time} placeholder="Time" onChange={(e) => this.handleChange(e, key)} required />
+          <Calendar type="date" name="date" defaultValue={event.date} placeholder="Date" onChange={(e) => this.handleChange(e, key)} required />
+          {/* <input type="date" name="date" defaultValue={event.date} placeholder="Date" onChange={(e) => this.handleChange(e, key)} required /> */}
+          <Calendar type="text" name="time" defaultValue={event.time} placeholder="Time" onChange={(e) => this.handleChange(e, key)} required />
+          {/* <input type="text" name="time" defaultValue={event.time} placeholder="Time" onChange={(e) => this.handleChange(e, key)} required /> */}
           <input type="text" name="location" defaultValue={event.location} placeholder="Location" onChange={(e) => this.handleChange(e, key)} required />
           <textarea type="text" name="details" defaultValue={event.details} placeholder="Details" onChange={(e) => this.handleChange(e, key)} required />
           <input type="text" name="creator" defaultValue={event.creator} placeholder="Creator" onChange={(e) => this.handleChange(e, key)} required/>
       </div>
     )
   }
-
+  
   render() {
     return (
       <div>
         <h1>Add Event</h1>
+        
         <form className="eventForm" ref={(input) => this.formReset = input} onSubmit={(e) => this.saveEvent(e)}>
           <label>Event Name:
             <input type="text" ref={(input) => (this.eventName = input)} placeholder="Event Name" required />
           </label>
 
           <label>Date:
-            <input type="text" ref={(input) => {this.date = input}} placeholder="Date" required />
+            <Calendar dateFormat='MMMM Do, YYYY' timeFormat={false} ref={(input) => {this.date = input}} required/>
+            {/* <input type="text" ref={(input) => {this.date = input}} placeholder="Date" required /> */}
           </label>
 
           <label>Time:
-            <input type="text" ref={(input) => {this.time = input}} placeholder="Time" required />
+            <Calendar timeFormat='h:mm a' dateFormat={false} ref={(input) => {this.date = input}} required/>
+            {/* <input type="text" ref={(input) => {this.time = input}} placeholder="Time" required /> */}
           </label>
 
           <label>Location:
