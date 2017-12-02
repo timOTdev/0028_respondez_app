@@ -50,14 +50,15 @@ class App extends Component {
   }
 
   removeEvents() {
-    this.setState({ eventsList: {} });
+    this.setState({ eventsList: {}, attendeesList: {} });
   }
 
   addEvent(key) {
-    const events = {...this.state.eventsList};
     const timeStamp = Date.now();
+    const events = {...this.state.eventsList};
+
     events[`event-${timeStamp}`] = key;
-    this.setState({eventsList: events })
+    this.setState({eventsList: events})
   }
   
   removeEvent(key) {

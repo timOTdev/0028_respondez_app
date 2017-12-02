@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import blankPicture from './blank-picture.png';
 
 class Attendee extends Component {
   render() {
