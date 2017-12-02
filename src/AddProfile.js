@@ -19,7 +19,6 @@ class AddProfile extends Component {
       profileUrl: this.profileUrl.value,
     }
 
-    console.log(profile);
     this.props.updateProfile(profile);
     this.formReset.reset();
   }
