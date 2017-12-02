@@ -9,11 +9,11 @@ class ShowEvents extends Component {
         <h1>Events</h1>
         <div>
           { 
-            Object
-            .keys(this.props.eventsList)
-            .map(key => <Event key={key} {...this.props}details={this.props.eventsList[key]} removeEvent={this.props.removeEvent} />)
+            Object.keys(this.props.eventsList)
+                  .map(key => <Event key={key} {...this.props} details={this.props.eventsList[key]} removeEvent={this.props.removeEvent} />)
           }
         </div>
+        
         <button onClick={this.props.loadEvents}>Load Samples</button>
         <button onClick={this.props.removeEvents}>Remove Samples</button>
       </div>

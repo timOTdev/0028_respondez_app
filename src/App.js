@@ -5,13 +5,15 @@ import Header from './Header'
 import Main from './Main';
 import sampleEvents from './sampleEvents'
 import sampleProfile from './sampleProfile'
+import sampleAttendees from './sampleAttendees'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       userProfile: {},
-      eventsList: {}
+      eventsList: {},
+      attendeesList: {}
     }
     this.loadProfile = this.loadProfile.bind(this);
     this.loadEvents = this.loadEvents.bind(this);
@@ -29,7 +31,8 @@ class App extends Component {
   
   loadEvents() {
     const events = {...this.state.eventsList, ...sampleEvents};
-    this.setState({ eventsList: events })
+    const attendees = {...this.state.attendeesList, ...sampleAttendees};
+    this.setState({ eventsList: events, attendeesList: attendees })
   }
 
   updateProfile(profile) {

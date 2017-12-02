@@ -43,8 +43,16 @@ header button, input {
   text-align: center;
 }
 .currentProfile {
+  display: block;
   font-size: 0.75em;
 }
+
+.Attendee {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0.75em;
+}
+
 .currentPicture img {
   display: inline-block;
   border-radius: 50%;
@@ -61,6 +69,16 @@ header button, input {
 }
 
 /* Center */
+.Attendee {
+  display: inline-block;
+  width: 10%;
+}
+
+.Attendee img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 50%;
+}
 
 /* Right */
 .eventForm > *,
