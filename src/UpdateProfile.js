@@ -19,17 +19,14 @@ class UpdateProfile extends Component {
       profileUrl: this.profileUrl.value,
     }
 
-    console.log(profile);
     this.props.updateProfile(profile);
     this.formReset.reset();
   }
 
   render() {
     return (
-      <div className="profileForm">
-        <h1>Update Profile</h1>
-        
-        <form ref={(input) => this.formReset = input}  onSubmit={(e) => this.saveProfile(e)}>
+      <div>
+        <form className="profileForm" ref={(input) => this.formReset = input}  onSubmit={this.saveProfile}>
           <label>First Name:
             <input type="text" ref={(input) => {this.firstName = input}} placeholder="First Name" required />
           </label>
@@ -43,7 +40,7 @@ class UpdateProfile extends Component {
           </label>
 
           <label>My Interests:
-            <select ref={(input) => {this.myInterests = input}} required>
+            <select ref={(input) => {this.myInterests = input}}>
               <option defaultValue>Web Development</option>
               <option>Mobile Development</option>
               <option>UI/UX Design</option>
@@ -57,9 +54,8 @@ class UpdateProfile extends Component {
             <p>Recommend using your twitter picture URL as this is easiest but other social media sites are possible.</p>
           </label>
 
-          <button type="submit">Save Profile</button>
+          <button type="submit">Save Changes</button>
         </form>
-
       </div>
     );
   }

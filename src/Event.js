@@ -25,9 +25,8 @@ class Event extends Component {
 
       <h3>Attendees</h3>
         <div>
-          {
-            Object.keys(this.props.attendeesList)
-                  .map(key => <Attendee key={key} {...this.props} details={this.props.attendeesList[key]}/>)
+          { Object.keys(this.props.attendeesList)
+                                                .map(key => <Attendee key={key} {...this.props} details={this.props.attendeesList[key]}/>)
           } 
         </div>
 

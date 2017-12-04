@@ -105,7 +105,8 @@ class AddEvent extends Component {
 
         <div className="renderEvents">
           <h1>Update Event</h1>
-          {Object.keys(this.props.eventsList).map(this.renderEvents)}
+          <button type="submit" onClick={this.props.displayUpdateEvent}>Update Events</button>
+          {this.props.showUpdateEvent ? (Object.keys(this.props.eventsList).map(this.renderEvents)) : null}
         </div>
       </div>
     );

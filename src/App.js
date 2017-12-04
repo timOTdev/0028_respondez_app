@@ -13,7 +13,10 @@ class App extends Component {
     this.state = {
       userProfile: {},
       eventsList: {},
-      attendeesList: {}
+      attendeesList: {},
+      showUpdateProfile: false,
+      showUpdateEvent: false,
+      showMain: false
     }
     this.loadProfile = this.loadProfile.bind(this);
     this.loadEvents = this.loadEvents.bind(this);
@@ -23,6 +26,9 @@ class App extends Component {
     this.removeProfile = this.removeProfile.bind(this);
     this.addEvent = this.addEvent.bind(this);
     this.removeEvent = this.removeEvent.bind(this);
+    this.displayUpdateProfile = this.displayUpdateProfile.bind(this);
+    this.displayUpdateEvent = this.displayUpdateEvent.bind(this);
+    this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
   }
   
   loadProfile() {
@@ -67,6 +73,18 @@ class App extends Component {
     this.setState({eventsList: events})
   }
 
+  displayUpdateProfile() {
+    this.setState({showUpdateProfile: !this.state.showUpdateProfile})
+  }
+
+  displayUpdateEvent() {
+    this.setState({showUpdateEvent: !this.state.showUpdateEvent})
+  }
+  
+  toggleDisplayMain() {
+    this.setState({showMain: !this.state.showMain})
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -75,6 +93,7 @@ class App extends Component {
               {...this.state} 
               loadProfile={this.loadProfile} 
               removeProfile={this.removeProfile} 
+              toggleDisplayMain={this.toggleDisplayMain}
             />
             <Main 
               {...this.state} 
@@ -84,6 +103,8 @@ class App extends Component {
               updateEvent={this.updateEvent}
               addEvent={this.addEvent} 
               removeEvent={this.removeEvent} 
+              displayUpdateProfile={this.displayUpdateProfile}
+              displayUpdateEvent={this.displayUpdateEvent}
             />
         </div>
       </BrowserRouter>

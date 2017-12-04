@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import AddProfile from './AddProfile'
+import UpdateProfile from './UpdateProfile'
 
 class ShowProfile extends Component {
   render() {
@@ -16,7 +16,9 @@ class ShowProfile extends Component {
           <p>Picture URL: <a href={this.props.userProfile.profileUrl} target="_blank">Link</a></p>
         </div>
 
-        <AddProfile updateProfile={this.props.updateProfile} />
+        <h1>Update Profile</h1>
+        <button type="submit" onClick={this.props.displayUpdateProfile}>Update Profile</button>
+        { this.props.showUpdateProfile ? <UpdateProfile updateProfile={this.props.updateProfile} /> : null }
       </div>
     );
   }

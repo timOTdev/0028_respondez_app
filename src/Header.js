@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-// import { Link } from 'react-router-dom';
 import CurrentProfile from './CurrentProfile'
 
 class Header extends Component {
@@ -8,13 +7,7 @@ class Header extends Component {
       return (
         <div>
           <header>
-            <CurrentProfile {...this.props}/>
-
-            {/* <div>
-              <p><Link to='/'>Show Events</Link></p>
-              <p><Link to='/add-profile'>Add Profile</Link></p>
-              <p><Link to='/add-event'>Add Event</Link></p>
-            </div> */}
+            <CurrentProfile {...this.props} toggleDisplayMain={this.props.toggleDisplayMain}/>
 
             <hr id="divider" />
           </header>
