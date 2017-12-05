@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
-import Attendee from './Attendee';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import './App.css'
+import Attendee from './Attendee'
 
 class Event extends Component {
   constructor() {
@@ -37,4 +38,9 @@ class Event extends Component {
   }
 }
 
-export default Event;
+Event.propTypes = {
+  removeEvent: PropTypes.func,
+  attendeesList: PropTypes.object
+}
+
+export default Event

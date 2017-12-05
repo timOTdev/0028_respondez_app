@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
-import blankPicture from './blank-picture.png';
-// import { Link, Switch, Route } from 'react-router-dom';
+import React, { Component } from 'react'
+import './App.css'
+import blankPicture from './blank-picture.png'
+import PropTypes from 'prop-types'
+// import { Link, Switch, Route } from 'react-router-dom'
 
 class CurrentProfile extends Component {
   constructor() {
@@ -12,13 +13,11 @@ class CurrentProfile extends Component {
   showMain() {
     this.props.toggleDisplayMain();
     this.props.loadProfile();
-    console.log(this.props.showMain);
   }
   
   hideMain() {
     this.props.toggleDisplayMain();
     this.props.removeProfile();
-    console.log(this.props.showMain);
   }
   render() {
     return (
@@ -45,7 +44,13 @@ class CurrentProfile extends Component {
   }
 }
 
-export default CurrentProfile;
+CurrentProfile.propTypes = {
+  toggleDisplaymain: PropTypes.func,
+  loadProfile: PropTypes.func,
+  removeProfile: PropTypes.func,
+}
+
+export default CurrentProfile
 
 // {/* <Link to='/main'>Log In</Link> */}
 // <Switch>

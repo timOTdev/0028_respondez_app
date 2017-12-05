@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import './App.css'
 
 class UpdateProfile extends Component {
   constructor() {
@@ -61,4 +62,8 @@ class UpdateProfile extends Component {
   }
 }
 
-export default UpdateProfile;
+UpdateProfile.propTypes = {
+  updateProfile: PropTypes.func
+}
+
+export default UpdateProfile

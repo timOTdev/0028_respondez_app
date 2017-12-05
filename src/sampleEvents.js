@@ -25,4 +25,4 @@ const sampleEvents = {
   }
 }
 
-export default sampleEvents;
+export default sampleEvents

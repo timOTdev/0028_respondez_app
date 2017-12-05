@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import ShowEvents from './ShowEvents';
-import ShowProfile from './ShowProfile'; 
-import AddEvent from './AddEvent';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import './App.css'
+import ShowEvents from './ShowEvents'
+import ShowProfile from './ShowProfile'
+import AddEvent from './AddEvent'
 
 class Main extends Component {
   render() {
@@ -38,6 +39,17 @@ class Main extends Component {
   }
 }
 
-export default Main;
+Main.propTypes = {
+  showMain: PropTypes.bool,
+  updateProfile: PropTypes.func,
+  toggleDisplayProfile: PropTypes.func,
+  loadEvents: PropTypes.func,
+  // removeEvents: PropTypes.func,
+  removeEvent: PropTypes.func,
+  addEvent: PropTypes.func,
+  updateEvent: PropTypes.func,
+  toggleDisplayEvent: PropTypes.func,
+}
+export default Main
 
 

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import './App.css'
 import UpdateProfile from './UpdateProfile'
 
 class ShowProfile extends Component {
@@ -24,4 +25,9 @@ class ShowProfile extends Component {
   }
 }
 
-export default ShowProfile;
+ShowProfile.propTypes = {
+  toggleDisplayProfile: PropTypes.func,
+  updateProfile: PropTypes.func
+}
+
+export default ShowProfile

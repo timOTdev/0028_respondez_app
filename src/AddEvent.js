@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import './react-datetime.css'
-import Calendar from 'react-datetime';
+import Calendar from 'react-datetime'
 
 class AddEvent extends Component {
   constructor() {
@@ -113,4 +113,4 @@ class AddEvent extends Component {
   }
 }
 
-export default AddEvent;
+export default AddEvent

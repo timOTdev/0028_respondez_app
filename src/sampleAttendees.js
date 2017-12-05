@@ -22,4 +22,4 @@ const sampleAttendees = {
   }
 }
 
-export default sampleAttendees;
+export default sampleAttendees

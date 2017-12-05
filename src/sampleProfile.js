@@ -6,4 +6,4 @@ const sampleProfile = {
     profileUrl: "https://pbs.twimg.com/profile_images/900857250859954178/WGkyHQWs_400x400.jpg",
 }
 
-export default sampleProfile;
+export default sampleProfile

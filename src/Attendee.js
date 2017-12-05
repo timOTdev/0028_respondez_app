@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
 class Attendee extends Component {
   render() {
@@ -12,4 +12,4 @@ class Attendee extends Component {
   }
 }
 
-export default Attendee;
+export default Attendee

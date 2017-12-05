@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import Event from './Event';
+import React, { Component } from 'react'
+import './App.css'
+import Event from './Event'
 
 class ShowEvents extends Component {
   render() {
@@ -26,4 +26,4 @@ class ShowEvents extends Component {
   }
 }
 
-export default ShowEvents;
+export default ShowEvents
