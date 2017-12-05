@@ -19,7 +19,7 @@ class Main extends Component {
         <div className="center">
           {(this.props.showMain) ? (<ShowEvents {...this.props} 
                                      loadEvents={this.props.loadEvents} 
-                                     removeEvents={this.props.removeEvents} 
+                                    //  removeEvents={this.props.removeEvents} 
                                      removeEvent={this.props.removeEvent} 
                         />)
                       : null}
