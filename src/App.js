@@ -11,14 +11,6 @@ import { base } from './base'
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      userProfile: {},
-      eventsList: {},
-      attendeesList: {},
-      showUpdateProfile: false,
-      showUpdateEvent: false,
-      showMain: false
-    }
     this.loadEvents = this.loadEvents.bind(this);
     // this.deleteEvents = this.deleteEvents.bind(this);
     this.loadProfile = this.loadProfile.bind(this);
@@ -30,6 +22,14 @@ class App extends Component {
     this.toggleUpdateProfile = this.toggleUpdateProfile.bind(this);
     this.toggleUpdateEvent = this.toggleUpdateEvent.bind(this);
     this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
+    this.state = {
+      userProfile: {},
+      eventsList: {},
+      attendeesList: {},
+      showUpdateProfile: false,
+      showUpdateEvent: false,
+      showMain: false
+    }
   }
   
   componentWillMount() {
