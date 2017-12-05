@@ -6,12 +6,12 @@ import Attendee from './Attendee'
 class Event extends Component {
   constructor() {
     super();
-    this.deleteEvent = this.deleteEvent.bind(this);
+    this.removeEvent = this.removeEvent.bind(this);
   }
 
-  deleteEvent(e) {
+  removeEvent(e) {
     const event = this._reactInternalFiber.key;
-    this.props.removeEvent(event);
+    this.props.deleteEvent(event);
   }
 
   render() { 
@@ -31,7 +31,7 @@ class Event extends Component {
           } 
         </div>
 
-      <button onClick={(e) => this.deleteEvent(e)}>Remove Event</button>
+      <button onClick={(e) => this.removeEvent(e)}>Remove Event</button>
       <hr id="divider" />
     </div>
     )
@@ -39,7 +39,7 @@ class Event extends Component {
 }
 
 Event.propTypes = {
-  removeEvent: PropTypes.func,
+  deleteEvent: PropTypes.func,
   attendeesList: PropTypes.object
 }
 

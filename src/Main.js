@@ -12,7 +12,7 @@ class Main extends Component {
         <div className="left">
           {(this.props.showMain) ? (<ShowProfile {...this.props} 
                                       updateProfile={this.props.updateProfile} 
-                                      displayUpdateProfile={this.props.displayUpdateProfile}
+                                      toggleUpdateProfile={this.props.toggleUpdateProfile}
                                     />) 
                       : null}
           
@@ -20,16 +20,16 @@ class Main extends Component {
         <div className="center">
           {(this.props.showMain) ? (<ShowEvents {...this.props} 
                                      loadEvents={this.props.loadEvents} 
-                                    //  removeEvents={this.props.removeEvents} 
-                                     removeEvent={this.props.removeEvent} 
+                                    //  deleteEvents={this.props.deleteEvents} 
+                                     deleteEvent={this.props.deleteEvent} 
                         />)
                       : null}
         </div>
         <div className="right">
           {(this.props.showMain) ? (<AddEvent {...this.props} 
-                                  addEvent={this.props.addEvent} 
+                                  createEvent={this.props.createEvent} 
                                   updateEvent={this.props.updateEvent} 
-                                  displayUpdateEvent={this.props.displayUpdateEvent}
+                                  toggleUpdateEvent={this.props.toggleUpdateEvent}
                         />) 
                       : null}
           
@@ -40,15 +40,15 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  showMain: PropTypes.bool,
-  updateProfile: PropTypes.func,
-  toggleDisplayProfile: PropTypes.func,
   loadEvents: PropTypes.func,
-  // removeEvents: PropTypes.func,
-  removeEvent: PropTypes.func,
-  addEvent: PropTypes.func,
+  // deleteEvents: PropTypes.func,
+  updateProfile: PropTypes.func,
+  createEvent: PropTypes.func,
   updateEvent: PropTypes.func,
+  deleteEvent: PropTypes.func,
+  toggleDisplayProfile: PropTypes.func,
   toggleDisplayEvent: PropTypes.func,
+  showMain: PropTypes.bool,
 }
 export default Main
 

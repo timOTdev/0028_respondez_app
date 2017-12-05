@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './App.css'
 import Event from './Event'
 
@@ -14,16 +15,21 @@ class ShowEvents extends Component {
                                 key={key} 
                                 {...this.props} 
                                 details={this.props.eventsList[key]} 
-                                removeEvent={this.props.removeEvent} 
+                                deleteEvent={this.props.deleteEvent} 
                   />)
           }
         </div>
         
         <button onClick={this.props.loadEvents}>Load Samples</button>
-        {/* <button onClick={this.props.removeEvents}>Remove Samples</button> */}
+        {/* <button onClick={this.props.deleteEvents}>Remove Samples</button> */}
       </div>
     )
   }
+}
+
+ShowEvents.propTypes = {
+  deleteEvent: PropTypes.func,
+  // deleteEvents: PropTypes.func
 }
 
 export default ShowEvents

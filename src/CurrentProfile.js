@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './App.css'
 import blankPicture from './blank-picture.png'
 import PropTypes from 'prop-types'
-// import { Link, Switch, Route } from 'react-router-dom'
 
 class CurrentProfile extends Component {
   constructor() {
@@ -17,7 +16,7 @@ class CurrentProfile extends Component {
   
   hideMain() {
     this.props.toggleDisplayMain();
-    this.props.removeProfile();
+    this.props.deleteProfile();
   }
   render() {
     return (
@@ -47,12 +46,7 @@ class CurrentProfile extends Component {
 CurrentProfile.propTypes = {
   toggleDisplaymain: PropTypes.func,
   loadProfile: PropTypes.func,
-  removeProfile: PropTypes.func,
+  deleteProfile: PropTypes.func,
 }
 
 export default CurrentProfile
-
-// {/* <Link to='/main'>Log In</Link> */}
-// <Switch>
-//   <Route path='/main' component={Main} />
-// </Switch>

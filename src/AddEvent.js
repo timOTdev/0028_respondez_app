@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './App.css'
 import './react-datetime.css'
 import Calendar from 'react-datetime'
@@ -28,7 +29,7 @@ class AddEvent extends Component {
       creator: this.creator.value,
     }
 
-    this.props.addEvent(event);
+    this.props.createEvent(event);
     this.formReset.reset();
   }
 
@@ -105,7 +106,7 @@ class AddEvent extends Component {
 
         <div className="renderEvents">
           <h1>Update Event</h1>
-          <button type="submit" onClick={this.props.displayUpdateEvent}>Update Events</button>
+          <button type="submit" onClick={this.props.toggleUpdateEvent}>Update Events</button>
           {this.props.showUpdateEvent ? (Object.keys(this.props.eventsList).map(this.renderEvents)) : null}
         </div>
       </div>
@@ -113,4 +114,10 @@ class AddEvent extends Component {
   }
 }
 
+AddEvent.propTypes = {
+  createEvent: PropTypes.func,
+  eventsList: PropTypes.object,
+  toggleUpdateEvent: PropTypes.func,
+  showUpdateEvent: PropTypes.func
+}
 export default AddEvent

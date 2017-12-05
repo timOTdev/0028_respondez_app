@@ -18,7 +18,7 @@ class ShowProfile extends Component {
         </div>
 
         <h1>Update Profile</h1>
-        <button type="submit" onClick={this.props.displayUpdateProfile}>Update Profile</button>
+        <button type="submit" onClick={this.props.toggleUpdateProfile}>Update Profile</button>
         { this.props.showUpdateProfile ? <UpdateProfile updateProfile={this.props.updateProfile} /> : null }
       </div>
     );
@@ -26,8 +26,8 @@ class ShowProfile extends Component {
 }
 
 ShowProfile.propTypes = {
-  toggleDisplayProfile: PropTypes.func,
-  updateProfile: PropTypes.func
+  updateProfile: PropTypes.func,
+  toggleDisplayProfile: PropTypes.func
 }
 
 export default ShowProfile

@@ -19,16 +19,16 @@ class App extends Component {
       showUpdateEvent: false,
       showMain: false
     }
-    this.loadProfile = this.loadProfile.bind(this);
     this.loadEvents = this.loadEvents.bind(this);
-    // this.removeEvents = this.removeEvents.bind(this);
+    // this.deleteEvents = this.deleteEvents.bind(this);
+    this.loadProfile = this.loadProfile.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.deleteProfile = this.deleteProfile.bind(this);
+    this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
-    this.removeProfile = this.removeProfile.bind(this);
-    this.addEvent = this.addEvent.bind(this);
-    this.removeEvent = this.removeEvent.bind(this);
-    this.displayUpdateProfile = this.displayUpdateProfile.bind(this);
-    this.displayUpdateEvent = this.displayUpdateEvent.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
+    this.toggleUpdateProfile = this.toggleUpdateProfile.bind(this);
+    this.toggleUpdateEvent = this.toggleUpdateEvent.bind(this);
     this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
   }
   
@@ -44,18 +44,34 @@ class App extends Component {
     base.removeBinding(this.eventsRef);
   }
 
-  loadProfile() {
-    this.setState({ userProfile: sampleProfile });
-  }
-  
   loadEvents() {
     const events = {...this.state.eventsList, ...sampleEvents};
     const attendees = {...this.state.attendeesList, ...sampleAttendees};
     this.setState({ eventsList: events, attendeesList: attendees })
   }
 
+  // deleteEvents() {
+  //   this.setState({ eventsList: {}, attendeesList: {} });
+  // }
+
+  loadProfile() {
+    this.setState({ userProfile: sampleProfile });
+  }
+
   updateProfile(profile) {
     this.setState({ userProfile: profile });
+  }
+
+  deleteProfile() {
+    this.setState({ userProfile: {} });
+  }
+
+  createEvent(key) {
+    const timeStamp = Date.now();
+    const events = {...this.state.eventsList};
+
+    events[`event-${timeStamp}`] = key;
+    this.setState({eventsList: events})
   }
 
   updateEvent(key, updatedEvent) {
@@ -64,33 +80,17 @@ class App extends Component {
     this.setState({ eventsList: events});
   }
 
-  removeProfile() {
-    this.setState({ userProfile: {} });
-  }
-
-  // removeEvents() {
-  //   this.setState({ eventsList: {}, attendeesList: {} });
-  // }
-
-  addEvent(key) {
-    const timeStamp = Date.now();
-    const events = {...this.state.eventsList};
-
-    events[`event-${timeStamp}`] = key;
-    this.setState({eventsList: events})
-  }
-  
-  removeEvent(key) {
+  deleteEvent(key) {
     const events = {...this.state.eventsList};
     events[key] = null;
     this.setState({eventsList: events})
   }
 
-  displayUpdateProfile() {
+  toggleUpdateProfile() {
     this.setState({showUpdateProfile: !this.state.showUpdateProfile})
   }
 
-  displayUpdateEvent() {
+  toggleUpdateEvent() {
     this.setState({showUpdateEvent: !this.state.showUpdateEvent})
   }
   
@@ -105,19 +105,19 @@ class App extends Component {
             <Header 
               {...this.state} 
               loadProfile={this.loadProfile} 
-              removeProfile={this.removeProfile} 
+              deleteProfile={this.deleteProfile} 
               toggleDisplayMain={this.toggleDisplayMain}
             />
             <Main 
               {...this.state} 
               loadEvents={this.loadEvents} 
-              // removeEvents={this.removeEvents} 
+              // deleteEvents={this.deleteEvents} 
               updateProfile={this.updateProfile} 
+              createEvent={this.createEvent} 
               updateEvent={this.updateEvent}
-              addEvent={this.addEvent} 
-              removeEvent={this.removeEvent} 
-              displayUpdateProfile={this.displayUpdateProfile}
-              displayUpdateEvent={this.displayUpdateEvent}
+              deleteEvent={this.deleteEvent} 
+              toggleUpdateEvent={this.toggleUpdateEvent}
+              toggleUpdateProfile={this.toggleUpdateProfile}
             />
         </div>
       </BrowserRouter>
