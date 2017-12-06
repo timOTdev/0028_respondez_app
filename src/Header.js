@@ -9,39 +9,47 @@ class Header extends Component {
   constructor() {
     super();
     this.renderLogin = this.renderLogin.bind(this);
-    this.authenticate = this.authenticate.bind(this);
-    this.logout = this.logout.bind(this);
+    this.signIn = this.signIn.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
   renderLogin() {
     let github = new firebase.auth.GithubAuthProvider();
-    var google = new firebase.auth.GoogleAuthProvider();
-    let twitter = new firebase.auth.TwitterAuthProvider();
     return (
       <nav className="login">
-      <button className="github" onClick={() => this.authenticate(github)}>Log In With Github</button>
-      <button className="google" onClick={() => this.authenticate(google)}>Log In With Google</button>
-      <button className="twitter" onClick={() => this.authenticate(twitter)}>Log In With Twitter</button>
+      <button className="github" onClick={() => this.signIn(github)}>Log In With Github</button>
       </nav>
     )
   }
 
-  authenticate(provider) {
-    // var database = firebase.database();
-    console.log(`Trying to log in with ${JSON.stringify(provider.providerId)}!`);
-    
-    firebase.auth().signInWithPopup(provider)
-    .then(function(authData) {
-      console.log(authData);
-      console.log(`Successful login with ${JSON.stringify(provider.providerId)}!`);
-        // let newUser = authData.user.u.src.uid.toString();
-        // console.log(newUser);
+  signIn(provider) {
+    this.signOut();
+    var newUser = {};
+
+    const logIn = () => {
+      console.log(`Logging into ${provider.providerId}!`);
+      firebase.auth().signInWithPopup(provider)
+      .then(function(authData) {
+        newUser = { 
+          avatar: authData.additionalUserInfo.profile.avatar_url,
+          bio: authData.additionalUserInfo.profile.bio,
+          blog: authData.additionalUserInfo.profile.blog,
+          login: authData.additionalUserInfo.profile.login,
+          name: authData.additionalUserInfo.profile.name,
+          repo: authData.additionalUserInfo.profile.html_url,
+        }
+
+        console.log(`Successful login with ${provider.providerId}!`);
       }).catch(function(error) {
         console.log(error);
       });
+    }
+    console.log(newUser);
+    this.props.updateProfile(newUser);
+    setTimeout(logIn(), 3000);
   }
 
-  logout() {
+  signOut() {
     firebase.auth().signOut()
     .then(function() {
     // Sign-out successful.
@@ -50,24 +58,23 @@ class Header extends Component {
       // An error happened.
       console.log(error);
     });
-    this.setState({ user: null });
   }
 
   render() {
-    const logout = <button onClick={this.logout}>Log out!</button>
+    const signOut = <button onClick={this.signOut}>Log out!</button>
     if(!this.props.user) {
       return (
       <div>
         <div className="currentPicture">
-          <img src={this.props.userProfile.profileUrl || blankPicture} alt={ (this.props.userProfile.firstName || "") + " " + (this.props.userProfile.lastName || "") } />
+          <img src={blankPicture} alt={ ("")} />
         </div>
 
         <div className="currentInfo">
-          <p>{this.props.userProfile.firstName || "Not logged in"} {this.props.userProfile.lastName}</p>
+          {/* <p>{this.props.userProfile.name || "Not logged in"}</p> */}
         </div>
 
         {this.renderLogin()}
-        {logout}
+        {signOut}
       </div>
       )
     }

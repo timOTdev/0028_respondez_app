@@ -1,9 +1,10 @@
 const sampleProfile = {
-    firstName: "Timothy",
-    lastName: "Hoang",
-    aboutMe: "I'm super-duper cool!",
-    myInterests: "Web Development",
-    profileUrl: "https://pbs.twimg.com/profile_images/900857250859954178/WGkyHQWs_400x400.jpg",
+    avatar: "https://avatars3.githubusercontent.com/u/19733413?v=4",
+    bio: "Front End Developer with focus on ES6 and ReactJS!",
+    blog: "timothyhoang.net",
+    login: "timh1203",
+    name: "Timothy Hoang",
+    repo: "timothyhoang.net",
 }
 
 export default sampleProfile

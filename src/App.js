@@ -105,6 +105,7 @@ class App extends Component {
             <Header 
               {...this.state} 
               loadProfile={this.loadProfile} 
+              updateProfile={this.updateProfile} 
               deleteProfile={this.deleteProfile} 
               toggleDisplayMain={this.toggleDisplayMain}
             />
