@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import './style.css'
 import blankPicture from './blank-picture.png'
 import PropTypes from 'prop-types'
 

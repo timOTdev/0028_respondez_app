@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './App.css'
+import './style.css'
 import Event from './Event'
 
 class ShowEvents extends Component {
@@ -21,7 +21,7 @@ class ShowEvents extends Component {
         </div>
         
         <button onClick={this.props.loadEvents}>Load Samples</button>
-        {/* <button onClick={this.props.deleteEvents}>Remove Samples</button> */}
+        <button onClick={this.props.loadAttendees}>Load Attendees</button>
       </div>
     )
   }
@@ -29,7 +29,7 @@ class ShowEvents extends Component {
 
 ShowEvents.propTypes = {
   deleteEvent: PropTypes.func,
-  // deleteEvents: PropTypes.func
+  loadAttendees: PropTypes.func
 }
 
 export default ShowEvents

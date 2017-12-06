@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './App.css'
+import './style.css'
 import ShowEvents from './ShowEvents'
 import ShowProfile from './ShowProfile'
 import AddEvent from './AddEvent'
@@ -20,7 +20,7 @@ class Main extends Component {
         <div className="center">
           {(this.props.showMain) ? (<ShowEvents {...this.props} 
                                      loadEvents={this.props.loadEvents} 
-                                    //  deleteEvents={this.props.deleteEvents} 
+                                     loadAttendees={this.props.loadAttendees} 
                                      deleteEvent={this.props.deleteEvent} 
                         />)
                       : null}
@@ -41,7 +41,7 @@ class Main extends Component {
 
 Main.propTypes = {
   loadEvents: PropTypes.func,
-  // deleteEvents: PropTypes.func,
+  loadAttendees: PropTypes.func,
   updateProfile: PropTypes.func,
   createEvent: PropTypes.func,
   updateEvent: PropTypes.func,

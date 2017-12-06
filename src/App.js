@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import './App.css'
+import './style.css'
 import Header from './Header'
 import Main from './Main'
 import sampleEvents from './sampleEvents'
@@ -11,16 +11,8 @@ import { base } from './base'
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      userProfile: {},
-      eventsList: {},
-      attendeesList: {},
-      showUpdateProfile: false,
-      showUpdateEvent: false,
-      showMain: false
-    }
     this.loadEvents = this.loadEvents.bind(this);
-    // this.deleteEvents = this.deleteEvents.bind(this);
+    this.loadAttendees = this.loadAttendees.bind(this);
     this.loadProfile = this.loadProfile.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
     this.deleteProfile = this.deleteProfile.bind(this);
@@ -30,6 +22,14 @@ class App extends Component {
     this.toggleUpdateProfile = this.toggleUpdateProfile.bind(this);
     this.toggleUpdateEvent = this.toggleUpdateEvent.bind(this);
     this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
+    this.state = {
+      userProfile: {},
+      eventsList: {},
+      attendeesList: {},
+      showUpdateProfile: false,
+      showUpdateEvent: false,
+      showMain: false
+    }
   }
   
   componentWillMount() {
@@ -46,13 +46,13 @@ class App extends Component {
 
   loadEvents() {
     const events = {...this.state.eventsList, ...sampleEvents};
-    const attendees = {...this.state.attendeesList, ...sampleAttendees};
-    this.setState({ eventsList: events, attendeesList: attendees })
+    this.setState({ eventsList: events })
   }
-
-  // deleteEvents() {
-  //   this.setState({ eventsList: {}, attendeesList: {} });
-  // }
+  
+  loadAttendees() {
+    const attendees = {...this.state.attendeesList, ...sampleAttendees};
+    this.setState({ attendeesList: attendees })
+  }
 
   loadProfile() {
     this.setState({ userProfile: sampleProfile });
@@ -111,7 +111,7 @@ class App extends Component {
             <Main 
               {...this.state} 
               loadEvents={this.loadEvents} 
-              // deleteEvents={this.deleteEvents} 
+              loadAttendees={this.loadAttendees} 
               updateProfile={this.updateProfile} 
               createEvent={this.createEvent} 
               updateEvent={this.updateEvent}
