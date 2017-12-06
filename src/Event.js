@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './App.css'
+import './style.css'
 import Attendee from './Attendee'
 
 class Event extends Component {
@@ -27,7 +27,7 @@ class Event extends Component {
       <h3>Attendees</h3>
         <div>
           { Object.keys(this.props.attendeesList)
-                                                .map(key => <Attendee key={key} {...this.props} details={this.props.attendeesList[key]}/>)
+                  .map(key => <Attendee key={key} {...this.props} details={this.props.attendeesList[key]}/>)
           } 
         </div>
 

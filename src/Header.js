@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './App.css'
+import './style.css'
 // import CurrentProfile from './CurrentProfile'
 import blankPicture from './blank-picture.png';
 import firebase from 'firebase'
