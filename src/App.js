@@ -15,6 +15,7 @@ class App extends Component {
     this.loadAttendees = this.loadAttendees.bind(this);
     this.loadProfile = this.loadProfile.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.logOut = this.logOut.bind(this);
     this.deleteProfile = this.deleteProfile.bind(this);
     this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
@@ -64,6 +65,10 @@ class App extends Component {
     this.setState({ userProfile: newProfile, showMain: true });
   }
 
+  logOut() {
+    this.setState({ userProfile: {}, showMain: false })
+  }
+
   deleteProfile() {
     this.setState({ userProfile: {} });
   }
@@ -108,6 +113,7 @@ class App extends Component {
               {...this.state} 
               loadProfile={this.loadProfile} 
               updateProfile={this.updateProfile} 
+              logOut={this.logOut} 
               deleteProfile={this.deleteProfile} 
               toggleDisplayMain={this.toggleDisplayMain}
             />

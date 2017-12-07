@@ -50,14 +50,18 @@ class Header extends Component {
   }
 
   signOut() {
+    const logOut = () => {
+      this.props.logOut();
+    }
+
     firebase.auth().signOut()
     .then(function() {
-    // Sign-out successful.
-    console.log("Logout successful");
+      logOut();
+      console.log("Logout successful");
     }).catch(function(error) {
-      // An error happened.
       console.log(error);
     });
+    
   }
 
   render() {
