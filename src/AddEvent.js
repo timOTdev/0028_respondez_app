@@ -27,7 +27,7 @@ class AddEvent extends Component {
       // time: this.time.value,
       location: this.location.value,
       details: this.details.value,
-      creator: this.creator.value,
+      creator: this.props.userProfile.name,
     }
 
     this.props.createEvent(event);
@@ -71,7 +71,6 @@ class AddEvent extends Component {
           <input type="text" name="time" defaultValue={event.time} placeholder="Time" onChange={(e) => this.handleChange(e, key)} required />
           <input type="text" name="location" defaultValue={event.location} placeholder="Location" onChange={(e) => this.handleChange(e, key)} required />
           <textarea type="text" name="details" defaultValue={event.details} placeholder="Details" onChange={(e) => this.handleChange(e, key)} required />
-          <input type="text" name="creator" defaultValue={event.creator} placeholder="Creator" onChange={(e) => this.handleChange(e, key)} required/>
           <button onClick={(e) => this.removeEvent(e, key)}>Remove Event</button>
       </div>
     )
@@ -105,9 +104,8 @@ class AddEvent extends Component {
             <textarea ref={(input) => {this.details = input}} placeholder="Details" required />
           </label>
 
-          <label>Creator:
-            <input ref={(input) => {this.creator = input}} placeholder="Creator" required/>
-          </label>
+          <p>Creator: {this.props.userProfile.name}</p>
+
           <button type="submit">Save Changes</button>
         </form>
 
