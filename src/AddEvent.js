@@ -8,6 +8,7 @@ class AddEvent extends Component {
   constructor() {
     super();
     this.saveEvent = this.saveEvent.bind(this);
+    this.removeEvent = this.removeEvent.bind(this);
     this.renderEvents = this.renderEvents.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -31,6 +32,11 @@ class AddEvent extends Component {
 
     this.props.createEvent(event);
     this.formReset.reset();
+  }
+
+  removeEvent(e, key) {
+    const event = key;
+    this.props.deleteEvent(event);
   }
 
   handleChange(e, key) {
@@ -66,6 +72,7 @@ class AddEvent extends Component {
           <input type="text" name="location" defaultValue={event.location} placeholder="Location" onChange={(e) => this.handleChange(e, key)} required />
           <textarea type="text" name="details" defaultValue={event.details} placeholder="Details" onChange={(e) => this.handleChange(e, key)} required />
           <input type="text" name="creator" defaultValue={event.creator} placeholder="Creator" onChange={(e) => this.handleChange(e, key)} required/>
+          <button onClick={(e) => this.removeEvent(e, key)}>Remove Event</button>
       </div>
     )
   }

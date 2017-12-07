@@ -4,16 +4,6 @@ import './style.css'
 import Attendee from './Attendee'
 
 class Event extends Component {
-  constructor() {
-    super();
-    this.removeEvent = this.removeEvent.bind(this);
-  }
-
-  removeEvent(e) {
-    const event = this._reactInternalFiber.key;
-    this.props.deleteEvent(event);
-  }
-
   render() { 
     return (
     <div className="event">
@@ -30,8 +20,6 @@ class Event extends Component {
                   .map(key => <Attendee key={key} {...this.props} details={this.props.attendeesList[key]}/>)
           } 
         </div>
-
-      <button onClick={(e) => this.removeEvent(e)}>Remove Event</button>
       <hr id="divider" />
     </div>
     )

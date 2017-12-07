@@ -15,7 +15,6 @@ class ShowEvents extends Component {
                                 key={key} 
                                 {...this.props} 
                                 details={this.props.eventsList[key]} 
-                                deleteEvent={this.props.deleteEvent} 
                   />)
           }
         </div>

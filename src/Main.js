@@ -21,13 +21,13 @@ class Main extends Component {
           <ShowEvents {...this.props} 
                         loadEvents={this.props.loadEvents} 
                         loadAttendees={this.props.loadAttendees} 
-                        deleteEvent={this.props.deleteEvent} 
-          />
+                        />
         </div>
         <div className="right">
           {(this.props.showMain) ? (<AddEvent {...this.props} 
                                   createEvent={this.props.createEvent} 
                                   updateEvent={this.props.updateEvent} 
+                                  deleteEvent={this.props.deleteEvent} 
                                   toggleUpdateEvent={this.props.toggleUpdateEvent}
                         />) 
                       : null}
