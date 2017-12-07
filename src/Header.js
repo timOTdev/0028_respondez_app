@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
 // import CurrentProfile from './CurrentProfile'
-import blankPicture from './blank-picture.png';
+import blankPicture from './blank-picture.png'
 import firebase from 'firebase'
 
 class Header extends Component {
@@ -23,14 +23,11 @@ class Header extends Component {
   }
 
   signIn(provider) {
-    this.signOut();
-    var newUser = {};
-
     const logIn = () => {
       console.log(`Logging into ${provider.providerId}!`);
       firebase.auth().signInWithPopup(provider)
       .then(function(authData) {
-        newUser = { 
+        const newUser = { 
           avatar: authData.additionalUserInfo.profile.avatar_url,
           bio: authData.additionalUserInfo.profile.bio,
           blog: authData.additionalUserInfo.profile.blog,
@@ -38,15 +35,18 @@ class Header extends Component {
           name: authData.additionalUserInfo.profile.name,
           repo: authData.additionalUserInfo.profile.html_url,
         }
-
+        addUserInfo(newUser);
         console.log(`Successful login with ${provider.providerId}!`);
       }).catch(function(error) {
         console.log(error);
       });
     }
-    console.log(newUser);
-    this.props.updateProfile(newUser);
-    setTimeout(logIn(), 3000);
+
+    const addUserInfo = (user) => {
+      this.props.updateProfile(user);
+    }
+
+    logIn();
   }
 
   signOut() {
@@ -66,15 +66,17 @@ class Header extends Component {
       return (
       <div>
         <div className="currentPicture">
-          <img src={blankPicture} alt={ ("")} />
+          <img src={this.props.userProfile.avatar || blankPicture} alt={this.props.userProfile.avatar || ("")} />
         </div>
 
+        
         <div className="currentInfo">
           {/* <p>{this.props.userProfile.name || "Not logged in"}</p> */}
         </div>
 
         {this.renderLogin()}
         {signOut}
+        <hr id="divider" />
       </div>
       )
     }

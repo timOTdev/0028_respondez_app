@@ -59,7 +59,9 @@ class App extends Component {
   }
 
   updateProfile(profile) {
-    this.setState({ userProfile: profile });
+    let newProfile = {...this.state.userProfile};
+    newProfile = profile;
+    this.setState({ userProfile: newProfile, showMain: true });
   }
 
   deleteProfile() {

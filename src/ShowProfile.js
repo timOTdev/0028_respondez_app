@@ -10,11 +10,11 @@ class ShowProfile extends Component {
         <h1>Current Profile</h1>
 
         <div>
-          <p>First Name: {this.props.userProfile.firstName || "None"}</p>
-          <p>Last Name: {this.props.userProfile.lastName || "None"}</p>
-          <p>About Me: {this.props.userProfile.aboutMe || "None"}</p>
-          <p>My Interests: {this.props.userProfile.myInterests || "None"}</p>
-          <p>Picture URL: <a href={this.props.userProfile.profileUrl} target="_blank">Link</a></p>
+          <p>Name: {this.props.userProfile.name || "None"}</p>
+          <p>Bio: {this.props.userProfile.bio || "None"}</p>
+          <p>Github: {this.props.userProfile.repo || "None"}</p>
+          <p>Blog: {this.props.userProfile.blog || "None"}</p>
+          <p>Avatar: <a href={this.props.userProfile.avatar} target="_blank">Link</a></p>
         </div>
 
         <h1>Update Profile</h1>
