@@ -15,6 +15,7 @@ class ShowProfile extends Component {
           <p>Github: {this.props.userProfile.repo || "None"}</p>
           <p>Blog: {this.props.userProfile.blog || "None"}</p>
           <p>Avatar: <a href={this.props.userProfile.avatar} target="_blank">Link</a></p>
+          <p>Uid: {this.props.userProfile.uid} </p>
         </div>
 
         <h1>Update Profile</h1>

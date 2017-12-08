@@ -4,7 +4,24 @@ import './style.css'
 import Attendee from './Attendee'
 
 class Event extends Component {
-  render() { 
+  constructor() {
+    super()
+    this.rsvpYes = this.rsvpYes.bind(this)
+  }
+
+  rsvpYes() {
+    const targetEvent = this.props.id
+    const uid = this.props.userProfile.uid
+    const newAttendee = {
+      name: this.props.userProfile.name,
+      avatar: this.props.userProfile.avatar
+    }
+    
+    this.props.addRsvp(targetEvent, uid, newAttendee);
+    // this.props.addRsvp(attendee)
+  }
+
+  render(key) { 
     return (
     <div className="event">
       <h2>{this.props.details.eventName}</h2>
@@ -14,6 +31,7 @@ class Event extends Component {
       <p>Details: {this.props.details.details}</p>
       <p>Creator: {this.props.details.creator}</p>
 
+      <button onClick={this.rsvpYes}>I'm going!</button>
       <h3>Attendees</h3>
         <div>
           { Object.keys(this.props.attendeesList)

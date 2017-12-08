@@ -13,6 +13,7 @@ class ShowEvents extends Component {
             Object.keys(this.props.eventsList)
                   .map(key => <Event 
                                 key={key} 
+                                id={key}
                                 {...this.props} 
                                 details={this.props.eventsList[key]} 
                   />)

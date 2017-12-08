@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import update from 'react-addons-update';
 import { BrowserRouter } from 'react-router-dom'
 import './style.css'
 import Header from './Header'
@@ -20,6 +21,7 @@ class App extends Component {
     this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
+    this.addRsvp = this.addRsvp.bind(this);
     this.toggleUpdateProfile = this.toggleUpdateProfile.bind(this);
     this.toggleUpdateEvent = this.toggleUpdateEvent.bind(this);
     this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
@@ -93,6 +95,12 @@ class App extends Component {
     this.setState({eventsList: events})
   }
 
+  addRsvp(targetEvent, uid, newAttendee) {
+    // const currentAttendees = {...this.state.EventsList[targetEvent]}
+    // currentAttendees.attendees[uid] = newAttendee;
+    // this.setState({ eventsList: currentAttendees })
+  }
+
   toggleUpdateProfile() {
     this.setState({showUpdateProfile: !this.state.showUpdateProfile})
   }
@@ -125,6 +133,7 @@ class App extends Component {
               createEvent={this.createEvent} 
               updateEvent={this.updateEvent}
               deleteEvent={this.deleteEvent} 
+              addRsvp={this.addRsvp}
               toggleUpdateEvent={this.toggleUpdateEvent}
               toggleUpdateProfile={this.toggleUpdateProfile}
             />

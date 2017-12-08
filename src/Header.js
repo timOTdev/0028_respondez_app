@@ -34,9 +34,11 @@ class Header extends Component {
           login: authData.additionalUserInfo.profile.login,
           name: authData.additionalUserInfo.profile.name,
           repo: authData.additionalUserInfo.profile.html_url,
+          uid: authData.user.uid
         }
         addUserInfo(newUser);
         console.log(`Successful login with ${provider.providerId}!`);
+        console.log(authData);
       }).catch(function(error) {
         console.log(error);
       });
