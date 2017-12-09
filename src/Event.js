@@ -21,6 +21,7 @@ class Event extends Component {
   }
 
   render(key) { 
+    const rsvpButton = <button onClick={this.rsvpYes}>I'm going!</button>
     return (
     <div className="event">
       <h2>{this.props.details.eventName}</h2>
@@ -30,7 +31,7 @@ class Event extends Component {
       <p>Details: {this.props.details.details}</p>
       <p>Creator: {this.props.details.creator}</p>
 
-      <button onClick={this.rsvpYes}>I'm going!</button>
+      {this.props.loggedIn && rsvpButton}
       <h3>Attendees</h3>
         <div>
           { Object.keys(this.props.attendeesList)

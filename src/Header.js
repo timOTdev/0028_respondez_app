@@ -23,6 +23,8 @@ class Header extends Component {
   }
 
   signIn(provider) {
+    this.signOut();
+
     const logIn = () => {
       console.log(`Logging into ${provider.providerId}!`);
       firebase.auth().signInWithPopup(provider)
@@ -80,8 +82,8 @@ class Header extends Component {
           {/* <p>{this.props.userProfile.name || "Not logged in"}</p> */}
         </div>
 
-        {this.renderLogin()}
-        {signOut}
+        { (!this.props.loggedIn) && this.renderLogin()}
+        {this.props.loggedIn && signOut}
         <hr id="divider" />
       </div>
       )

@@ -25,6 +25,7 @@ class App extends Component {
     this.toggleUpdateEvent = this.toggleUpdateEvent.bind(this);
     this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
     this.state = {
+      loggedIn: false,
       userProfile: {},
       eventsList: {},
       attendeesList: {},
@@ -63,11 +64,11 @@ class App extends Component {
   updateProfile(profile) {
     let newProfile = {...this.state.userProfile};
     newProfile = profile;
-    this.setState({ userProfile: newProfile, showMain: true });
+    this.setState({ userProfile: newProfile, showMain: true, loggedIn: true  });
   }
 
   logOut() {
-    this.setState({ userProfile: {}, showMain: false })
+    this.setState({ userProfile: {}, showMain: false, loggedIn: false  })
   }
 
   deleteProfile() {
