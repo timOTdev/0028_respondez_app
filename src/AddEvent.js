@@ -28,7 +28,6 @@ class AddEvent extends Component {
       location: this.location.value,
       details: this.details.value,
       creator: this.props.userProfile.name,
-      attendees: {}
     }
 
     this.props.createEvent(event);

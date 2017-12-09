@@ -11,13 +11,12 @@ class Event extends Component {
 
   rsvpYes() {
     const targetEvent = this.props.id
-    const uid = this.props.userProfile.uid
     const newAttendee = {
       name: this.props.userProfile.name,
       avatar: this.props.userProfile.avatar
     }
     
-    this.props.addRsvp(targetEvent, uid, newAttendee);
+    this.props.addRsvp(targetEvent, newAttendee);
     // this.props.addRsvp(attendee)
   }
 

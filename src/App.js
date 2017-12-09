@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import update from 'react-addons-update';
 import { BrowserRouter } from 'react-router-dom'
 import './style.css'
 import Header from './Header'
@@ -95,10 +94,17 @@ class App extends Component {
     this.setState({eventsList: events})
   }
 
-  addRsvp(targetEvent, uid, newAttendee) {
-    // const currentAttendees = {...this.state.EventsList[targetEvent]}
-    // currentAttendees.attendees[uid] = newAttendee;
-    // this.setState({ eventsList: currentAttendees })
+  addRsvp(targetEvent, newAttendee) {
+    const uid = this.state.userProfile.uid;
+    const a = this.state.eventsList 
+    const b = this.state.eventsList[targetEvent];
+    const c = this.state.eventsList[targetEvent].attendees;
+  
+    const newC = {...c, [uid]: newAttendee }
+    const newB = {...b, attendees: newC }
+    const newA = {...a, [targetEvent]: newB }
+  
+    this.setState({ eventsList: newA })
   }
 
   toggleUpdateProfile() {
