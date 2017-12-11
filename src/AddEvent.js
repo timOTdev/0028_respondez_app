@@ -123,6 +123,6 @@ AddEvent.propTypes = {
   createEvent: PropTypes.func,
   eventsList: PropTypes.object,
   toggleUpdateEvent: PropTypes.func,
-  showUpdateEvent: PropTypes.func
+  showUpdateEvent: PropTypes.bool
 }
 export default AddEvent

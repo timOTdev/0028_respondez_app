@@ -28,7 +28,6 @@ class App extends Component {
       loggedIn: false,
       userProfile: {},
       eventsList: {},
-      attendeesList: {},
       showUpdateProfile: false,
       showUpdateEvent: false,
       showMain: false

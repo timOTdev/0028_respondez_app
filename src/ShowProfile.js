@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
-import UpdateProfile from './UpdateProfile'
+// import UpdateProfile from './UpdateProfile'
 
 class ShowProfile extends Component {
   render() {
@@ -18,9 +18,9 @@ class ShowProfile extends Component {
           <p>Uid: {this.props.userProfile.uid} </p>
         </div>
 
-        <h1>Update Profile</h1>
+        {/* <h1>Update Profile</h1>
         <button type="submit" onClick={this.props.toggleUpdateProfile}>Update Profile</button>
-        { this.props.showUpdateProfile ? <UpdateProfile updateProfile={this.props.updateProfile} /> : null }
+        { this.props.showUpdateProfile ? <UpdateProfile updateProfile={this.props.updateProfile} /> : null } */}
       </div>
     );
   }
