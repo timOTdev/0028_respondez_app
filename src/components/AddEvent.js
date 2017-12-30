@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './style.css'
-import './react-datetime.css'
 import Calendar from 'react-datetime'
+import '../style/style.css'
+import '../style/react-datetime.css'
 
 class AddEvent extends Component {
   constructor() {

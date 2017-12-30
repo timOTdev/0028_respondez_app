@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './style.css'
+import '../style/style.css'
+
 import ShowEvents from './ShowEvents'
 import ShowProfile from './ShowProfile'
 import AddEvent from './AddEvent'

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './style.css'
-// import CurrentProfile from './CurrentProfile'
-import blankPicture from './blank-picture.png'
 import firebase from 'firebase'
+import base from '../helpers/base'
+import '../style/style.css'
+
+// import CurrentProfile from './CurrentProfile'
+import blankPicture from '../data/blank-picture.png'
 
 class Header extends Component {
   constructor() {
@@ -13,6 +15,14 @@ class Header extends Component {
     this.signOut = this.signOut.bind(this);
   }
 
+  componentDidMount() {
+    base.onAuth((user) => {
+      if(user) {
+        this.authHandler(null, { user});
+      }
+    });
+  }
+  
   renderLogin() {
     let github = new firebase.auth.GithubAuthProvider();
     return (
@@ -114,7 +124,7 @@ Header.propTypes = {
   toggleDisplaymain: PropTypes.func
 }
 
-export default Header;
+export default Header
 
 
 

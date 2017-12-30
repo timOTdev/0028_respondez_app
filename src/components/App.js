@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import './style.css'
+import '../style/style.css'
+
 import Header from './Header'
 import Main from './Main'
-import sampleEvents from './sampleEvents'
-import sampleProfile from './sampleProfile'
-import sampleAttendees from './sampleAttendees'
-import { base } from './base'
+import sampleEvents from '../data/sampleEvents'
+import sampleProfile from '../data/sampleProfile'
+import sampleAttendees from '../data/sampleAttendees'
+import { base } from '../helpers/base'
 
 class App extends Component {
   constructor() {
@@ -40,10 +41,17 @@ class App extends Component {
       context: this,
       state: 'eventsList'
     });
+
+    this.userRef = base.syncState('userProfile',
+    {
+      context: this,
+      state: 'userProfile'
+    });
   }
 
   componentWillUnmount() {
     base.removeBinding(this.eventsRef);
+    base.removeBinding(this.userRef);
   }
 
   loadEvents() {

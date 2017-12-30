@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import './style.css'
-import blankPicture from './blank-picture.png'
 import PropTypes from 'prop-types'
+import '../style/style.css'
+
+import blankPicture from '../data/blank-picture.png'
 
 class CurrentProfile extends Component {
   constructor() {

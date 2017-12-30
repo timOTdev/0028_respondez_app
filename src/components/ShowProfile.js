@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './style.css'
+import '../style/style.css'
+
 // import UpdateProfile from './UpdateProfile'
 
 class ShowProfile extends Component {

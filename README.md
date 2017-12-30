@@ -1,4 +1,4 @@
-<figure><img src="respondez-app.png" alt="The Respondez App" style="width: 60%; display: block; margin-left: auto; margin-right: auto;"/><figcaption style=" text-align: center;">Still in early stages but we're going far!</figcaption></figure>
+<figure><img src="./public/respondez-app.png" alt="The Respondez App" style="width: 60%; display: block; margin-left: auto; margin-right: auto;"/><figcaption style=" text-align: center;">Still in early stages but we're going far!</figcaption></figure>
 
 # About
 - Hello World! The Respondez App was named off of the popular expression "respondez s'il vous plait", or R.S.V.P. for short. I want to built this out of the desire for our Free Code Camp Ashburn Group so we can manage our events external of popular platforms such as Facebook or Meetup.

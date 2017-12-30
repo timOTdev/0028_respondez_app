@@ -13,4 +13,4 @@ const config = {
 const app = firebase.initializeApp(config)
 const base = Rebase.createClass(app.database())
 
-export { base }
+export { base };
