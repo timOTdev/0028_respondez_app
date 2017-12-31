@@ -11,7 +11,7 @@ class Main extends Component {
     return (
       <div className="main">
         <div className="left">
-          {(this.props.showMain) ? (<ShowProfile {...this.props} 
+          {(this.props.loggedIn) ? (<ShowProfile {...this.props} 
                                       updateProfile={this.props.updateProfile} 
                                       toggleUpdateProfile={this.props.toggleUpdateProfile}
                                     />) 
@@ -26,7 +26,7 @@ class Main extends Component {
                         />
         </div>
         <div className="right">
-          {(this.props.showMain) ? (<AddEvent {...this.props} 
+          {(this.props.loggedIn) ? (<AddEvent {...this.props} 
                                   createEvent={this.props.createEvent} 
                                   updateEvent={this.props.updateEvent} 
                                   deleteEvent={this.props.deleteEvent} 

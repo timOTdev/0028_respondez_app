@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import firebase from 'firebase'
-import base from '../helpers/base'
+// import firebase from 'firebase'
+import { app, githubProvider } from '../helpers/base'
 import '../style/style.css'
 
 // import CurrentProfile from './CurrentProfile'
@@ -15,52 +15,33 @@ class Header extends Component {
     this.signOut = this.signOut.bind(this);
   }
 
-  componentDidMount() {
-    base.onAuth((user) => {
-      if(user) {
-        this.authHandler(null, { user});
-      }
-    });
-  }
-  
-  renderLogin() {
-    let github = new firebase.auth.GithubAuthProvider();
-    return (
-      <nav className="login">
-      <button className="github" onClick={() => this.signIn(github)}>Log In With Github</button>
-      </nav>
-    )
-  }
-
   signIn(provider) {
-    this.signOut();
-
-    const logIn = () => {
+    const signIn = () => {
       console.log(`Logging into ${provider.providerId}!`);
-      firebase.auth().signInWithPopup(provider)
-      .then(function(authData) {
-        const newUser = { 
-          avatar: authData.additionalUserInfo.profile.avatar_url,
-          bio: authData.additionalUserInfo.profile.bio,
-          blog: authData.additionalUserInfo.profile.blog,
-          login: authData.additionalUserInfo.profile.login,
-          name: authData.additionalUserInfo.profile.name,
-          repo: authData.additionalUserInfo.profile.html_url,
-          uid: authData.user.uid
-        }
-        addUserInfo(newUser);
-        console.log(`Successful login with ${provider.providerId}!`);
-        console.log(authData);
-      }).catch(function(error) {
-        console.log(error);
-      });
+
+      const addUserInfo = (user) => {
+        this.props.logIn(user);
+      }
+
+      app.auth().signInWithPopup(provider)
+        .then(function(authData) {
+          const user = { 
+            avatar: authData.additionalUserInfo.profile.avatar_url,
+            bio: authData.additionalUserInfo.profile.bio,
+            blog: authData.additionalUserInfo.profile.blog,
+            login: authData.additionalUserInfo.profile.login,
+            name: authData.additionalUserInfo.profile.name,
+            repo: authData.additionalUserInfo.profile.html_url,
+            uid: authData.user.uid
+          }
+          addUserInfo(user);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
 
-    const addUserInfo = (user) => {
-      this.props.updateProfile(user);
-    }
-
-    logIn();
+    signIn();
   }
 
   signOut() {
@@ -68,7 +49,7 @@ class Header extends Component {
       this.props.logOut();
     }
 
-    firebase.auth().signOut()
+    app.auth().signOut()
     .then(function() {
       logOut();
       console.log("Logout successful");
@@ -76,6 +57,14 @@ class Header extends Component {
       console.log(error);
     });
     
+  }
+
+  renderLogin() { 
+    return (
+      <nav className="login">
+      <button className="github" onClick={() => this.signIn(githubProvider)}>Log In With Github</button>
+      </nav>
+    )
   }
 
   render() {

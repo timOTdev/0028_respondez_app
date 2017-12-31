@@ -5,19 +5,19 @@ import '../style/style.css'
 import Header from './Header'
 import Main from './Main'
 import sampleEvents from '../data/sampleEvents'
-import sampleProfile from '../data/sampleProfile'
-import sampleAttendees from '../data/sampleAttendees'
-import { base } from '../helpers/base'
+// import sampleProfile from '../data/sampleProfile'
+// import sampleAttendees from '../data/sampleAttendees'
+import { app, base } from '../helpers/base'
 
 class App extends Component {
   constructor() {
     super();
     this.loadEvents = this.loadEvents.bind(this);
-    this.loadAttendees = this.loadAttendees.bind(this);
-    this.loadProfile = this.loadProfile.bind(this);
-    this.updateProfile = this.updateProfile.bind(this);
+    // this.loadAttendees = this.loadAttendees.bind(this);
+    this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
-    this.deleteProfile = this.deleteProfile.bind(this);
+    // this.loadProfile = this.loadProfile.bind(this);
+    // this.deleteProfile = this.deleteProfile.bind(this);
     this.createEvent = this.createEvent.bind(this);
     this.updateEvent = this.updateEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
@@ -26,22 +26,40 @@ class App extends Component {
     this.toggleUpdateEvent = this.toggleUpdateEvent.bind(this);
     this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
     this.state = {
-      loggedIn: false,
       userProfile: {},
       eventsList: {},
+      loggedIn: false,
+      // showMain: false,
       showUpdateProfile: false,
       showUpdateEvent: false,
-      showMain: false
     }
   }
   
   componentWillMount() {
+    this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ 
+          loggedIn: true,
+        })
+      } else {
+        this.setState({
+          loggedIn: false,
+        })
+      }
+    })
     this.eventsRef = base.syncState('eventsList',
     {
       context: this,
       state: 'eventsList'
     });
+    this.userRef = base.syncState('userProfile',
+    {
+      context: this,
+      state: 'userProfile'
+    });    
+  }
 
+  componentDidMount() {
     this.userRef = base.syncState('userProfile',
     {
       context: this,
@@ -50,7 +68,30 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    this.removeAuthListener();
     base.removeBinding(this.eventsRef);
+    base.removeBinding(this.userRef);
+  }
+
+  logIn(profile) {
+    let userProfile = {...this.state.userProfile}
+    userProfile = profile
+    this.setState({ userProfile, loggedIn: true  })
+  }
+
+  logOut() {
+    let userProfile = {...this.state.userProfile}
+    userProfile = {
+      avatar: "",
+      bio: "",
+      blog: "",
+      login: "",
+      name: "",
+      repo: "",
+      uid: ""
+    }
+    // this.setState({ userProfile, showMain: false, loggedIn: false })
+    this.setState({ userProfile, loggedIn: false })
     base.removeBinding(this.userRef);
   }
 
@@ -59,28 +100,18 @@ class App extends Component {
     this.setState({ eventsList: events })
   }
   
-  loadAttendees() {
-    const attendees = {...this.state.attendeesList, ...sampleAttendees};
-    this.setState({ attendeesList: attendees })
-  }
+  // loadAttendees() {
+  //   const attendees = {...this.state.attendeesList, ...sampleAttendees};
+  //   this.setState({ attendeesList: attendees })
+  // }
 
-  loadProfile() {
-    this.setState({ userProfile: sampleProfile });
-  }
+  // loadProfile() {
+  //   this.setState({ userProfile: sampleProfile });
+  // }
 
-  updateProfile(profile) {
-    let newProfile = {...this.state.userProfile};
-    newProfile = profile;
-    this.setState({ userProfile: newProfile, showMain: true, loggedIn: true  });
-  }
-
-  logOut() {
-    this.setState({ userProfile: {}, showMain: false, loggedIn: false  })
-  }
-
-  deleteProfile() {
-    this.setState({ userProfile: {} });
-  }
+  // deleteProfile() {
+  //   this.setState({ userProfile: {} });
+  // }
 
   createEvent(key) {
     const timeStamp = Date.now();
@@ -124,7 +155,7 @@ class App extends Component {
   }
   
   toggleDisplayMain() {
-    this.setState({showMain: !this.state.showMain})
+    this.setState({loggedIn: !this.state.loggedIn})
   }
 
   render() {
@@ -133,17 +164,17 @@ class App extends Component {
         <div>
             <Header 
               {...this.state} 
-              loadProfile={this.loadProfile} 
-              updateProfile={this.updateProfile} 
+              logIn={this.logIn} 
               logOut={this.logOut} 
-              deleteProfile={this.deleteProfile} 
+              // loadProfile={this.loadProfile} 
+              // deleteProfile={this.deleteProfile} 
               toggleDisplayMain={this.toggleDisplayMain}
             />
             <Main 
               {...this.state} 
               loadEvents={this.loadEvents} 
-              loadAttendees={this.loadAttendees} 
-              updateProfile={this.updateProfile} 
+              // loadAttendees={this.loadAttendees} 
+              // updateProfile={this.updateProfile} 
               createEvent={this.createEvent} 
               updateEvent={this.updateEvent}
               deleteEvent={this.deleteEvent} 
