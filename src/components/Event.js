@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import '../style/style.css'
 
-// import Attendee from './Attendee'
+import Attendee from './Attendee'
 
 class Event extends Component {
   constructor() {
@@ -11,21 +11,32 @@ class Event extends Component {
   }
 
   rsvpYes() {
-    const targetEvent = this.props.id
-    const newAttendee = {
-      name: this.props.userProfile.name,
-      avatar: this.props.userProfile.avatar
-    }
+    // const targetEvent = this.props.id.eid
+    // const newAttendee = {
+    //   name: this.props.userProfile.name,
+    //   avatar: this.props.userProfile.avatar
+    // }
     
-    this.props.addRsvp(targetEvent, newAttendee);
+    // this.props.addRsvp(targetEvent, newAttendee);
     // this.props.addRsvp(attendee)
   }
 
-  render(key, id) { 
+  render() { 
     // const rsvpButton = <button onClick={this.rsvpYes}>I'm going!</button>
-
-    // const event = this.props.id 
+    // const targetEvent = this.props.eventsList[id]
+    // const attendees = this.props.attendeesList["event11"]
+    // console.log(targetEvent)
     // var targetEvent = ["this.props.eventsList[\"" + event + "\"].attendees"]
+
+    // const { postId } = state.match.params;
+    // const i = state.posts.findIndex((post) => post.code === postId)
+    // const post = state.posts[i];
+    // const postComments = state.comments[postId] || [];
+
+    const { eid } = this.props.details
+    const targetAttendees = this.props.attendeesList[eid]
+
+    // console.log(targetAttendees)
 
     return (
     <div className="event">
@@ -38,15 +49,12 @@ class Event extends Component {
 
       {/* {this.props.loggedIn && rsvpButton} */}
 
-      {
-        // (this.props.eventsList[event].attendees) ? (
-        //                 <div>
-        //                   <h3>Attendees</h3>
-        //                   {Object.keys(targetEvent).map(key => <Attendee key={key} reactKey={key} {...this.props} />)}
-        //                 </div>
-        //                 )
-        //               : ""
-      } 
+      <div>
+        <h3>Attendees</h3>
+        {(targetAttendees) ? (Object.values(this.props.attendeesList[eid]).map( (attendee, i) => <Attendee details={attendee} key={i} />))
+          : ""
+        } 
+      </div>
       <hr id="divider" />
     </div>
     )

@@ -17,29 +17,14 @@ class Attendee extends Component {
 
     return (
       <div className="Attendee">
-      {/* {
-        (this.props.details.attendees[reactKey].name) 
-        ? (
-          <div>
-            <img src={this.props.details.attendees[reactKey].avatar || ""} 
-                 alt={this.props.details.attendees[reactKey].name || ""} />
-            <p>{this.props.details.attendees[reactKey].name || ""}</p>
-          </div>
-          )
-        : ""
-      } 
-      </div>
-
-      <div className="Attendee">
-        <img src={this.props.details.attendees["TQVJHDSNCNO7Jg1biXIM7vp3bCj2"].avatar || ""} 
-              alt={this.props.details.attendees["TQVJHDSNCNO7Jg1biXIM7vp3bCj2"].name || ""} />
-        <p>{this.props.details.attendees["TQVJHDSNCNO7Jg1biXIM7vp3bCj2"].name || ""}</p>
-      }  */}
+        <img src={this.props.details.avatar || ""} 
+              alt={this.props.details.name || ""} />
+        <p>{this.props.details.name || ""}</p> 
       </div>
     )
   }
 }
 
-// export default Attendee
+export default Attendee
 
 // $r.state.eventsList["event-1512851350090"].attendees["TQVJHDSNCNO7Jg1biXIM7vp3bCj2"].name

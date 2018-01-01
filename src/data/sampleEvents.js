@@ -1,6 +1,6 @@
 const sampleEvents = [
   {
-    id: "event9", 
+    eid: "event9", 
     eventName: "FIELD TRIP: DC Networking Event",
     date: "Sunday, November 11, 2017",
     time: "11:00 am",
@@ -9,7 +9,7 @@ const sampleEvents = [
     creator: "Timothy Hoang",
   },
   {
-    id: "event10",
+    eid: "event10",
     eventName: "Code & Coffee #08",
     date: "Sunday, November 25, 2017",
     time: "12:00 pm",
@@ -18,7 +18,7 @@ const sampleEvents = [
     creator: "Timothy Hoang",
   },
   {
-    id: "event11",
+    eid: "event11",
     eventName: "Code & Coffee #09",
     date: "Saturday, December 2, 2017",
     time: "12:00 pm",
