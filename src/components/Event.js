@@ -10,33 +10,15 @@ class Event extends Component {
     this.rsvpYes = this.rsvpYes.bind(this)
   }
 
-  rsvpYes() {
-    // const targetEvent = this.props.id.eid
-    // const newAttendee = {
-    //   name: this.props.userProfile.name,
-    //   avatar: this.props.userProfile.avatar
-    // }
-    
-    // this.props.addRsvp(targetEvent, newAttendee);
-    // this.props.addRsvp(attendee)
+  rsvpYes(e) {
+    e.preventDefault();
+    console.log(e.target);
   }
 
   render() { 
-    // const rsvpButton = <button onClick={this.rsvpYes}>I'm going!</button>
-    // const targetEvent = this.props.eventsList[id]
-    // const attendees = this.props.attendeesList["event11"]
-    // console.log(targetEvent)
-    // var targetEvent = ["this.props.eventsList[\"" + event + "\"].attendees"]
-
-    // const { postId } = state.match.params;
-    // const i = state.posts.findIndex((post) => post.code === postId)
-    // const post = state.posts[i];
-    // const postComments = state.comments[postId] || [];
-
     const { eid } = this.props.details
     const targetAttendees = this.props.attendeesList[eid]
-
-    // console.log(targetAttendees)
+    const rsvpButton = <button onClick={(e) => this.rsvpYes(e)}>I'm going!</button>
 
     return (
     <div className="event">
@@ -47,14 +29,14 @@ class Event extends Component {
       <p>Details: {this.props.details.details}</p>
       <p>Creator: {this.props.details.creator}</p>
 
-      {/* {this.props.loggedIn && rsvpButton} */}
-
       <div>
         <h3>Attendees</h3>
         {(targetAttendees) ? (Object.values(this.props.attendeesList[eid]).map( (attendee, i) => <Attendee details={attendee} key={i} />))
           : ""
         } 
       </div>
+
+      {this.props.loggedIn && rsvpButton}
       <hr id="divider" />
     </div>
     )

@@ -12,12 +12,12 @@ class ShowEvents extends Component {
         <div>
           { 
             Object.keys(this.props.eventsList)
-                  .map(key => <Event 
-                                key={key} 
-                                id={key}
-                                {...this.props} 
-                                details={this.props.eventsList[key]} 
-                  />)
+              .map(key => <Event 
+                            key={key} 
+                            id={key}
+                            {...this.props} 
+                            details={this.props.eventsList[key]} 
+            />)
           }
         </div>
         

@@ -18,16 +18,18 @@ class AddEvent extends Component {
     alert('You saved your event!')
     var dateExtract = e.target[1].getAttribute("value");
     var timeExtract = e.target[2].getAttribute("value");
+    const timeStamp = Date.now();
 
     const event = {
+      eid: `event${timeStamp}`,
       eventName: this.eventName.value,
       date: dateExtract,
-      // date: this.date.value,
       time: timeExtract,
-      // time: this.time.value,
       location: this.location.value,
       details: this.details.value,
       creator: this.props.userProfile.name,
+      // date: this.date.value,
+      // time: this.time.value,
     }
 
     this.props.createEvent(event);
@@ -40,9 +42,6 @@ class AddEvent extends Component {
   }
 
   handleChange(e, key) {
-    console.log(e);
-    console.log(this.props);
-    console.log(key);
     const event = this.props.eventsList[key];
 
     const updatedEvent = {

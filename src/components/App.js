@@ -101,7 +101,7 @@ class App extends Component {
   }
 
   loadEvents() {
-    const eventsList = {...this.state.eventsList, ...sampleEvents};
+    const eventsList = {...this.state.eventsList, ...sampleEvents.arr};
     this.setState({ eventsList })
   }
   
@@ -120,11 +120,13 @@ class App extends Component {
   // }
 
   createEvent(key) {
-    const timeStamp = Date.now();
-    const events = {...this.state.eventsList};
-
-    events[`event-${timeStamp}`] = key;
-    this.setState({eventsList: events})
+    const eventsList = [...this.state.eventsList];
+    console.log("key: ",key);
+    console.log("eventsList: ",eventsList);
+    
+    eventsList.unshift(key);
+    console.log("eventsList: ",eventsList);
+    this.setState({ eventsList })
   }
 
   updateEvent(key, updatedEvent) {
