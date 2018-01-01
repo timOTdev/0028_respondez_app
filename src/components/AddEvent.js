@@ -121,7 +121,7 @@ class AddEvent extends Component {
 
 AddEvent.propTypes = {
   createEvent: PropTypes.func,
-  eventsList: PropTypes.object,
+  // eventsList: PropTypes.array,
   toggleUpdateEvent: PropTypes.func,
   showUpdateEvent: PropTypes.bool
 }

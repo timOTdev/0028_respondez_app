@@ -38,15 +38,15 @@ class Event extends Component {
 
       {/* {this.props.loggedIn && rsvpButton} */}
 
-      {/* {
-        (this.props.eventsList[event].attendees) ? (
-                        <div>
-                          <h3>Attendees</h3>
-                          {Object.keys(targetEvent).map(key => <Attendee key={key} reactKey={key} {...this.props} />)}
-                        </div>
-                        )
-                      : ""
-      }  */}
+      {
+        // (this.props.eventsList[event].attendees) ? (
+        //                 <div>
+        //                   <h3>Attendees</h3>
+        //                   {Object.keys(targetEvent).map(key => <Attendee key={key} reactKey={key} {...this.props} />)}
+        //                 </div>
+        //                 )
+        //               : ""
+      } 
       <hr id="divider" />
     </div>
     )

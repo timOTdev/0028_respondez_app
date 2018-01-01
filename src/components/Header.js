@@ -16,6 +16,8 @@ class Header extends Component {
   }
 
   signIn(provider) {
+    this.signOut();
+
     const signIn = () => {
       console.log(`Logging into ${provider.providerId}!`);
 
