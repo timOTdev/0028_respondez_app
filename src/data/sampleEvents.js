@@ -56,14 +56,14 @@ const sampleEvents = {
       details: "Happy Thanksgiving everyone! Come share company with us over some coffee. We thankful for this space and the people that make up FCCA. Come hang out with us and discuss whatever projects you're working on or just to talk tech! Stay short or long, make friends, and get coding!",
       creator: "Timothy Hoang",
       attendees: [
-        {
-          uid: "juanuid",
-          name: "Juan Sierra",
-          avatar: "https://avatars1.githubusercontent.com/u/8007671",
-          bio: "front-end things",
-          github: "https://github.com/juan-sierra",
-          blog: "",
-        },
+        // {
+        //   uid: "juanuid",
+        //   name: "Juan Sierra",
+        //   avatar: "https://avatars1.githubusercontent.com/u/8007671",
+        //   bio: "front-end things",
+        //   github: "https://github.com/juan-sierra",
+        //   blog: "",
+        // },
       ],
     },
     {

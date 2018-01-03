@@ -8,16 +8,39 @@ class Event extends Component {
   rsvpYes = (e) => {
     e.preventDefault();
     const { id } = this.props
+    const { uid } = this.props.userProfile;
+    const newAttendee = this.props.userProfile
     const targetAttendees = this.props.eventsList[id].attendees
-    const newAttendee = this.props.userProfile;
+    var arr = [];
 
-    this.props.addRsvp(id, newAttendee)
+    if (targetAttendees) {
+      for (let key of targetAttendees) { 
+        arr.push(key.uid) 
+      }
+    }
+        
+    !arr.includes(uid) && this.props.addRsvp(id, newAttendee)
+  }
+
+  rsvpNo = (e) => {
+    e.preventDefault();
+    const { id } = this.props
+    const { uid } = this.props.userProfile;
+    const targetAttendees = this.props.eventsList[id].attendees
+    
+    for (let key of targetAttendees) {
+      if (uid === key.uid) {
+        let rsvpToRemove = targetAttendees.indexOf(key)
+        this.props.removeRsvp(id, rsvpToRemove)
+      }
+    }
   }
   
   render() { 
     const { id } = this.props
     const targetAttendees = this.props.eventsList[id].attendees
-    const rsvpButton = <button onClick={this.rsvpYes}>I'm in!</button>
+    const rsvpYes = <button onClick={this.rsvpYes}>I'm in!</button>
+    const rsvpNo = <button onClick={this.rsvpNo}>I'm out!</button>
 
     return (
     <div className="event">
@@ -35,7 +58,8 @@ class Event extends Component {
         } 
       </div>
 
-      {this.props.loggedIn && rsvpButton}
+      {this.props.loggedIn && rsvpYes}
+      {this.props.loggedIn && rsvpNo}
       <hr id="divider" />
     </div>
     )

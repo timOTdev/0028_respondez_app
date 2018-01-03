@@ -143,19 +143,30 @@ class App extends Component {
     this.setState({eventsList: events})
   }
 
-  addRsvp(id, newAttendee = []) {
+  addRsvp(id, newAttendee) {
     const eventsList = {...this.state.eventsList}
-    console.log(eventsList)
-    const newRsvp = update(eventsList, {
+    const subList = update(eventsList, {
       [id]: {
         attendees: {
-          $push: [newAttendee] 
+          $push: [newAttendee]
         }
       }
     })
-    console.log(newRsvp)
 
-    this.setState({ eventsList: newRsvp })
+    this.setState({ eventsList: subList })
+  }
+
+  removeRsvp = (id, rsvpToRemove) => {
+    const eventsList = {...this.state.eventsList}
+    const subList = update(eventsList, {
+      [id]: {
+        attendees: {
+          $splice: [ [rsvpToRemove, 1] ]
+        }
+      }
+    })
+
+    this.setState({ eventsList: subList })
   }
 
   toggleUpdateProfile() {
@@ -191,6 +202,7 @@ class App extends Component {
               updateEvent={this.updateEvent}
               deleteEvent={this.deleteEvent} 
               addRsvp={this.addRsvp}
+              removeRsvp={this.removeRsvp}
               toggleUpdateEvent={this.toggleUpdateEvent}
               toggleUpdateProfile={this.toggleUpdateProfile}
             />

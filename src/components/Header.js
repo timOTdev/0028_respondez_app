@@ -16,8 +16,6 @@ class Header extends Component {
   }
 
   signIn(provider) {
-    this.signOut();
-
     const signIn = () => {
       console.log(`Logging into ${provider.providerId}!`);
 
@@ -83,7 +81,7 @@ class Header extends Component {
           {/* <p>{this.props.userProfile.name || "Not logged in"}</p> */}
         </div>
 
-        { (!this.props.loggedIn) && this.renderLogin()}
+        {(!this.props.loggedIn) && this.renderLogin()}
         {this.props.loggedIn && signOut}
         <hr id="divider" />
       </div>
