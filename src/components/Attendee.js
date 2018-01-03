@@ -8,7 +8,7 @@ class Attendee extends Component {
     console.log(link, link2);
     return (
       <div className="Attendee">
-        <a href={this.props.attendee.github || ""}>
+        <a href={this.props.attendee.github|| ""}  target="_blank" >
           <img src={this.props.attendee.avatar || ""} 
             alt={this.props.attendee.name || ""}  title={this.props.attendee.bio} />
         </a>

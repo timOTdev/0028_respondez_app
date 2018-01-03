@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import firebase from 'firebase'
 import { app, githubProvider } from '../helpers/base'
 import '../style/style.css'
 
-// import CurrentProfile from './CurrentProfile'
-import blankPicture from '../data/blank-picture.png'
+// import blankPicture from '../data/blank-picture.png'
 
 class Header extends Component {
   constructor() {
@@ -87,25 +85,6 @@ class Header extends Component {
       </div>
       )
     }
-    
-    // if(this.state.uid !== this.state.owner) {
-    //   return (
-    //     <div>
-    //       <p>Sorry, you are not authorized!</p>
-    //       {logout}
-    //     </div>
-    //   )
-    // }
-
-    // return (
-    //   <div>
-    //     <header>
-    //       <CurrentProfile {...this.props} toggleDisplayMain={this.props.toggleDisplayMain}/>
-
-    //       <hr id="divider" />
-    //     </header>
-    //   </div>
-    // )
   }
 }
 
@@ -114,32 +93,3 @@ Header.propTypes = {
 }
 
 export default Header
-
-
-
-// import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
-// import './App.css'
-// import CurrentProfile from './CurrentProfile'
-
-// class Header extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <header>
-//           <CurrentProfile {...this.props} toggleDisplayMain={this.props.toggleDisplayMain}/>
-
-//           <hr id="divider" />
-//         </header>
-//       </div>
-//     )
-//   }
-// }
-
-// Header.propTypes = {
-//   toggleDisplaymain: PropTypes.func
-// }
-  
-// export default Header
-
-
