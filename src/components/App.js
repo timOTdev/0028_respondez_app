@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+// import update from 'immutability-helper'
+import update from 'update-immutable'
 import '../style/style.css'
 
 import Header from './Header'
 import Main from './Main'
 import sampleEvents from '../data/sampleEvents'
-import sampleAttendees from '../data/sampleAttendees'
+// import sampleAttendees from '../data/sampleAttendees'
 // import sampleProfile from '../data/sampleProfile'
 import { app, base } from '../helpers/base'
 
@@ -13,7 +15,7 @@ class App extends Component {
   constructor() {
     super();
     this.loadEvents = this.loadEvents.bind(this);
-    this.loadAttendees = this.loadAttendees.bind(this);
+    // this.loadAttendees = this.loadAttendees.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     // this.loadProfile = this.loadProfile.bind(this);
@@ -28,7 +30,7 @@ class App extends Component {
     this.state = {
       userProfile: {},
       eventsList: {},
-      attendeesList: {},
+      // attendeesList: {},
       loggedIn: false,
       showUpdateProfile: false,
       showUpdateEvent: false,
@@ -57,11 +59,11 @@ class App extends Component {
       context: this,
       state: 'eventsList'
     });
-    this.attendeesRef = base.syncState('attendeesList',
-    {
-      context: this,
-      state: 'attendeesList'
-    });    
+    // this.attendeesRef = base.syncState('attendeesList',
+    // {
+    //   context: this,
+    //   state: 'attendeesList'
+    // });    
   }
 
   componentDidMount() {
@@ -76,7 +78,7 @@ class App extends Component {
     this.removeAuthListener();
     base.removeBinding(this.eventsRef);
     base.removeBinding(this.userRef);
-    base.removeBinding(this.attendeesRef);
+    // base.removeBinding(this.attendeesRef);
   }
 
   logIn(profile) {
@@ -105,11 +107,11 @@ class App extends Component {
     this.setState({ eventsList })
   }
   
-  loadAttendees() {
-    console.log(this.state.attendeesList)
-    const attendeesList = {...this.state.attendeesList, ...sampleAttendees};
-    this.setState({ attendeesList })
-  }
+  // loadAttendees() {
+  //   console.log(this.state.attendeesList)
+  //   const attendeesList = {...this.state.attendeesList, ...sampleAttendees};
+  //   this.setState({ attendeesList })
+  // }
 
   // loadProfile() {
   //   this.setState({ userProfile: sampleProfile });
@@ -141,17 +143,19 @@ class App extends Component {
     this.setState({eventsList: events})
   }
 
-  addRsvp(targetEvent, newAttendee) {
-    const uid = this.state.userProfile.uid;
-    const a = this.state.eventsList 
-    const b = this.state.eventsList[targetEvent];
-    const c = this.state.eventsList[targetEvent].attendees;
-  
-    const newC = {...c, [uid]: newAttendee }
-    const newB = {...b, attendees: newC }
-    const newA = {...a, [targetEvent]: newB }
-  
-    this.setState({ eventsList: newA })
+  addRsvp(id, newAttendee = []) {
+    const eventsList = {...this.state.eventsList}
+    console.log(eventsList)
+    const newRsvp = update(eventsList, {
+      [id]: {
+        attendees: {
+          $push: [newAttendee] 
+        }
+      }
+    })
+    console.log(newRsvp)
+
+    this.setState({ eventsList: newRsvp })
   }
 
   toggleUpdateProfile() {
@@ -181,7 +185,7 @@ class App extends Component {
             <Main 
               {...this.state} 
               loadEvents={this.loadEvents} 
-              loadAttendees={this.loadAttendees} 
+              // loadAttendees={this.loadAttendees} 
               // updateProfile={this.updateProfile} 
               createEvent={this.createEvent} 
               updateEvent={this.updateEvent}

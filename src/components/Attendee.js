@@ -5,9 +5,11 @@ class Attendee extends Component {
   render() {
     return (
       <div className="Attendee">
-        <img src={this.props.details.avatar || ""} 
-              alt={this.props.details.name || ""} />
-        <p>{this.props.details.name || ""}</p> 
+        <a href={this.props.attendee.github}>
+          <img src={this.props.attendee.avatar || ""} 
+            alt={this.props.attendee.name || ""}  title={this.props.attendee.bio} />
+        </a>
+        <p>{this.props.attendee.name || ""}</p> 
       </div>
     )
   }

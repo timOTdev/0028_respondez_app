@@ -6,6 +6,7 @@
   "dependencies": {
     "firebase": "^4.7.0",
     "gh-pages": "^1.1.0",
+    "immutability-helper": "^2.6.2",
     "moment": "^2.19.3",
     "prop-types": "^15.6.0",
     "re-base": "^3.2.0",
@@ -13,7 +14,8 @@
     "react-datetime": "^2.11.1",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "update-immutable": "^1.4.0"
   },
   "scripts": {
     "predeploy": "npm run build",
