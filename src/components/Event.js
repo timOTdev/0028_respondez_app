@@ -44,7 +44,7 @@ class Event extends Component {
 
     return (
     <div className="event">
-      <h2>{this.props.details.eventName}</h2>
+      <h2 className="header3">{this.props.details.eventName}</h2>
       <p>Date: {this.props.details.date}</p>
       <p>Time: {this.props.details.time}</p>
       <p>Location: {this.props.details.location}</p>
@@ -60,7 +60,7 @@ class Event extends Component {
 
       {this.props.loggedIn && rsvpYes}
       {this.props.loggedIn && rsvpNo}
-      <hr id="divider" />
+      {/* <hr id="divider" /> */}
     </div>
     )
   }

@@ -8,7 +8,7 @@ class ShowEvents extends Component {
   render() {
     return (
       <div className="events">
-        <h1>Events</h1>
+        <h1 className="header2">Events</h1>
         <div>
           { 
             Object.keys(this.props.eventsList)

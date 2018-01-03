@@ -73,9 +73,9 @@ class Header extends Component {
       return (
       <div>
         <div className="currentPicture">
-          <img src={this.props.userProfile.avatar || blankPicture} alt={this.props.userProfile.avatar || ("")} />
+          <h1 className="header1">Respondez</h1>
+          {/* <img src={this.props.userProfile.avatar || blankPicture} alt={this.props.userProfile.avatar || ("")} /> */}
         </div>
-
         
         <div className="currentInfo">
           {/* <p>{this.props.userProfile.name || "Not logged in"}</p> */}

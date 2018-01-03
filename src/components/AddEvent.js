@@ -78,7 +78,7 @@ class AddEvent extends Component {
   render() {
     return (
       <div>
-        <h1>Add Event</h1>
+        <h1 className="header2">Add Event</h1>
         
         <form className="eventForm" ref={(input) => this.formReset = input} onSubmit={(e) => this.saveEvent(e)}>
           <label>Event Name:
@@ -109,7 +109,7 @@ class AddEvent extends Component {
         </form>
 
         <div className="renderEvents">
-          <h1>Update Event</h1>
+          <h1 className="header2">Update Event</h1>
           <button type="submit" onClick={this.props.toggleUpdateEvent}>Update Events</button>
           {this.props.showUpdateEvent ? (Object.keys(this.props.eventsList).map(this.renderEvents)) : null}
         </div>

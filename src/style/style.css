@@ -4,6 +4,8 @@ body {
   padding: 0;
   text-align: center;
   font-size: 1.5em;
+  color: white;
+  background: dimgray;
 }
 
 hr {
@@ -34,7 +36,28 @@ button {
   margin: 0 auto;
 }
 
+.header2 {
+  color: gold;
+  font-family: 'Rochester', cursive;
+  font-size: 2em;
+  text-shadow: 1px 1px black;
+  padding: 1%;
+  margin: 1%;
+}
+
+.header3 {
+  font-family: 'Rochester', cursive;
+}
+
 /* Top */
+.header1 {
+  color: gold;
+  font-family: 'Rochester', cursive;
+  font-size: 4em;
+  text-shadow: 3px 3px black;
+  padding: 1%;
+  margin: 1%;
+}
 header button, input {
   display: inline-block;
   margin: 0.5% 0.5%;
@@ -53,11 +76,7 @@ header button, input {
   font-size: 0.75em;
 }
 
-.currentPicture img {
-  display: inline-block;
-  border-radius: 50%;
-  width: 5%;
-}
+
 
 /* Left */
 .profileForm > * {
@@ -66,6 +85,12 @@ header button, input {
   padding: 1%;
   text-align: center;
   margin: 0 auto;
+}
+
+.showProfile img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 25%;
 }
 
 /* Center */
@@ -78,6 +103,13 @@ header button, input {
   display: inline-block;
   border-radius: 50%;
   width: 50%;
+}
+
+.event {
+  border: 1px solid black;
+  border-radius: 10%;
+  padding: 1%;
+  margin: 1%;
 }
 
 /* Right */
