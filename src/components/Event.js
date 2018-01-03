@@ -52,7 +52,7 @@ class Event extends Component {
       <p>Creator: {this.props.details.creator}</p>
 
       <div>
-        <h3>Attendees</h3>
+        <h3 className="header3">Attendees</h3>
         {(targetAttendees) ? targetAttendees.map( (attendee, i) => <Attendee key={i} attendee={attendee} />)
           : ""
         } 

@@ -14,7 +14,7 @@ class ShowProfile extends Component {
           <img src={this.props.userProfile.avatar} alt={this.props.userProfile.avatar || ("")} />
           <p>Name: {this.props.userProfile.name || "None"}</p>
           <p>Bio: {this.props.userProfile.bio || "None"}</p>
-          <p>Github: {this.props.userProfile.repo || "None"}</p>
+          <p>Github: {this.props.userProfile.github || "None"}</p>
           <p>Blog: {this.props.userProfile.blog || "None"}</p>
           <p>Avatar: <a href={this.props.userProfile.avatar} target="_blank">Link</a></p>
           <p>Uid: {this.props.userProfile.uid} </p>

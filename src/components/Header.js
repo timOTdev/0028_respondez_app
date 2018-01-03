@@ -31,7 +31,7 @@ class Header extends Component {
             blog: authData.additionalUserInfo.profile.blog,
             login: authData.additionalUserInfo.profile.login,
             name: authData.additionalUserInfo.profile.name,
-            repo: authData.additionalUserInfo.profile.html_url,
+            github: authData.additionalUserInfo.profile.html_url,
             uid: authData.user.uid
           }
           addUserInfo(user);

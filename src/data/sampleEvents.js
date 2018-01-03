@@ -68,7 +68,7 @@ const sampleEvents = {
     },
     {
       eid: "event9", 
-      eventName: "FIELD TRIP: DC Networking Event",
+      eventName: "Field Trip: DC Networking Event",
       date: "Sunday, November 11, 2017",
       time: "11:00 am",
       location: "Meet at Wiehle-Reston Metro, Event held in D.C.",

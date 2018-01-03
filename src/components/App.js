@@ -95,7 +95,7 @@ class App extends Component {
       blog: "",
       login: "",
       name: "",
-      repo: "",
+      github: "",
       uid: ""
     }
     this.setState({ userProfile, loggedIn: false })

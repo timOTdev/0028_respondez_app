@@ -4,7 +4,7 @@ const sampleProfile = {
     blog: "timothyhoang.net",
     login: "timh1203",
     name: "Timothy Hoang",
-    repo: "timothyhoang.net",
+    github: "timothyhoang.net",
 }
 
 export default sampleProfile
