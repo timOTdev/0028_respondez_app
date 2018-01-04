@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+
 import { app, githubProvider } from '../helpers/base'
 import '../style/style.css'
 
@@ -70,14 +70,7 @@ class Header extends Component {
       return (
       <div>
         <div className="currentPicture">
-          <h1 className="header1">
-            <Link to="/">Respondez</Link>
-          </h1>
-          {/* <img src={this.props.userProfile.avatar || blankPicture} alt={this.props.userProfile.avatar || ("")} /> */}
-        </div>
-        
-        <div className="currentInfo">
-          {/* <p>{this.props.userProfile.name || "Not logged in"}</p> */}
+          <h1 className="header1">Respondez</h1>
         </div>
 
         {(!this.props.loggedIn) && this.renderLogin()}

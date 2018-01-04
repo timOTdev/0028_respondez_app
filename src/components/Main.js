@@ -51,6 +51,7 @@ Main.propTypes = {
   toggleDisplayEvent: PropTypes.func,
   showMain: PropTypes.bool,
 }
+
 export default Main
 
 

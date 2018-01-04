@@ -3,9 +3,6 @@ import '../style/style.css'
 
 class Attendee extends Component {
   render() {
-    const link = this.props.github
-    const link2 = this.props.repo
-    console.log(link, link2);
     return (
       <div className="Attendee">
         <a href={this.props.attendee.github|| ""}  target="_blank" >

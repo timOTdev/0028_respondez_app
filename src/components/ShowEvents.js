@@ -22,7 +22,6 @@ class ShowEvents extends Component {
         </div>
         
         <button onClick={this.props.loadEvents}>Load Samples</button>
-        {/* <button onClick={this.props.loadAttendees}>Load Attendees</button> */}
       </div>
     )
   }
@@ -30,7 +29,6 @@ class ShowEvents extends Component {
 
 ShowEvents.propTypes = {
   deleteEvent: PropTypes.func,
-  // loadAttendees: PropTypes.func
 }
 
 export default ShowEvents

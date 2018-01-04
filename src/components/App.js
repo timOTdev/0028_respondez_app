@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-// import update from 'immutability-helper'
 import update from 'update-immutable'
 import '../style/style.css'
 
@@ -151,7 +149,6 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
         <div>
             <Header 
               {...this.state} 
@@ -171,7 +168,6 @@ class App extends Component {
               toggleUpdateProfile={this.toggleUpdateProfile}
             />
         </div>
-      </BrowserRouter>
     )
   }
 }
