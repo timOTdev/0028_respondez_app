@@ -135,6 +135,18 @@ class App extends Component {
     this.setState({ eventsList: subList })
   }
 
+  addComment = (id, newComment) => {
+    const eventsList = {...this.state.eventsList}
+    const subList = update(eventsList, {
+      [id]: {
+        comments: {
+          $push: [newComment]
+        }
+      }
+    })
+    this.setState({ eventsList: subList })
+  }
+
   toggleUpdateProfile() {
     this.setState({showUpdateProfile: !this.state.showUpdateProfile})
   }
@@ -164,6 +176,7 @@ class App extends Component {
               deleteEvent={this.deleteEvent} 
               addRsvp={this.addRsvp}
               removeRsvp={this.removeRsvp}
+              addComment={this.addComment}
               toggleUpdateEvent={this.toggleUpdateEvent}
               toggleUpdateProfile={this.toggleUpdateProfile}
             />

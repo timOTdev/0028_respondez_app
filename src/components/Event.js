@@ -43,6 +43,22 @@ class Event extends Component {
     }
   }
   
+  addComment = (e) => {
+    e.preventDefault();
+    const { id } = this.props
+    const { uid, name } = this.props.userProfile;
+    const time = Math.floor(Date.now() / 1000);
+    const comment = this.refs.userComment.value;
+    const newComment = {
+      uid,
+      time,
+      name,
+      comment
+    }
+    this.props.addComment(id, newComment)
+    this.refs.commentForm.reset()
+  }
+  
   render() { 
     const { id } = this.props
     const targetAttendees = this.props.eventsList[id].attendees
@@ -58,8 +74,6 @@ class Event extends Component {
         <p>Location: {this.props.details.location}</p>
         <p>Creator: {this.props.details.creator}</p>
         <p>Details: {this.props.details.details}</p>
-        
-
 
         <div>
           <h3 className="header3">Attendees</h3>
@@ -77,8 +91,13 @@ class Event extends Component {
           {(comments) ? comments.map( (comment, i) => <Comments key={i} i={i} comment={comment} />)
             : <p><span role="img" aria-label="Comment Icon">&#128172; 0</span></p>
           }
-          <span className="comment-name">{this.props.details.creator}</span> <input className="comment-box" type="text" name="Comment" placeholder="writes..."></input>
+          
+          <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
+            <span className="comment-name">{this.props.details.creator}</span> 
+            <input className="comment-box" type="text" placeholder="writes..." ref="userComment" />
+          </form>
         </div>
+
         <hr id="divider" />
       </div>
     )

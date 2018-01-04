@@ -23,6 +23,7 @@ class Main extends Component {
                         loadEvents={this.props.loadEvents} 
                         loadAttendees={this.props.loadAttendees} 
                         addRsvp={this.props.addRsvp}
+                        addComment={this.props.addComment}
                         />
         </div>
         <div className="right">

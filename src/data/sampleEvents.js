@@ -37,19 +37,19 @@ const sampleEvents = {
       comments: [
         {
           uid: "brianuid",
-          time: "1512154521",
+          time: "1512147321",
           name: "Brian Mendoza",
           comment: "November was pretty fast!"
         },
         {
           uid: "juanuid",
-          time: "1512162480",
+          time: "1512241701",
           name: "Juan Sierra",
           comment: "I should be able to make this one!"
         },
         {
           uid: "peteruid",
-          time: "1512205200",
+          time: "1512266634",
           name: "Peter CruckShank",
           comment: "See you guys there!"
         }
@@ -101,13 +101,13 @@ const sampleEvents = {
         },
         {
           uid: "timid",
-          time: "1510311780",
+          time: "1510266165000",
           name: "Timothy Hoang",
           comment: "Sorry, can't make this one guys!"
         },
         {
           uid: "peteruid",
-          time: "1510321620",
+          time: "1510339652000",
           name: "Peter CruckShank",
           comment: "Cool, see you next week, Tim!"
         }

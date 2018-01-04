@@ -15,7 +15,6 @@ class AddEvent extends Component {
 
   saveEvent(e) {
     e.preventDefault();
-    alert('You saved your event!')
     var dateExtract = e.target[1].getAttribute("value");
     var timeExtract = e.target[2].getAttribute("value");
     const timeStamp = Date.now();
