@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import '../style/style.css'
 
-// import UpdateProfile from './UpdateProfile'
+import blankPicture from '../data/blank-picture.png'
 
 class ShowProfile extends Component {
   render() {
@@ -11,7 +11,9 @@ class ShowProfile extends Component {
         <h1 className="header2">My Profile</h1>
 
         <div>
-          <img src={this.props.userProfile.avatar} alt={this.props.userProfile.avatar || ("")} />
+          {(this.props.userProfile.avatar) ? (<img src={this.props.userProfile.avatar} alt={this.props.userProfile.avatar || ("")} />)
+            : (<img src={blankPicture} alt={this.props.userProfile.avatar || ("")} />)
+          }
           <p>Name: {this.props.userProfile.name || "None"}</p>
           <p>Bio: {this.props.userProfile.bio || "None"}</p>
           <p>Github: {this.props.userProfile.github || "None"}</p>
@@ -19,10 +21,6 @@ class ShowProfile extends Component {
           <p>Avatar: <a href={this.props.userProfile.avatar} target="_blank">Link</a></p>
           <p>Uid: {this.props.userProfile.uid} </p>
         </div>
-
-        {/* <h1>Update Profile</h1>
-        <button type="submit" onClick={this.props.toggleUpdateProfile}>Update Profile</button>
-        { this.props.showUpdateProfile ? <UpdateProfile updateProfile={this.props.updateProfile} /> : null } */}
       </div>
     );
   }

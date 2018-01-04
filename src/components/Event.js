@@ -5,6 +5,12 @@ import '../style/style.css'
 import Attendee from './Attendee'
 
 class Event extends Component {
+  constructor() {
+    super()
+    this.state = {
+      expandComments: false
+    }
+  }
   rsvpYes = (e) => {
     e.preventDefault();
     const { id } = this.props
@@ -40,8 +46,8 @@ class Event extends Component {
     const { id } = this.props
     const targetAttendees = this.props.eventsList[id].attendees
     const commentsLength = this.props.eventsList[id].comments
-    const rsvpYes = <button onClick={this.rsvpYes}>&#9745; Yes</button>
-    const rsvpNo = <button onClick={this.rsvpNo}>&#9746; No</button>
+    const rsvpYes = <button onClick={this.rsvpYes}>&#9745; I'm going!</button>
+    const rsvpNo = <button onClick={this.rsvpNo}>&#9746; Can't go!</button>
 
     return (
     <div className="event">
@@ -54,9 +60,12 @@ class Event extends Component {
 
       <h3 className="header3">Comments</h3>
       <p>
-        {commentsLength ? <span role="img" aria-label="Comment Icon">&#128172; {commentsLength.length}</span> : <span role="img" aria-label="Comment Icon">&#128172; 0</span>} 
+        {commentsLength ? <button><span role="img" aria-label="Comment Icon">&#128172; {commentsLength.length}</span></button> 
+          : <button><span role="img" aria-label="Comment Icon">&#128172; 0</span></button>} 
       </p>
 
+      <hr id="divider" />
+      
       <div>
         <h3 className="header3">Attendees</h3>
         {(targetAttendees) ? targetAttendees.map( (attendee, i) => <Attendee key={i} attendee={attendee} />)
@@ -66,7 +75,7 @@ class Event extends Component {
 
       {this.props.loggedIn && rsvpYes}
       {this.props.loggedIn && rsvpNo}
-      {/* <hr id="divider" /> */}
+
     </div>
     )
   }

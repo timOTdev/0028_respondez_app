@@ -49,6 +49,11 @@ button {
   font-family: 'Rochester', cursive;
 }
 
+a {
+  color: inherit; 
+  text-decoration: inherit; 
+}
+
 /* Top */
 .header1 {
   color: gold;
@@ -57,6 +62,7 @@ button {
   text-shadow: 3px 3px black;
   padding: 1%;
   margin: 1%;
+  
 }
 header button, input {
   display: inline-block;
