@@ -39,8 +39,9 @@ class Event extends Component {
   render() { 
     const { id } = this.props
     const targetAttendees = this.props.eventsList[id].attendees
-    const rsvpYes = <button onClick={this.rsvpYes}>I'm in!</button>
-    const rsvpNo = <button onClick={this.rsvpNo}>I'm out!</button>
+    const commentsLength = this.props.eventsList[id].comments
+    const rsvpYes = <button onClick={this.rsvpYes}>&#9745; Yes</button>
+    const rsvpNo = <button onClick={this.rsvpNo}>&#9746; No</button>
 
     return (
     <div className="event">
@@ -48,8 +49,13 @@ class Event extends Component {
       <p>Date: {this.props.details.date}</p>
       <p>Time: {this.props.details.time}</p>
       <p>Location: {this.props.details.location}</p>
-      <p>Details: {this.props.details.details}</p>
       <p>Creator: {this.props.details.creator}</p>
+      <p>Details: {this.props.details.details}</p>
+
+      <h3 className="header3">Comments</h3>
+      <p>
+        {commentsLength ? <span role="img" aria-label="Comment Icon">&#128172; {commentsLength.length}</span> : <span role="img" aria-label="Comment Icon">&#128172; 0</span>} 
+      </p>
 
       <div>
         <h3 className="header3">Attendees</h3>

@@ -8,7 +8,7 @@ class ShowProfile extends Component {
   render() {
     return (
       <div className="showProfile">
-        <h1 className="header2">Current Profile</h1>
+        <h1 className="header2">My Profile</h1>
 
         <div>
           <img src={this.props.userProfile.avatar} alt={this.props.userProfile.avatar || ("")} />
