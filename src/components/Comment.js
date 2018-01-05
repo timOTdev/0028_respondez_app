@@ -16,7 +16,7 @@ class Comment extends Component {
 
     return (
       <div className="comment-section" title={humanTime}>
-        <span className="comment-name">{name}</span> {comment} {this.props.loggedIn && <span className="commentDeleteButton" role="img" aria-label="Delete Icon" onClick={this.removeComment}>&#9249;</span>}
+        <span className="comment-name">{name}</span> <span className="white">{comment}</span> {this.props.loggedIn && <span className="commentDeleteButton" role="img" aria-label="Delete Icon" onClick={this.removeComment}>&#9249;</span>}
       </div>
     )
   }

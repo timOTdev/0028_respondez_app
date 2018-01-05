@@ -50,15 +50,22 @@ class Header extends Component {
   }
   
   render() {
-    const signInButton = <button className="github" onClick={() => this.signIn(githubProvider)}>Log In With Github</button>
-    const signOutButton = <button onClick={this.signOut}>Log out!</button>
+    const signInButton = <a className="github" onClick={() => this.signIn(githubProvider)}><span role="img" aria-label="Lock Icon">&#128272;</span></a>
+    const signOutButton = <a onClick={this.signOut}><span role="img" aria-label="Unlock Icon">&#128275;</span></a>
     if(!this.props.user) {
       return (
-        <header>
+      <header>
+        <nav>
+          <div class="topnav" id="myTopnav">
+            {(!this.props.loggedIn) && signInButton}
+            {this.props.loggedIn && signOutButton}
+          </div>
+        </nav>
         <p className="hr1">LOPOL</p>
-        <h1 className="header1">Respondez</h1>
-        {(!this.props.loggedIn) && signInButton}
-        {this.props.loggedIn && signOutButton}
+        <h1 className="header1">Respondez </h1>
+        <h3 className="header3"><span role="img" aria-label="Calendar Icon">&#128198;</span> An Event Management System</h3>
+        
+        <p className="hr1">LOPOL</p>
       </header>
       )
     }

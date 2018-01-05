@@ -8,8 +8,8 @@ class ShowEvents extends Component {
   render() {
     return (
       <div className="events">
-        <p className="hr2">LPL</p>
         <h1 className="header2">Events</h1>
+        <p className="hr2">OPO</p>
 
         <div className="events">
           { 

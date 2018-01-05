@@ -8,19 +8,19 @@ class ShowProfile extends Component {
   render() {
     return (
       <div className="showProfile">
-        <p className="hr2">O</p>
         <h1 className="header2">My Profile</h1>
+        <p className="hr2">O</p>
 
         <div className="myProfile">
           {(this.props.userProfile.avatar) ? (<img src={this.props.userProfile.avatar} alt={this.props.userProfile.avatar || ("")} />)
             : (<img src={blankPicture} alt={this.props.userProfile.avatar || ("")} />)
           }
-          <p>Name: {this.props.userProfile.name || "None"}</p>
-          <p>Bio: {this.props.userProfile.bio || "None"}</p>
-          <p>Github: {this.props.userProfile.github || "None"}</p>
-          <p>Blog: {this.props.userProfile.blog || "None"}</p>
-          <p>Avatar: <a href={this.props.userProfile.avatar} target="_blank">Link</a></p>
-          <p>Uid: {this.props.userProfile.uid} </p>
+          <p>Name: <span className="white">{this.props.userProfile.name || "None"}</span></p>
+          <p>Bio: <span className="white">{this.props.userProfile.bio || "None"}</span></p>
+          <p>Github: <span className="white">{this.props.userProfile.github || "None"}</span></p>
+          <p>Blog: <span className="white">{this.props.userProfile.blog || "None"}</span></p>
+          <p>Avatar: <span className="white"><a href={this.props.userProfile.avatar} target="_blank">Link</a></span></p>
+          <p>Uid: <span className="white">{this.props.userProfile.uid}</span></p>
         </div>
       </div>
     );

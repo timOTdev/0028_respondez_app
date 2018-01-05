@@ -57,33 +57,34 @@ class Event extends Component {
     const { eventId } = this.props
     const targetAttendees = this.props.eventsList[eventId].attendees
     const comments = this.props.eventsList[eventId].comments
-    const rsvpYes = <button onClick={this.rsvpYes}>&#9745; I'm going!</button>
-    const rsvpNo = <button onClick={this.rsvpNo}>&#9746; Can't go!</button>
+    const rsvpYes = <button className="rsvpYes" onClick={this.rsvpYes}>&#9745; Accept</button>
+    const rsvpNo = <button className="rsvpNo" onClick={this.rsvpNo}>&#9746; Decline</button>
 
     return (
       <div className="event">
         <h2>{this.props.details.eventName}</h2>
-        <p>Date: {this.props.details.date}</p>
-        <p>Time: {this.props.details.time}</p>
-        <p>Location: {this.props.details.location}</p>
-        <p>Creator: {this.props.details.creator}</p>
-        <p>Details: {this.props.details.details}</p>
-
+        
+        <p>Date: <span className="white">{this.props.details.date}</span></p>
+        <p>Time: <span className="white">{this.props.details.time}</span></p>
+        <p>Location: <span className="white">{this.props.details.location}</span></p>
+        <p>Creator: <span className="white">{this.props.details.creator}</span></p>
+        <p>Details: <span className="white">{this.props.details.details}</span></p>
+        
         <div>
           <h3 className="header3">Attendees</h3>
           {(targetAttendees) ? targetAttendees.map( (attendee, i) => <Attendee key={i} attendee={attendee} />)
-            : <p><span role="img" aria-label="People Icon">&#128101; 0</span></p> 
+            : <p><span className="white" role="img" aria-label="People Icon">&#128101; 0</span></p> 
           } 
           <div>
-            {this.props.loggedIn && rsvpYes}
             {this.props.loggedIn && rsvpNo}
+            {this.props.loggedIn && rsvpYes}
           </div>
         </div>
 
         <div className="comment-section">
           <h3 className="header3">Comments</h3>
           {(comments) ? comments.map( (comment, i) => <Comment key={i} commentId={i} comment={comment} {...this.props} />)
-            : <p><span role="img" aria-label="Comment Icon">&#128172; 0</span></p>
+            : <p><span className="white" role="img" aria-label="Comment Icon">&#128172; 0</span></p>
           }
           
           {this.props.loggedIn && <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>

@@ -66,42 +66,40 @@ class AddEvent extends Component {
   render() {
     return (
       <div>
+        <h1 className="header2">My Events</h1>
         <p className="hr2">O</p>
-        <h1 className="header2">My Event</h1>
 
         <div className="myEvents">
           <form className="eventForm" ref={(input) => this.formReset = input} onSubmit={(e) => this.saveEvent(e)}>
-            <label>Event Name:
-              <input type="text" ref={(input) => (this.eventName = input)} placeholder="Event Name" required />
+            <label><span role="img" aria-label="Memo Icon">&#128221;</span> Event Name
+              <input type="text" ref={(input) => (this.eventName = input)} required />
             </label>
 
-            <label>Date:
+            <label><span role="img" aria-label="Calendar Icon">&#128197;</span> Date
               <Calendar dateFormat='MMMM Do, YYYY' timeFormat={false} ref={(input) => {this.date = input}} required/>
               {/* <input type="text" ref={(input) => {this.date = input}} placeholder="Date" required /> */}
             </label>
 
-            <label>Time:
+            <label><span role="img" aria-label="Watch Icon">&#8986;</span> Time
               <Calendar timeFormat='h:mm a' dateFormat={false} ref={(input) => {this.date = input}} required/>
               {/* <input type="text" ref={(input) => {this.time = input}} placeholder="Time" required /> */}
             </label>
 
-            <label>Location:
-              <input type="text" ref={(input) => {this.location = input}} placeholder="Location" required />
+            <label><span role="img" aria-label="Building Icon">&#127970;</span> Location
+              <input type="text" ref={(input) => {this.location = input}} required />
             </label>
 
-            <label>Details:
-              <textarea ref={(input) => {this.details = input}} placeholder="Details" required />
+            <label><span role="img" aria-label="Pen Icon">&#128395;</span> Details
+              <textarea ref={(input) => {this.details = input}} required />
             </label>
-
-            <p>Creator: {this.props.userProfile.name}</p>
 
             <button type="submit">Save Changes</button>
           </form>
-        </div>
 
-        <div className="renderEvents">
-          <button type="submit" onClick={this.props.toggleUpdateEvent}>Update Events</button>
-          {this.props.showUpdateEvent ? (Object.keys(this.props.eventsList).map(this.renderEvents)) : null}
+          <div className="renderEvents">
+            <button type="submit" onClick={this.props.toggleUpdateEvent}>Update Events</button>
+            {this.props.showUpdateEvent ? (Object.keys(this.props.eventsList).map(this.renderEvents)) : null}
+          </div>
         </div>
       </div>
     );
