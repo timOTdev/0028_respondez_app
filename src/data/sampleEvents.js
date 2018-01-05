@@ -43,13 +43,13 @@ const sampleEvents = {
         },
         {
           uid: "juanuid",
-          time: "1512241701",
+          time: "1512155301",
           name: "Juan Sierra",
           comment: "I should be able to make this one!"
         },
         {
           uid: "peteruid",
-          time: "1512266634",
+          time: "1512182632",
           name: "Peter CruckShank",
           comment: "See you guys there!"
         }
@@ -101,13 +101,13 @@ const sampleEvents = {
         },
         {
           uid: "timid",
-          time: "1510266165000",
+          time: "1510263132",
           name: "Timothy Hoang",
           comment: "Sorry, can't make this one guys!"
         },
         {
           uid: "peteruid",
-          time: "1510339652000",
+          time: "1510321652",
           name: "Peter CruckShank",
           comment: "Cool, see you next week, Tim!"
         }

@@ -110,8 +110,6 @@ header button, input {
 }
 
 .event {
-  /* border: 1px solid black;
-  border-radius: 10%; */
   padding: 1%;
   margin: 1%;
 }
@@ -141,6 +139,9 @@ header button, input {
   font-size: 1.5em;
 }
 
+.commentDeleteButton {
+  cursor: pointer;
+}
 
 /* Right */
 .eventForm > *,

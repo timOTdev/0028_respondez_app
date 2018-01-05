@@ -3,21 +3,15 @@ import PropTypes from 'prop-types'
 import '../style/style.css'
 
 import Attendee from './Attendee'
-import Comments from './Comments'
+import Comment from './Comment'
 
 class Event extends Component {
-  constructor() {
-    super()
-    this.state = {
-      expandComments: false
-    }
-  }
   rsvpYes = (e) => {
     e.preventDefault();
-    const { id } = this.props
+    const { eventId } = this.props
     const { uid } = this.props.userProfile;
     const newAttendee = this.props.userProfile
-    const targetAttendees = this.props.eventsList[id].attendees
+    const targetAttendees = this.props.eventsList[eventId].attendees
     var arr = [];
 
     if (targetAttendees) {
@@ -26,26 +20,26 @@ class Event extends Component {
       }
     }
         
-    !arr.includes(uid) && this.props.addRsvp(id, newAttendee)
+    !arr.includes(uid) && this.props.addRsvp(eventId, newAttendee)
   }
 
   rsvpNo = (e) => {
     e.preventDefault();
-    const { id } = this.props
+    const { eventId } = this.props
     const { uid } = this.props.userProfile;
-    const targetAttendees = this.props.eventsList[id].attendees
+    const targetAttendees = this.props.eventsList[eventId].attendees
     
     for (let key of targetAttendees) {
       if (uid === key.uid) {
         let rsvpToRemove = targetAttendees.indexOf(key)
-        this.props.removeRsvp(id, rsvpToRemove)
+        this.props.removeRsvp(eventId, rsvpToRemove)
       }
     }
   }
   
   addComment = (e) => {
     e.preventDefault();
-    const { id } = this.props
+    const { eventId } = this.props
     const { uid, name } = this.props.userProfile;
     const time = Math.floor(Date.now() / 1000);
     const comment = this.refs.userComment.value;
@@ -55,14 +49,14 @@ class Event extends Component {
       name,
       comment
     }
-    this.props.addComment(id, newComment)
+    this.props.addComment(eventId, newComment)
     this.refs.commentForm.reset()
   }
   
   render() { 
-    const { id } = this.props
-    const targetAttendees = this.props.eventsList[id].attendees
-    const comments = this.props.eventsList[id].comments
+    const { eventId } = this.props
+    const targetAttendees = this.props.eventsList[eventId].attendees
+    const comments = this.props.eventsList[eventId].comments
     const rsvpYes = <button onClick={this.rsvpYes}>&#9745; I'm going!</button>
     const rsvpNo = <button onClick={this.rsvpNo}>&#9746; Can't go!</button>
 
@@ -88,7 +82,7 @@ class Event extends Component {
 
         <div className="comment-section">
           <h3 className="header3">Comments</h3>
-          {(comments) ? comments.map( (comment, i) => <Comments key={i} i={i} comment={comment} />)
+          {(comments) ? comments.map( (comment, i) => <Comment key={i} commentId={i} comment={comment} {...this.props} />)
             : <p><span role="img" aria-label="Comment Icon">&#128172; 0</span></p>
           }
           

@@ -24,6 +24,7 @@ class Main extends Component {
                         loadAttendees={this.props.loadAttendees} 
                         addRsvp={this.props.addRsvp}
                         addComment={this.props.addComment}
+                        removeComment={this.props.removeComment}
                         />
         </div>
         <div className="right">
