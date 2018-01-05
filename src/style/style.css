@@ -1,4 +1,9 @@
 /* Defaults */
+@font-face {
+  font-family: 'decodividers';
+  src: url('decodividers.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,10 +11,36 @@ body {
   font-size: 1.5em;
   color: white;
   background: dimgray;
+  font-family: 'Bellefair';
 }
 
-hr {
+.hr1 {
+  font-family: 'decodividers';
   max-width: 90%;
+  color: goldenrod;
+  font-size: 3rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.hr2 {
+  font-family: 'decodividers';
+  max-width: 90%;
+  font-size: 2rem;
+  margin: 0 auto;
+  overflow: hidden;
+  color: goldenrod;
+}
+
+.hr3 {
+  font-family: 'decodividers';
+  max-width: 90%;
+  font-size: 2rem;
+  margin: 0 auto;
+  overflow: hidden;
+  color: goldenrod;
+  padding: 5%;
+  margin: 0 auto;
 }
 
 .left, .center, .right { 
@@ -41,12 +72,8 @@ button {
   font-family: 'Rochester', cursive;
   font-size: 2em;
   text-shadow: 1px 1px black;
-  padding: 1%;
-  margin: 1%;
-}
-
-.header3 {
-  color: gold;
+  padding: 0;
+  margin: 0 auto;
 }
 
 a {
@@ -61,7 +88,7 @@ a {
   font-size: 4em;
   text-shadow: 3px 3px black;
   padding: 1%;
-  margin: 1%;
+  margin: 0;
   
 }
 header button, input {
@@ -83,6 +110,9 @@ header button, input {
 }
 
 /* Left */
+.myProfile {
+  padding-top: 5%;
+}
 .profileForm > * {
   display: block;
   margin: 1%;
@@ -100,18 +130,12 @@ header button, input {
 /* Center */
 .Attendee {
   display: inline-block;
-  width: 10%;
+  width: 15%;
 }
-
 .Attendee img {
   display: inline-block;
   border-radius: 50%;
   width: 50%;
-}
-
-.event {
-  padding: 1%;
-  margin: 1%;
 }
 .comment-name {
   color: gold;
@@ -144,6 +168,9 @@ header button, input {
 }
 
 /* Right */
+.myEvents {
+  padding-top: 5%;
+}
 .eventForm > *,
 .profileForm > *, 
 .renderEvents > * {

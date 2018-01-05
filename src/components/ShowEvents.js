@@ -8,8 +8,10 @@ class ShowEvents extends Component {
   render() {
     return (
       <div className="events">
+        <p className="hr2">LPL</p>
         <h1 className="header2">Events</h1>
-        <div>
+
+        <div className="events">
           { 
             Object.keys(this.props.eventsList)
               .map(key => <Event 

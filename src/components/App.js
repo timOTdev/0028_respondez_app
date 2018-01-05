@@ -10,21 +10,10 @@ import { app, base } from '../helpers/base'
 class App extends Component {
   constructor() {
     super();
-    this.loadEvents = this.loadEvents.bind(this);
-    this.logIn = this.logIn.bind(this);
-    this.logOut = this.logOut.bind(this);
-    this.createEvent = this.createEvent.bind(this);
-    this.updateEvent = this.updateEvent.bind(this);
-    this.deleteEvent = this.deleteEvent.bind(this);
-    this.addRsvp = this.addRsvp.bind(this);
-    this.toggleUpdateProfile = this.toggleUpdateProfile.bind(this);
-    this.toggleUpdateEvent = this.toggleUpdateEvent.bind(this);
-    this.toggleDisplayMain = this.toggleDisplayMain.bind(this);
     this.state = {
       userProfile: {},
       eventsList: {},
       loggedIn: false,
-      showUpdateProfile: false,
       showUpdateEvent: false,
     }
   }
@@ -67,13 +56,13 @@ class App extends Component {
     base.removeBinding(this.userRef);
   }
 
-  logIn(profile) {
+  logIn = (profile) => {
     let userProfile = {...this.state.userProfile}
     userProfile = profile
     this.setState({ userProfile, loggedIn: true  })
   }
 
-  logOut() {
+  logOut = () => {
     let userProfile = {...this.state.userProfile}
     userProfile = {
       avatar: "",
@@ -88,30 +77,30 @@ class App extends Component {
     base.removeBinding(this.userRef);
   }
 
-  loadEvents() {
+  loadEvents = () => {
     const eventsList = {...this.state.eventsList, ...sampleEvents.arr};
     this.setState({ eventsList })
   }
 
-  createEvent(key) {
+  createEvent = (key) => {
     const eventsList = [...this.state.eventsList];
     eventsList.unshift(key);
     this.setState({ eventsList })
   }
 
-  updateEvent(key, updatedEvent) {
+  updateEvent= (key, updatedEvent) => {
     const events = {...this.state.eventsList};
     events[key] = updatedEvent;
     this.setState({ eventsList: events});
   }
 
-  deleteEvent(key) {
+  deleteEvent = (key) => {
     const events = {...this.state.eventsList};
     events[key] = null;
     this.setState({eventsList: events})
   }
 
-  addRsvp(id, newAttendee) {
+  addRsvp = (id, newAttendee) => {
     const eventsList = {...this.state.eventsList}
     const subList = update(eventsList, {
       [id]: {
@@ -159,15 +148,11 @@ class App extends Component {
     this.setState({ eventsList: subList })
   }
 
-  toggleUpdateProfile() {
-    this.setState({showUpdateProfile: !this.state.showUpdateProfile})
-  }
-
-  toggleUpdateEvent() {
+  toggleUpdateEvent = () => {
     this.setState({showUpdateEvent: !this.state.showUpdateEvent})
   }
   
-  toggleDisplayMain() {
+  toggleDisplayMain = () => {
     this.setState({loggedIn: !this.state.loggedIn})
   }
 
@@ -191,7 +176,6 @@ class App extends Component {
               addComment={this.addComment}
               removeComment={this.removeComment}
               toggleUpdateEvent={this.toggleUpdateEvent}
-              toggleUpdateProfile={this.toggleUpdateProfile}
             />
         </div>
     )

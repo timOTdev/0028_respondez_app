@@ -27,7 +27,7 @@ const sampleEvents = {
         },
         {
           uid: "peteruid",
-          name: "Peter CruckShank",
+          name: "Peter Cruckshank",
           avatar: "https://avatars3.githubusercontent.com/u/26460352",
           bio:"I have an associates in Information Technology, and I excited to get back into coding! I had to take some time off, but I'm back. I live on Cape Cod in MA.",
           github: "https://github.com/petercr",
@@ -50,7 +50,7 @@ const sampleEvents = {
         {
           uid: "peteruid",
           time: "1512182632",
-          name: "Peter CruckShank",
+          name: "Peter Cruckshank",
           comment: "See you guys there!"
         }
       ]
@@ -85,7 +85,7 @@ const sampleEvents = {
         },
         {
           uid: "peteruid",
-          name: "Peter CruckShank",
+          name: "Peter Cruckshank",
           avatar: "https://avatars3.githubusercontent.com/u/26460352",
           bio:"I have an associates in Information Technology, and I excited to get back into coding! I had to take some time off, but I'm back. I live on Cape Cod in MA.",
           github: "https://github.com/petercr",
@@ -108,7 +108,7 @@ const sampleEvents = {
         {
           uid: "peteruid",
           time: "1510321652",
-          name: "Peter CruckShank",
+          name: "Peter Cruckshank",
           comment: "Cool, see you next week, Tim!"
         }
       ]
@@ -144,7 +144,7 @@ export default sampleEvents
 // },
 // {
 //   uid: "peteruid",
-//   name: "Peter CruckShank",
+//   name: "Peter Cruckshank",
 //   avatar: "https://avatars3.githubusercontent.com/u/26460352",
 //   bio:"I have an associates in Information Technology, and I excited to get back into coding! I had to take some time off, but I'm back. I live on Cape Cod in MA.",
 //   github: "https://github.com/petercr",

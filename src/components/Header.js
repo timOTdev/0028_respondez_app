@@ -5,14 +5,7 @@ import { app, githubProvider } from '../helpers/base'
 import '../style/style.css'
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.renderLogin = this.renderLogin.bind(this);
-    this.signIn = this.signIn.bind(this);
-    this.signOut = this.signOut.bind(this);
-  }
-
-  signIn(provider) {
+  signIn = (provider) => {
     const signIn = () => {
       console.log(`Logging into ${provider.providerId}!`);
 
@@ -41,7 +34,7 @@ class Header extends Component {
     signIn();
   }
 
-  signOut() {
+  signOut = () => {
     const logOut = () => {
       this.props.logOut();
     }
@@ -55,28 +48,18 @@ class Header extends Component {
     });
     
   }
-
-  renderLogin() { 
-    return (
-      <nav className="login">
-      <button className="github" onClick={() => this.signIn(githubProvider)}>Log In With Github</button>
-      </nav>
-    )
-  }
-
+  
   render() {
-    const signOut = <button onClick={this.signOut}>Log out!</button>
+    const signInButton = <button className="github" onClick={() => this.signIn(githubProvider)}>Log In With Github</button>
+    const signOutButton = <button onClick={this.signOut}>Log out!</button>
     if(!this.props.user) {
       return (
-      <div>
-        <div className="currentPicture">
-          <h1 className="header1">Respondez</h1>
-        </div>
-
-        {(!this.props.loggedIn) && this.renderLogin()}
-        {this.props.loggedIn && signOut}
-        <hr id="divider" />
-      </div>
+        <header>
+        <p className="hr1">LOPOL</p>
+        <h1 className="header1">Respondez</h1>
+        {(!this.props.loggedIn) && signInButton}
+        {this.props.loggedIn && signOutButton}
+      </header>
       )
     }
   }

@@ -62,7 +62,7 @@ class Event extends Component {
 
     return (
       <div className="event">
-        <h2 className="header3">{this.props.details.eventName}</h2>
+        <h2>{this.props.details.eventName}</h2>
         <p>Date: {this.props.details.date}</p>
         <p>Time: {this.props.details.time}</p>
         <p>Location: {this.props.details.location}</p>
@@ -86,13 +86,12 @@ class Event extends Component {
             : <p><span role="img" aria-label="Comment Icon">&#128172; 0</span></p>
           }
           
-          <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
+          {this.props.loggedIn && <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
             <span className="comment-name">{this.props.details.creator}</span> 
             <input className="comment-box" type="text" placeholder="writes..." ref="userComment" />
-          </form>
+          </form>}
         </div>
-
-        <hr id="divider" />
+        <p className="hr3">OPO</p>
       </div>
     )
   }

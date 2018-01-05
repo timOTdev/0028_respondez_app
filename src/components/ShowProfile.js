@@ -8,9 +8,10 @@ class ShowProfile extends Component {
   render() {
     return (
       <div className="showProfile">
+        <p className="hr2">O</p>
         <h1 className="header2">My Profile</h1>
 
-        <div>
+        <div className="myProfile">
           {(this.props.userProfile.avatar) ? (<img src={this.props.userProfile.avatar} alt={this.props.userProfile.avatar || ("")} />)
             : (<img src={blankPicture} alt={this.props.userProfile.avatar || ("")} />)
           }

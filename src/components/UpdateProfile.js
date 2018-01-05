@@ -3,12 +3,7 @@ import PropTypes from 'prop-types'
 import '../style/style.css'
 
 class UpdateProfile extends Component {
-  constructor() {
-    super();
-    this.saveProfile = this.saveProfile.bind(this);
-  }
-
-  saveProfile(e) {
+  saveProfile = (e) => {
     e.preventDefault();
     alert('You saved your profile!')
     

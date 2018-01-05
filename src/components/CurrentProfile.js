@@ -5,17 +5,12 @@ import '../style/style.css'
 import blankPicture from '../data/blank-picture.png'
 
 class CurrentProfile extends Component {
-  constructor() {
-    super();
-    this.showMain = this.showMain.bind(this);
-    this.hideMain = this.hideMain.bind(this);
-  }
-  showMain() {
+  showMain = () => {
     this.props.toggleDisplayMain();
     this.props.loadProfile();
   }
   
-  hideMain() {
+  hideMain = () => {
     this.props.toggleDisplayMain();
     this.props.deleteProfile();
   }

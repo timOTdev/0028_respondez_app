@@ -5,20 +5,11 @@ import '../style/style.css'
 import '../style/react-datetime.css'
 
 class AddEvent extends Component {
-  constructor() {
-    super();
-    this.saveEvent = this.saveEvent.bind(this);
-    this.removeEvent = this.removeEvent.bind(this);
-    this.renderEvents = this.renderEvents.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  saveEvent(e) {
+  saveEvent = (e) => {
     e.preventDefault();
     var dateExtract = e.target[1].getAttribute("value");
     var timeExtract = e.target[2].getAttribute("value");
     const timeStamp = Date.now();
-
     const event = {
       eid: `event${timeStamp}`,
       eventName: this.eventName.value,
@@ -30,19 +21,17 @@ class AddEvent extends Component {
       // date: this.date.value,
       // time: this.time.value,
     }
-
     this.props.createEvent(event);
     this.formReset.reset();
   }
 
-  removeEvent(e, key) {
+  removeEvent = (e, key) => {
     const event = key;
     this.props.deleteEvent(event);
   }
 
-  handleChange(e, key) {
+  handleChange = (e, key) => {
     const event = this.props.eventsList[key];
-
     const updatedEvent = {
       ...event,
       [e.target.name] : e.target.value
@@ -58,7 +47,7 @@ class AddEvent extends Component {
     this.props.updateEvent(key, updatedEvent);
   }
 
-  renderEvents(key) {
+  renderEvents = (key) => {
     const event = this.props.eventsList[key];
     return(
       <div className="renderEvents" key={key}>
@@ -77,38 +66,40 @@ class AddEvent extends Component {
   render() {
     return (
       <div>
-        <h1 className="header2">Add Event</h1>
-        
-        <form className="eventForm" ref={(input) => this.formReset = input} onSubmit={(e) => this.saveEvent(e)}>
-          <label>Event Name:
-            <input type="text" ref={(input) => (this.eventName = input)} placeholder="Event Name" required />
-          </label>
+        <p className="hr2">O</p>
+        <h1 className="header2">My Event</h1>
 
-          <label>Date:
-            <Calendar dateFormat='MMMM Do, YYYY' timeFormat={false} ref={(input) => {this.date = input}} required/>
-            {/* <input type="text" ref={(input) => {this.date = input}} placeholder="Date" required /> */}
-          </label>
+        <div className="myEvents">
+          <form className="eventForm" ref={(input) => this.formReset = input} onSubmit={(e) => this.saveEvent(e)}>
+            <label>Event Name:
+              <input type="text" ref={(input) => (this.eventName = input)} placeholder="Event Name" required />
+            </label>
 
-          <label>Time:
-            <Calendar timeFormat='h:mm a' dateFormat={false} ref={(input) => {this.date = input}} required/>
-            {/* <input type="text" ref={(input) => {this.time = input}} placeholder="Time" required /> */}
-          </label>
+            <label>Date:
+              <Calendar dateFormat='MMMM Do, YYYY' timeFormat={false} ref={(input) => {this.date = input}} required/>
+              {/* <input type="text" ref={(input) => {this.date = input}} placeholder="Date" required /> */}
+            </label>
 
-          <label>Location:
-            <input type="text" ref={(input) => {this.location = input}} placeholder="Location" required />
-          </label>
+            <label>Time:
+              <Calendar timeFormat='h:mm a' dateFormat={false} ref={(input) => {this.date = input}} required/>
+              {/* <input type="text" ref={(input) => {this.time = input}} placeholder="Time" required /> */}
+            </label>
 
-          <label>Details:
-            <textarea ref={(input) => {this.details = input}} placeholder="Details" required />
-          </label>
+            <label>Location:
+              <input type="text" ref={(input) => {this.location = input}} placeholder="Location" required />
+            </label>
 
-          <p>Creator: {this.props.userProfile.name}</p>
+            <label>Details:
+              <textarea ref={(input) => {this.details = input}} placeholder="Details" required />
+            </label>
 
-          <button type="submit">Save Changes</button>
-        </form>
+            <p>Creator: {this.props.userProfile.name}</p>
+
+            <button type="submit">Save Changes</button>
+          </form>
+        </div>
 
         <div className="renderEvents">
-          <h1 className="header2">Update Event</h1>
           <button type="submit" onClick={this.props.toggleUpdateEvent}>Update Events</button>
           {this.props.showUpdateEvent ? (Object.keys(this.props.eventsList).map(this.renderEvents)) : null}
         </div>

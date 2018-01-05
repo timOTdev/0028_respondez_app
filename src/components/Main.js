@@ -11,11 +11,7 @@ class Main extends Component {
     return (
       <div className="main">
         <div className="left">
-          {(this.props.loggedIn) ? (<ShowProfile {...this.props} 
-                                      updateProfile={this.props.updateProfile} 
-                                      toggleUpdateProfile={this.props.toggleUpdateProfile}
-                                    />) 
-                      : null}
+          {(this.props.loggedIn) ? (<ShowProfile {...this.props}/>) : null}
           
         </div>
         <div className="center">
