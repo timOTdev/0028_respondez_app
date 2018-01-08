@@ -29,12 +29,14 @@ class Event extends Component {
     const { uid } = this.props.userProfile;
     const targetAttendees = this.props.eventsList[eventId].attendees
     
-    for (let key of targetAttendees) {
-      if (uid === key.uid) {
-        let rsvpToRemove = targetAttendees.indexOf(key)
-        this.props.removeRsvp(eventId, rsvpToRemove)
+    if (targetAttendees) {
+      for (let key of targetAttendees) {
+        if (uid === key.uid) {
+          let rsvpToRemove = targetAttendees.indexOf(key)
+          this.props.removeRsvp(eventId, rsvpToRemove)
+        }
       }
-    }
+    }  
   }
   
   addComment = (e) => {
