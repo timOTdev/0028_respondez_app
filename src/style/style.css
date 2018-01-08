@@ -125,6 +125,7 @@ header button, input {
   overflow: hidden;
   padding: 0;
   margin: 0;
+  line-height: 1;
 }
 
 .topnav a {
@@ -133,7 +134,6 @@ header button, input {
   text-align: center;
   padding: 0.25%;
   margin: 0.25%;
-  line-height: 1;
   text-decoration: none;
   font-size: 1em;
 }
@@ -166,7 +166,7 @@ header button, input {
   margin: 0 auto;
 }
 
-.showProfile img {
+.MyProfile img {
   display: inline-block;
   border-radius: 50%;
   width: 25%;

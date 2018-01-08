@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import '../style/style.css'
 
+import '../style/style.css'
 import Event from './Event'
 
-class ShowEvents extends Component {
+class Events extends Component {
   render() {
     return (
       <div className="events">
@@ -29,8 +29,8 @@ class ShowEvents extends Component {
   }
 }
 
-ShowEvents.propTypes = {
+Events.propTypes = {
   deleteEvent: PropTypes.func,
 }
 
-export default ShowEvents
+export default Events

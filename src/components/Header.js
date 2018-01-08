@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { app, githubProvider } from '../helpers/base'
 import '../style/style.css'
+import { app, githubProvider } from '../helpers/base'
 
 class Header extends Component {
   signIn = (provider) => {

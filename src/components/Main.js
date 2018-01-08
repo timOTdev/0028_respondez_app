@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import '../style/style.css'
 
-import ShowEvents from './ShowEvents'
-import ShowProfile from './ShowProfile'
-import AddEvent from './AddEvent'
+import '../style/style.css'
+import MyProfile from './MyProfile'
+import Events from './Events'
+import MyEvents from './MyEvents'
 
 class Main extends Component {
   render() {
     return (
       <div className="main">
         <div className="left">
-          {(this.props.loggedIn) ? (<ShowProfile {...this.props}/>) : null}
+          {(this.props.loggedIn) ? (<MyProfile {...this.props}/>) : null}
           
         </div>
         <div className="center">
-          <ShowEvents {...this.props} 
+          <Events {...this.props} 
                         loadEvents={this.props.loadEvents} 
                         loadAttendees={this.props.loadAttendees} 
                         addRsvp={this.props.addRsvp}
@@ -24,7 +24,7 @@ class Main extends Component {
                         />
         </div>
         <div className="right">
-          {(this.props.loggedIn) ? (<AddEvent {...this.props} 
+          {(this.props.loggedIn) ? (<MyEvents {...this.props} 
                                   createEvent={this.props.createEvent} 
                                   updateEvent={this.props.updateEvent} 
                                   deleteEvent={this.props.deleteEvent} 

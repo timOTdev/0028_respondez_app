@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Calendar from 'react-datetime'
+
 import '../style/style.css'
 import '../style/react-datetime.css'
 
-class AddEvent extends Component {
+class MyEvents extends Component {
   saveEvent = (e) => {
     e.preventDefault();
     var dateExtract = e.target[1].getAttribute("value");
@@ -106,10 +107,10 @@ class AddEvent extends Component {
   }
 }
 
-AddEvent.propTypes = {
+MyEvents.propTypes = {
   createEvent: PropTypes.func,
   // eventsList: PropTypes.array,
   toggleUpdateEvent: PropTypes.func,
   showUpdateEvent: PropTypes.bool
 }
-export default AddEvent
+export default MyEvents

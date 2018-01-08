@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import '../style/style.css'
 
 class Attendee extends Component {

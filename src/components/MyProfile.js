@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import '../style/style.css'
 
+import '../style/style.css'
 import blankPicture from '../data/blank-picture.png'
 
-class ShowProfile extends Component {
+class MyProfile extends Component {
   render() {
     return (
-      <div className="showProfile">
+      <div className="MyProfile">
         <h1 className="header2">My Profile</h1>
         <p className="hr2">O</p>
 
@@ -27,9 +27,9 @@ class ShowProfile extends Component {
   }
 }
 
-ShowProfile.propTypes = {
+MyProfile.propTypes = {
   updateProfile: PropTypes.func,
   toggleDisplayProfile: PropTypes.func
 }
 
-export default ShowProfile
+export default MyProfile

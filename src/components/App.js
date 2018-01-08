@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import update from 'update-immutable'
-import '../style/style.css'
 
+import '../style/style.css'
 import Header from './Header'
 import Main from './Main'
 import sampleEvents from '../data/sampleEvents'
