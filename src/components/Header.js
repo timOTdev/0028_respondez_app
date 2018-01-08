@@ -56,7 +56,7 @@ class Header extends Component {
       return (
       <header>
         <nav>
-          <div class="topnav" id="myTopnav">
+          <div className="topnav" id="myTopnav">
             {(!this.props.loggedIn) && signInButton}
             {this.props.loggedIn && signOutButton}
           </div>
