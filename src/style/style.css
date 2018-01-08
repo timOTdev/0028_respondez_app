@@ -107,6 +107,10 @@ a {
   color: gold;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 /* Top */
 header {
   margin-bottom: 3%;

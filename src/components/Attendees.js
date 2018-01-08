@@ -25,6 +25,7 @@ class Attendees extends Component {
   rsvpNo = (e) => {
     e.preventDefault();
     const { eventId } = this.props
+    const { eid } = this.props.details
     const { uid } = this.props.userProfile;
     const targetAttendees = this.props.eventsList[eventId].attendees
     
@@ -32,7 +33,7 @@ class Attendees extends Component {
       for (let key of targetAttendees) {
         if (uid === key.uid) {
           let rsvpToRemove = targetAttendees.indexOf(key)
-          this.props.removeRsvp(eventId, rsvpToRemove)
+          this.props.removeRsvp(eventId, rsvpToRemove, eid)
         }
       }
     }  

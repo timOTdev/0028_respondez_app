@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       userProfile: {},
       eventsList: {},
+      myEventsList: {},
       loggedIn: false,
       showCreateEvents: false,
       showUpdateEvents: false
@@ -41,6 +42,11 @@ class App extends Component {
       context: this,
       state: 'eventsList'
     });
+    this.myEventsRef = base.syncState('myEventsList',
+    {
+      context: this,
+      state: 'myEventsList'
+    });
   }
 
   componentDidMount() {
@@ -55,6 +61,7 @@ class App extends Component {
     this.removeAuthListener();
     base.removeBinding(this.eventsRef);
     base.removeBinding(this.userRef);
+    base.removeBinding(this.myEventsRef);
   }
 
   logIn = (profile) => {
@@ -101,28 +108,48 @@ class App extends Component {
     this.setState({eventsList: events})
   }
 
-  addRsvp = (id, newAttendee) => {
+  addRsvp = (eventId, newAttendee) => {
     const eventsList = {...this.state.eventsList}
     const subList = update(eventsList, {
-      [id]: {
+      [eventId]: {
         attendees: {
           $push: [newAttendee]
         }
       }
     })
-    this.setState({ eventsList: subList })
+
+    const myEventsList = [...this.state.myEventsList]
+    const { eventName, date, time, location, eid } = eventsList[eventId]
+    const myNewEvent = {
+      eventName,
+      date,
+      time,
+      location,
+      eid
+    }
+    myEventsList.unshift(myNewEvent)
+
+    this.setState({ eventsList: subList, myEventsList })
   }
 
-  removeRsvp = (id, rsvpToRemove) => {
+  removeRsvp = (eventId, rsvpToRemove, eid) => {
     const eventsList = {...this.state.eventsList}
     const subList = update(eventsList, {
-      [id]: {
+      [eventId]: {
         attendees: {
           $splice: [ [rsvpToRemove, 1] ]
         }
       }
     })
-    this.setState({ eventsList: subList })
+
+    let newList = [...this.state.myEventsList]
+    for (let event in newList) {
+      if (eid === newList[event].eid) {
+        newList.splice(event, 1)
+      }
+    }
+
+    this.setState({ eventsList: subList, myEventsList: newList })
   }
 
   addComment = (id, newComment) => {

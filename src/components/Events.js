@@ -29,8 +29,8 @@ class Events extends Component {
   }
 }
 
-Events.propTypes = {
-  deleteEvent: PropTypes.func,
-}
+// Events.propTypes = {
+//   deleteEvent: PropTypes.func,
+// }
 
 export default Events
