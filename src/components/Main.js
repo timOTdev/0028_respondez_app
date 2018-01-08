@@ -28,7 +28,8 @@ class Main extends Component {
                                   createEvent={this.props.createEvent} 
                                   updateEvent={this.props.updateEvent} 
                                   deleteEvent={this.props.deleteEvent} 
-                                  toggleUpdateEvent={this.props.toggleUpdateEvent}
+                                  toggleCreateEvents={this.props.toggleCreateEvents}
+                                  toggleUpdateEvents={this.props.toggleUpdateEvents}
                         />) 
                       : null}
           

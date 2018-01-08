@@ -14,7 +14,8 @@ class App extends Component {
       userProfile: {},
       eventsList: {},
       loggedIn: false,
-      showUpdateEvent: false,
+      showCreateEvents: false,
+      showUpdateEvents: false
     }
   }
   
@@ -148,8 +149,12 @@ class App extends Component {
     this.setState({ eventsList: subList })
   }
 
-  toggleUpdateEvent = () => {
-    this.setState({showUpdateEvent: !this.state.showUpdateEvent})
+  toggleCreateEvents = () => {
+    this.setState({showCreateEvents: !this.state.showCreateEvents})
+  }
+
+  toggleUpdateEvents = () => {
+    this.setState({showUpdateEvents: !this.state.showUpdateEvents})
   }
   
   toggleDisplayMain = () => {
@@ -175,7 +180,8 @@ class App extends Component {
               removeRsvp={this.removeRsvp}
               addComment={this.addComment}
               removeComment={this.removeComment}
-              toggleUpdateEvent={this.toggleUpdateEvent}
+              toggleCreateEvents={this.toggleCreateEvents}
+              toggleUpdateEvents={this.toggleUpdateEvents}
             />
         </div>
     )
