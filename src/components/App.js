@@ -9,7 +9,7 @@ import { app, base } from '../helpers/base'
 
 class App extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       userProfile: {},
       eventsList: {},
@@ -36,17 +36,17 @@ class App extends Component {
     {
       context: this,
       state: 'userProfile'
-    });  
+    })  
     this.eventsRef = base.syncState('eventsList',
     {
       context: this,
       state: 'eventsList'
-    });
+    })
     this.myEventsRef = base.syncState('myEventsList',
     {
       context: this,
       state: 'myEventsList'
-    });
+    })
   }
 
   componentDidMount() {
@@ -54,14 +54,14 @@ class App extends Component {
     {
       context: this,
       state: 'userProfile'
-    });
+    })
   }
 
   componentWillUnmount() {
-    this.removeAuthListener();
-    base.removeBinding(this.eventsRef);
-    base.removeBinding(this.userRef);
-    base.removeBinding(this.myEventsRef);
+    this.removeAuthListener()
+    base.removeBinding(this.eventsRef)
+    base.removeBinding(this.userRef)
+    base.removeBinding(this.myEventsRef)
   }
 
   logIn = (profile) => {
@@ -82,35 +82,41 @@ class App extends Component {
       uid: ""
     }
     this.setState({ userProfile, loggedIn: false })
-    base.removeBinding(this.userRef);
+    base.removeBinding(this.userRef)
   }
 
   loadEvents = () => {
-    const eventsList = {...this.state.eventsList, ...sampleEvents.arr};
+    const eventsList = {...this.state.eventsList, ...sampleEvents.arr}
     this.setState({ eventsList })
   }
 
   createEvent = (key) => {
-    const eventsList = [...this.state.eventsList];
-    eventsList.unshift(key);
+    const eventsList = [...this.state.eventsList]
+    eventsList.unshift(key)
+    this.setState({ eventsList })
+    this.toggleCreateEvents()
+  }
+
+  updateEvent = (key, updatedEvent) => {
+    const eventsList = {...this.state.eventsList}
+    eventsList[key] = updatedEvent
     this.setState({ eventsList })
   }
 
-  updateEvent= (key, updatedEvent) => {
-    const events = {...this.state.eventsList};
-    events[key] = updatedEvent;
-    this.setState({ eventsList: events});
-  }
-
   deleteEvent = (key) => {
-    const events = {...this.state.eventsList};
-    events[key] = null;
-    this.setState({eventsList: events})
+    const eventsList = [...this.state.eventsList]
+    eventsList.splice(key, 1)
+    
+    const myEventsList = [...this.state.eventsList]
+    myEventsList.splice(key, 1)
+
+    this.setState({ eventsList, myEventsList })
+    this.toggleUpdateEvents()
   }
 
   addRsvp = (eventId, newAttendee) => {
-    const eventsList = {...this.state.eventsList}
-    const subList = update(eventsList, {
+    let eventsList = {...this.state.eventsList}
+    eventsList = update(eventsList, {
       [eventId]: {
         attendees: {
           $push: [newAttendee]
@@ -128,13 +134,12 @@ class App extends Component {
       eid
     }
     myEventsList.unshift(myNewEvent)
-
-    this.setState({ eventsList: subList, myEventsList })
+    
+    this.setState({ eventsList, myEventsList })
   }
 
   removeRsvp = (eventId, rsvpToRemove, eid) => {
-    const eventsList = {...this.state.eventsList}
-    const subList = update(eventsList, {
+    const eventsList = update({...this.state.eventsList}, {
       [eventId]: {
         attendees: {
           $splice: [ [rsvpToRemove, 1] ]
@@ -142,50 +147,50 @@ class App extends Component {
       }
     })
 
-    let newList = [...this.state.myEventsList]
-    for (let event in newList) {
-      if (eid === newList[event].eid) {
-        newList.splice(event, 1)
+    let myEventsList = [...this.state.myEventsList]
+    for (let event in myEventsList) {
+      if (eid === myEventsList[event].eid) {
+        myEventsList.splice(event, 1)
       }
     }
 
-    this.setState({ eventsList: subList, myEventsList: newList })
+    this.setState({ eventsList, myEventsList })
   }
 
   addComment = (id, newComment) => {
-    const eventsList = {...this.state.eventsList}
-    const subList = update(eventsList, {
+    let eventsList = {...this.state.eventsList}
+    eventsList = update(eventsList, {
       [id]: {
         comments: {
           $push: [newComment]
         }
       }
     })
-    this.setState({ eventsList: subList })
+    this.setState({ eventsList })
   }
 
   removeComment = (eventId, commentId) => {
-    const eventsList = {...this.state.eventsList}
-    const subList = update(eventsList, {
+    let eventsList = {...this.state.eventsList}
+    eventsList = update(eventsList, {
       [eventId]: {
         comments: {
           $splice: [ [commentId, 1] ]
         }
       }
     })
-    this.setState({ eventsList: subList })
+    this.setState({ eventsList })
   }
 
   toggleCreateEvents = () => {
-    this.setState({showCreateEvents: !this.state.showCreateEvents})
+    this.setState({ showCreateEvents: !this.state.showCreateEvents, showUpdateEvents: false })
   }
 
   toggleUpdateEvents = () => {
-    this.setState({showUpdateEvents: !this.state.showUpdateEvents})
+    this.setState({ showUpdateEvents: !this.state.showUpdateEvents, showCreateEvents: false })
   }
   
   toggleDisplayMain = () => {
-    this.setState({loggedIn: !this.state.loggedIn})
+    this.setState({ loggedIn: !this.state.loggedIn })
   }
 
   render() {

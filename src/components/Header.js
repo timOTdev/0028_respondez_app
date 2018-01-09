@@ -7,10 +7,10 @@ import { app, githubProvider } from '../helpers/base'
 class Header extends Component {
   signIn = (provider) => {
     const signIn = () => {
-      console.log(`Logging into ${provider.providerId}!`);
+      console.log(`Logging into ${provider.providerId}!`)
 
       const addUserInfo = (user) => {
-        this.props.logIn(user);
+        this.props.logIn(user)
       }
 
       app.auth().signInWithPopup(provider)
@@ -24,46 +24,50 @@ class Header extends Component {
             github: authData.additionalUserInfo.profile.html_url,
             uid: authData.user.uid
           }
-          addUserInfo(user);
+          addUserInfo(user)
         })
         .catch(function(error) {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
 
-    signIn();
+    signIn()
   }
 
   signOut = () => {
     const logOut = () => {
-      this.props.logOut();
+      this.props.logOut()
     }
 
     app.auth().signOut()
     .then(function() {
-      logOut();
-      console.log("Logout successful");
-    }).catch(function(error) {
-      console.log(error);
-    });
+      logOut()
+      console.log("Logout successful")
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
     
   }
   
   render() {
-    const signInButton = <a onClick={() => this.signIn(githubProvider)}><span role="img" aria-label="Lock Icon">&#128272;</span></a>
-    const signOutButton = <a onClick={this.signOut}><span role="img" aria-label="Unlock Icon">&#128275;</span></a>
+    const { loggedIn } = this.props
+    const signInButton = <a onClick={() => this.signIn(githubProvider)}><span role="img" aria-label="closed lock with key icon">&#128272;</span></a>
+    const signOutButton = <a onClick={this.signOut}><span role="img" aria-label="open lock icon">&#128275;</span></a>
+    const calendarIcon = <span role="img" aria-label="tear-off calendar icon">&#128198;</span>
+
     if(!this.props.user) {
       return (
       <header>
         <nav>
           <div className="topnav" id="myTopnav">
-            {(!this.props.loggedIn) && signInButton}
-            {this.props.loggedIn && signOutButton}
+            {(!loggedIn) && signInButton}
+            {loggedIn && signOutButton}
           </div>
         </nav>
         <p className="hr1">LOPOL</p>
         <h1 className="header1">Respondez </h1>
-        <h3 className="header3"><span role="img" aria-label="Calendar Icon">&#128198;</span> An Event Management System</h3>
+        <h3 className="header3">{calendarIcon} An Event Management System</h3>
         
         <p className="hr1">LOPOL</p>
       </header>
@@ -73,7 +77,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  toggleDisplaymain: PropTypes.func
+  signIn: PropTypes.func,
+  signOut: PropTypes.func,
 }
 
 export default Header

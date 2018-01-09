@@ -127,8 +127,7 @@ header button, input {
 .topnav {
   background-color: #333;
   overflow: hidden;
-  padding: 0;
-  margin: 0;
+  padding:0.25%;
   line-height: 1;
 }
 
@@ -208,7 +207,9 @@ header button, input {
   transition: all ease 0.3s;
 }
 .rsvpYes:hover {
-  transform: scale(1.1) translateY(-5px);
+  transform: translateY(-5px);
+  color: black;
+  background: gold;
 }
 .rsvpYes:active,
 .rsvpYes:focus,
@@ -230,7 +231,9 @@ header button, input {
   transition: all ease 0.3s;
 }
 .rsvpNo:hover {
-  transform: scale(1.1) translateY(5px);
+  transform: translateY(5px);
+  color: black;
+  background: gold;
 }
 .rsvpNo:active,
 .rsvpNo:focus,
@@ -282,6 +285,7 @@ header button, input {
 .myEvents {
   padding-top: 5%;
 }
+
 .eventForm > *,
 .profileForm > *, 
 .renderEvents > * {
@@ -304,6 +308,17 @@ header button, input {
   background: none;
   color: white;
   font-family: 'Bellefair', cursive;
+  font-size: 1em;
   border-radius: 5%;
   margin: 5% auto;
+}
+
+.myEvents button:hover {
+  color: black;
+  background: gold;
+}
+
+.myEvents button:focus {
+  color: black;
+  background: gold;
 }

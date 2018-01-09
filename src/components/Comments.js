@@ -22,26 +22,33 @@ class Comments extends Component {
   }
 
   render() {
-    const { eventId } = this.props
+    const { eventId, loggedIn } = this.props
+    const { creator } = this.props.details
     const comments = this.props.eventsList[eventId].comments
-    
+    const commentIcon = <span className="white" role="img" aria-label="speech balloon icon">&#128172; 0</span>
+
     return (
       <div>
         <div className="comments-section">
           <h3 className="header3">Comments</h3>
           {(comments) ? comments.map( (comment, i) => <Comment key={i} commentId={i} comment={comment} {...this.props} />)
-            : <p><span className="white" role="img" aria-label="Comment Icon">&#128172; 0</span></p>
+            : <p>{commentIcon}</p>
           }
           
-          {this.props.loggedIn && <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
-            <span className="comment-name">{this.props.details.creator}</span> 
+          {loggedIn && <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
+            <span className="comment-name">{creator}</span> 
             <input className="comment-box" type="text" placeholder="writes..." ref="userComment" />
           </form>}
         </div>
+
         <p className="hr3">OPO</p>
       </div>
     )
   }
+}
+
+Comments.propTypes = {
+  addComment: PropTypes.func,
 }
 
 export default Comments
