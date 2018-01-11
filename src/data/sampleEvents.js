@@ -33,7 +33,15 @@ const sampleEvents = {
           bio:"I have an associates in Information Technology, and I excited to get back into coding! I had to take some time off, but I'm back. I live on Cape Cod in MA.",
           github: "https://github.com/petercr",
           blog: ""
-        }
+        },
+        {
+          uid: "TQVJHDSNCNO7Jg1biXIM7vp3bCj2",
+          name: "Timothy Hoang",
+          avatar: "https://avatars0.githubusercontent.com/u/19733413",
+          bio: "Web Developer with focus on JavaScript, ES6, and ReactJS!",
+          github: "https://github.com/timh1203",
+          blog: "timothyhoang.net"
+        },
       ],
       comments: [
         {
@@ -53,7 +61,7 @@ const sampleEvents = {
           time: "1512182632",
           name: "Peter Cruckshank",
           comment: "See you guys there!"
-        }
+        },
       ]
     },
     {
@@ -93,7 +101,7 @@ const sampleEvents = {
           bio:"I have an associates in Information Technology, and I excited to get back into coding! I had to take some time off, but I'm back. I live on Cape Cod in MA.",
           github: "https://github.com/petercr",
           blog: ""
-        }
+        },
       ],
       comments: [
         {
@@ -113,7 +121,7 @@ const sampleEvents = {
           time: "1510321652",
           name: "Peter Cruckshank",
           comment: "Cool, see you next week, Tim!"
-        }
+        },
       ]
     }
   ]

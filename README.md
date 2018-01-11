@@ -1,25 +1,26 @@
 <figure><img src="./public/respondez-app.png" alt="The Respondez App" style="width: 60%; display: block; margin-left: auto; margin-right: auto;"/><figcaption style=" text-align: center;">Respondez App</figcaption></figure>
 
 # About
-- Hello World! The Respondez App was named off of the popular expression "respondez s'il vous plait", or R.S.V.P. for short 
+- The Respondez App was named off of the popular expression "respondez s'il vous plait", or R.S.V.P. for short 
 - I want to built this out of the desire for our Free Code Camp Ashburn Group so we can manage our events external from popular platforms such as Facebook or Meetup
 
 
 ## Features
-- Log in with your Github account
-- Events, attendees, and log in state persists even after refresh
-- Create new events, edit, delete events
-- Create and delete comments under events
+- Log in and authenticate with your Github account
+- Events, attendees, comments, attending list, and log in state persists in Firebase
+- Create new events, edit, delete events (Events section)
+- Add and remove RSVP's to different events (Events/Attendees section)
+- Create and delete comments under events (Events/Comments section)
+- Save a user's events attending list for each user that login (My Events section)
 - View user github description on hover over rsvp photo
-- Add and remove rsvp's to different events
 - View date and time comment was posted on hover
 
 ## Technologies
-- Create-React-App
-- Firebase for storage
-- Immutability-Helper for deep state manipulation
-- Github Pages for deployment 
-- See package.json for other minor technologies
+- [Create-React-App](https://github.com/facebookincubator/create-react-app)
+- [Firebase](https://firebase.google.com/) for database storage
+- [Immutability-Helper](https://github.com/kolodny/immutability-helper) for deep state manipulation
+- [Github Pages](https://github.com/tschaub/gh-pages) for app deployment 
+- See package.json for other technologies
 
 # To run this project
 ## Method 1: Visit deployed website

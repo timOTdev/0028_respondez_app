@@ -5,6 +5,7 @@ import '../style/style.css'
 import Header from './Header'
 import Main from './Main'
 import sampleEvents from '../data/sampleEvents'
+import sampleAttend from '../data/sampleAttend'
 import { app, base } from '../helpers/base'
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     this.state = {
       userProfile: {},
       eventsList: {},
+      attendList: {},
       myEventsList: {},
       loggedIn: false,
       showCreateEvents: false,
@@ -42,6 +44,11 @@ class App extends Component {
       context: this,
       state: 'eventsList'
     })
+    this.attendRef = base.syncState('attendList',
+    {
+      context: this,
+      state: 'attendList'
+    })
     this.myEventsRef = base.syncState('myEventsList',
     {
       context: this,
@@ -61,6 +68,7 @@ class App extends Component {
     this.removeAuthListener()
     base.removeBinding(this.eventsRef)
     base.removeBinding(this.userRef)
+    base.removeBinding(this.attendRef)
     base.removeBinding(this.myEventsRef)
   }
 
@@ -87,7 +95,8 @@ class App extends Component {
 
   loadEvents = () => {
     const eventsList = {...this.state.eventsList, ...sampleEvents.arr}
-    this.setState({ eventsList })
+    //make sure to remove attendList after 
+    this.setState({ eventsList, attendList: sampleAttend })
   }
 
   createEvent = (key) => {
@@ -114,7 +123,7 @@ class App extends Component {
     this.toggleUpdateEvents()
   }
 
-  addRsvp = (eventId, newAttendee) => {
+  addRsvp = (eventId, newAttendee, newAttend) => {
     let eventsList = {...this.state.eventsList}
     eventsList = update(eventsList, {
       [eventId]: {
@@ -124,21 +133,37 @@ class App extends Component {
       }
     })
 
-    const myEventsList = [...this.state.myEventsList]
-    const { eventName, date, time, location, eid } = eventsList[eventId]
-    const myNewEvent = {
-      eventName,
-      date,
-      time,
-      location,
-      eid
-    }
-    myEventsList.unshift(myNewEvent)
-    
-    this.setState({ eventsList, myEventsList })
-  }
+    const uid = newAttendee.uid
+    const eidFromEventDetails = newAttend.eid
+    let attendList = {...this.state.attendList}
+    const userAttendList = attendList[uid]
 
-  removeRsvp = (eventId, rsvpToRemove, eid) => {
+    // Does uid already exists in eventsList?
+    if (!attendList.hasOwnProperty(uid) || undefined) {
+        // If no uid exists, create object with prop of uid and push newAttend in that object
+        attendList = update(attendList, {
+          [uid]: {
+            $push: [newAttend]
+          }
+        })
+    }
+    // If uid exists, check to see if eid already exists in that list
+    else if (attendList.hasOwnProperty(uid)) {
+      const eidFromAttendList = userAttendList.map( (key, i) => key.eid)
+      // Does event already exists?
+      if (!eidFromAttendList.includes(eidFromEventDetails)) {
+        // If no event exists, push to array. If event exists, do nothing
+        attendList = update(attendList, {
+          [uid]: {
+            $push: [newAttend]
+          }
+        })
+      }
+    }
+    this.setState({ eventsList, attendList })
+}
+
+  removeRsvp = (eventId, rsvpToRemove, eidFromEventDetails) => {
     const eventsList = update({...this.state.eventsList}, {
       [eventId]: {
         attendees: {
@@ -146,15 +171,27 @@ class App extends Component {
         }
       }
     })
+  
+    let attendList = {...this.state.attendList}
+    const { uid } = this.state.userProfile
+    const userAttendList = attendList[uid]
+    let eidFromAttendList
 
-    let myEventsList = [...this.state.myEventsList]
-    for (let event in myEventsList) {
-      if (eid === myEventsList[event].eid) {
-        myEventsList.splice(event, 1)
+    if (userAttendList !== undefined) {
+      eidFromAttendList = userAttendList.map( (key, i) => key.eid)
+      // Does event exist in attendList for that user?
+      if (eidFromAttendList.includes(eidFromEventDetails)) {
+        // If event exists, remove that event
+        const index = eidFromAttendList.indexOf(eidFromEventDetails)
+        attendList = update({...this.state.attendList}, {
+          [uid]: {
+            $splice: [ [index, 1] ]
+          }
+        })
       }
     }
 
-    this.setState({ eventsList, myEventsList })
+    this.setState({ eventsList, attendList })
   }
 
   addComment = (id, newComment) => {

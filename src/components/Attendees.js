@@ -9,6 +9,7 @@ class Attendees extends Component {
     e.preventDefault()
     const { eventId } = this.props
     const { uid } = this.props.userProfile
+    const { eid, date, eventName, location, time } = this.props.details
     const newAttendee = this.props.userProfile
     const targetAttendees = this.props.eventsList[eventId].attendees
     var arr = []
@@ -18,14 +19,22 @@ class Attendees extends Component {
         arr.push(key.uid) 
       }
     }
-        
-    !arr.includes(uid) && this.props.addRsvp(eventId, newAttendee)
+
+    const newAttend = {
+      eid,
+      eventName,
+      date,
+      time,
+      location,
+    }
+
+    !arr.includes(uid) && this.props.addRsvp(eventId, newAttendee, newAttend)
   }
 
   rsvpNo = (e) => {
     e.preventDefault()
     const { eventId } = this.props
-    const { eid } = this.props.details
+    const eidFromEventDetails = this.props.details.eid
     const { uid } = this.props.userProfile
     const targetAttendees = this.props.eventsList[eventId].attendees
     
@@ -33,7 +42,7 @@ class Attendees extends Component {
       for (let key of targetAttendees) {
         if (uid === key.uid) {
           let rsvpToRemove = targetAttendees.indexOf(key)
-          this.props.removeRsvp(eventId, rsvpToRemove, eid)
+          this.props.removeRsvp(eventId, rsvpToRemove, eidFromEventDetails)
         }
       }
     }  

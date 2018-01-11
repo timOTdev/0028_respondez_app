@@ -10,14 +10,14 @@ import UpdateEvents from './UpdateEvents'
 class MyEvents extends Component {
   render() {
     const {myEventsList} = this.props
-    
+
     return (
       <div>
         <h1 className="header2">My Events</h1>
         <p className="hr2">O</p>
 
         {Object.values(myEventsList).slice(0, 3).map( (details, key) => <MyEvent key={key} details={details} {...this.props} />)}
-      
+
         <div className="myEvents">
           <CreateEvents {...this.props} /> 
           <UpdateEvents {...this.props} />
