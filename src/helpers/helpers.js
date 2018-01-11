@@ -10,3 +10,11 @@ export function timeConverter(UNIX_timestamp){
   var time = month + ' ' + date + ', ' + year + ' ' + hour + ':' + min + ' ' + cycle;
   return time;
 }
+
+export function isEmpty(obj) {
+  for(var key in obj) {
+      if(obj.hasOwnProperty(key))
+          return false;
+  }
+  return true;
+}

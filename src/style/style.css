@@ -111,6 +111,16 @@ a {
   text-decoration: underline;
 }
 
+/* Header */
+
+/* Footer */
+footer {
+  background-color: #333;
+  overflow: hidden;
+  padding:0.25%;
+  line-height: 1;
+}
+
 /* Top */
 header {
   margin-bottom: 3%;

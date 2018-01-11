@@ -6,17 +6,19 @@ import '../style/react-datetime.css'
 import CreateEvents from './CreateEvents'
 import MyEvent from './MyEvent'
 import UpdateEvents from './UpdateEvents'
+import { isEmpty } from '../helpers/helpers'
 
 class MyEvents extends Component {
   render() {
-    const {myEventsList} = this.props
+    const {attendList} = this.props
+    const { uid } = this.props.userProfile
 
     return (
       <div>
         <h1 className="header2">My Events</h1>
         <p className="hr2">O</p>
 
-        {Object.values(myEventsList).slice(0, 3).map( (details, key) => <MyEvent key={key} details={details} {...this.props} />)}
+        {!isEmpty(attendList) ? (attendList[uid].slice(0, 3).map( (details, key) => <MyEvent key={key} details={details} />)) : ""}
 
         <div className="myEvents">
           <CreateEvents {...this.props} /> 

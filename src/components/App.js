@@ -15,7 +15,6 @@ class App extends Component {
       userProfile: {},
       eventsList: {},
       attendList: {},
-      myEventsList: {},
       loggedIn: false,
       showCreateEvents: false,
       showUpdateEvents: false
@@ -49,11 +48,6 @@ class App extends Component {
       context: this,
       state: 'attendList'
     })
-    this.myEventsRef = base.syncState('myEventsList',
-    {
-      context: this,
-      state: 'myEventsList'
-    })
   }
 
   componentDidMount() {
@@ -66,10 +60,9 @@ class App extends Component {
 
   componentWillUnmount() {
     this.removeAuthListener()
-    base.removeBinding(this.eventsRef)
     base.removeBinding(this.userRef)
+    base.removeBinding(this.eventsRef)
     base.removeBinding(this.attendRef)
-    base.removeBinding(this.myEventsRef)
   }
 
   logIn = (profile) => {
@@ -95,7 +88,6 @@ class App extends Component {
 
   loadEvents = () => {
     const eventsList = {...this.state.eventsList, ...sampleEvents.arr}
-    //make sure to remove attendList after 
     this.setState({ eventsList, attendList: sampleAttend })
   }
 
@@ -116,10 +108,11 @@ class App extends Component {
     const eventsList = [...this.state.eventsList]
     eventsList.splice(key, 1)
     
-    const myEventsList = [...this.state.eventsList]
-    myEventsList.splice(key, 1)
+    // const myEventsList = [...this.state.eventsList]
+    // myEventsList.splice(key, 1)
 
-    this.setState({ eventsList, myEventsList })
+    this.setState({ eventsList })
+    // this.setState({ eventsList, myEventsList })
     this.toggleUpdateEvents()
   }
 
@@ -155,13 +148,13 @@ class App extends Component {
         // If no event exists, push to array. If event exists, do nothing
         attendList = update(attendList, {
           [uid]: {
-            $push: [newAttend]
+            $unshift: [newAttend]
           }
         })
       }
     }
     this.setState({ eventsList, attendList })
-}
+  }
 
   removeRsvp = (eventId, rsvpToRemove, eidFromEventDetails) => {
     const eventsList = update({...this.state.eventsList}, {
