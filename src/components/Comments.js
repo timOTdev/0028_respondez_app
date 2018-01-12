@@ -23,7 +23,7 @@ class Comments extends Component {
 
   render() {
     const { eventId, loggedIn } = this.props
-    const { creator } = this.props.details
+    const { name } = this.props.userProfile
     const comments = this.props.eventsList[eventId].comments
     const commentIcon = <span className="white" role="img" aria-label="speech balloon icon">&#128172; 0</span>
 
@@ -36,7 +36,7 @@ class Comments extends Component {
           }
           
           {loggedIn && <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
-            <span className="comment-name">{creator}</span> 
+            <span className="comment-name">{name}</span> 
             <input className="comment-box" type="text" placeholder="writes..." ref="userComment" />
           </form>}
         </div>
