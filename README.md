@@ -31,8 +31,9 @@
 2. Copy the URL address this repo: https://github.com/timh1203/respondez-app.git
 3. Open the terminal and go to the directory of choice, then run `git clone https://github.com/timh1203/respondez-app.git` 
 3. Run `npm install` to install all the depedencies of the app
-4. Run `npm start` to start the server
-5. The app should auto-load with Create React App, otherwise, navigate to `localhost:3000` on your browser
+4. Copy `src/helpers/baseExample.js` to `src/helpers.base.js` and fill in your Firebase config details
+5. Run `npm start` to start the server
+6. The app should auto-load with Create React App, otherwise, navigate to `localhost:3000` on your browser
 
 ==========
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

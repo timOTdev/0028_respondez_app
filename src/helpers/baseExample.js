@@ -2,12 +2,12 @@ import Rebase from 're-base'
 import firebase from 'firebase/app'
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyBlviJpFfvxeWvnGNhOO5UFiBywCE58r70",
-  authDomain: "respondez-app.firebaseapp.com",
-  databaseURL: "https://respondez-app.firebaseio.com",
-  projectId: "respondez-app",
-  storageBucket: "respondez-app.appspot.com",
-  messagingSenderId: "97205646561"
+  apiKey: "yourAPIKey",
+  authDomain: "youAuthDomain",
+  databaseURL: "yourDatabaseURL",
+  projectId: "yourProjectId",
+  storageBucket: "yourStorageBucket",
+  messagingSenderId: "youMessagingSenderId"
 })
 
 

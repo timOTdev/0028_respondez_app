@@ -107,12 +107,8 @@ class App extends Component {
   deleteEvent = (key) => {
     const eventsList = [...this.state.eventsList]
     eventsList.splice(key, 1)
-    
-    // const myEventsList = [...this.state.eventsList]
-    // myEventsList.splice(key, 1)
 
     this.setState({ eventsList })
-    // this.setState({ eventsList, myEventsList })
     this.toggleUpdateEvents()
   }
 
@@ -245,6 +241,12 @@ class App extends Component {
               toggleCreateEvents={this.toggleCreateEvents}
               toggleUpdateEvents={this.toggleUpdateEvents}
             />
+          
+          <footer>
+            <div className="bottomnav" id="myBottomNav">
+              © 2018 <a href="http://timothyhoang.net/">Timothy Hoang</a> 
+            </div>
+          </footer>
         </div>
     )
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import '../style/style.css'
-import { app, githubProvider } from '../helpers/base'
+import { app, auth, githubProvider } from '../helpers/base'
 
 class Header extends Component {
   signIn = (provider) => {
@@ -13,7 +13,7 @@ class Header extends Component {
         this.props.logIn(user)
       }
 
-      app.auth().signInWithPopup(provider)
+      auth.signInWithPopup(provider)
         .then(function(authData) {
           const user = { 
             avatar: authData.additionalUserInfo.profile.avatar_url,
@@ -39,7 +39,7 @@ class Header extends Component {
       this.props.logOut()
     }
 
-    app.auth().signOut()
+    auth.signOut()
     .then(function() {
       logOut()
       console.log("Logout successful")

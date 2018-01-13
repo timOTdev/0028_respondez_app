@@ -19,12 +19,6 @@ const Main = props => (
       {(props.loggedIn) ? (<MyEvents {...props} />) : null}
       
     </div>
-
-    <footer>
-      <div className="bottomnav" id="myBottomNav">
-        © 2018 <a href="http://timothyhoang.net/">Timothy Hoang</a> 
-      </div>
-    </footer>
   </div>
 )
 
