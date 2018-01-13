@@ -6,7 +6,7 @@ import Header from './Header'
 import Main from './Main'
 import sampleEvents from '../data/sampleEvents'
 import sampleAttend from '../data/sampleAttend'
-import { app, base } from '../helpers/base'
+import { app, auth, base } from '../helpers/base'
 
 class App extends Component {
   constructor() {
@@ -21,48 +21,36 @@ class App extends Component {
     }
   }
   
-  componentWillMount() {
-    this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
+  componentDidMount() {
+    this.removeAuthListener = auth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ 
-          loggedIn: true,
+        this.userRef = base.syncState('userProfile',
+        {
+          context: this,
+          state: 'userProfile'
         })
+        this.eventsRef = base.syncState('eventsList',
+        {
+          context: this,
+          state: 'eventsList'
+        })
+        this.attendRef = base.syncState('attendList',
+        {
+          context: this,
+          state: 'attendList'
+        })
+        this.setState({ loggedIn: true })
       } else {
-        this.setState({
-          loggedIn: false,
-        })
+        this.setState({ loggedIn: false })
       }
     })
-    this.userRef = base.syncState('userProfile',
-    {
-      context: this,
-      state: 'userProfile'
-    })  
-    this.eventsRef = base.syncState('eventsList',
-    {
-      context: this,
-      state: 'eventsList'
-    })
-    this.attendRef = base.syncState('attendList',
-    {
-      context: this,
-      state: 'attendList'
-    })
   }
-
-  componentDidMount() {
-    this.userRef = base.syncState('userProfile',
-    {
-      context: this,
-      state: 'userProfile'
-    })
-  }
-
+  
   componentWillUnmount() {
     this.removeAuthListener()
     base.removeBinding(this.userRef)
     base.removeBinding(this.eventsRef)
-    base.removeBinding(this.attendRef)
+    base.removeBinding(this.attendList)
   }
 
   logIn = (profile) => {
@@ -72,18 +60,9 @@ class App extends Component {
   }
 
   logOut = () => {
-    let userProfile = {...this.state.userProfile}
-    userProfile = {
-      avatar: "",
-      bio: "",
-      blog: "",
-      login: "",
-      name: "",
-      github: "",
-      uid: ""
-    }
-    this.setState({ userProfile, loggedIn: false })
-    base.removeBinding(this.userRef)
+      let userProfile = {...this.state.userProfile}
+      userProfile = null
+      this.setState({ userProfile, loggedIn: false })
   }
 
   loadEvents = () => {

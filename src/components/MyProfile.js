@@ -3,7 +3,7 @@ import React from 'react'
 import '../style/style.css'
 import blankPicture from '../data/blank-picture.png'
 
-const MyProfile = props => {
+const MyProfile = (props) => {
     const { avatar, name, bio, github, blog, uid } = props.userProfile
 
     return (

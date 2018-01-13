@@ -12,7 +12,7 @@ const Main = props => (
       
     </div>
     <div className="center">
-      <Events {...props} />
+      {(props.loggedIn) ? (<Events {...props} />) : null}
     </div>
 
     <div className="right">

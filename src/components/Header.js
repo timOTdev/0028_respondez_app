@@ -5,55 +5,35 @@ import '../style/style.css'
 import { app, auth, githubProvider } from '../helpers/base'
 
 class Header extends Component {
-  signIn = (provider) => {
-    const signIn = () => {
-      console.log(`Logging into ${provider.providerId}!`)
+  signIn = () => {
+    console.log("Logging into Github!")
 
-      const addUserInfo = (user) => {
-        this.props.logIn(user)
-      }
+    auth.signInWithPopup(githubProvider)
+      .then( (authData) => {
+        const profile = { 
+          avatar: authData.additionalUserInfo.profile.avatar_url,
+          bio: authData.additionalUserInfo.profile.bio,
+          blog: authData.additionalUserInfo.profile.blog,
+          login: authData.additionalUserInfo.profile.login,
+          name: authData.additionalUserInfo.profile.name,
+          github: authData.additionalUserInfo.profile.html_url,
+          uid: authData.user.uid
+        }
 
-      auth.signInWithPopup(provider)
-        .then(function(authData) {
-          const user = { 
-            avatar: authData.additionalUserInfo.profile.avatar_url,
-            bio: authData.additionalUserInfo.profile.bio,
-            blog: authData.additionalUserInfo.profile.blog,
-            login: authData.additionalUserInfo.profile.login,
-            name: authData.additionalUserInfo.profile.name,
-            github: authData.additionalUserInfo.profile.html_url,
-            uid: authData.user.uid
-          }
-          addUserInfo(user)
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
-    }
-
-    signIn()
+        this.props.logIn(profile)
+      })
+      .catch( (err) => console.log("Error: " + err))
   }
 
   signOut = () => {
-    const logOut = () => {
+      auth.signOut()
       this.props.logOut()
-    }
-
-    auth.signOut()
-    .then(function() {
-      logOut()
-      console.log("Logout successful")
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
-    
   }
   
   render() {
     const { loggedIn } = this.props
-    const signInButton = <a onClick={() => this.signIn(githubProvider)}><span role="img" aria-label="closed lock with key icon">&#128272;</span></a>
-    const signOutButton = <a onClick={this.signOut}><span role="img" aria-label="open lock icon">&#128275;</span></a>
+    const signInButton = <button type="button" onClick={this.signIn}><span role="img" aria-label="closed lock with key icon">&#128272;</span></button>
+    const signOutButton = <button type="button" onClick={this.signOut}><span role="img" aria-label="open lock icon">&#128275;</span></button>
     const calendarIcon = <span role="img" aria-label="tear-off calendar icon">&#128198;</span>
 
     if(!this.props.user) {
