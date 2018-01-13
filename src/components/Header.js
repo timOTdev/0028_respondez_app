@@ -11,13 +11,13 @@ class Header extends Component {
     auth.signInWithPopup(githubProvider)
       .then( (authData) => {
         const profile = { 
-          avatar: authData.additionalUserInfo.profile.avatar_url || "Please add an avatar",
-          bio: authData.additionalUserInfo.profile.bio || "Please add a bio",
-          blog: authData.additionalUserInfo.profile.blog || "Please add a blog",
-          login: authData.additionalUserInfo.profile.login || "Please add a login",
-          name: authData.additionalUserInfo.profile.name || "Please add a name",
-          github: authData.additionalUserInfo.profile.html_url || "Please add a gitub",
-          uid: authData.user.uid || "Please add a uid"
+          avatar: authData.additionalUserInfo.profile.avatar_url,
+          bio: authData.additionalUserInfo.profile.bio,
+          blog: authData.additionalUserInfo.profile.blog,
+          login: authData.additionalUserInfo.profile.login,
+          name: authData.additionalUserInfo.profile.name || "FCCA Newbie",
+          github: authData.additionalUserInfo.profile.html_url,
+          uid: authData.user.uid
         }
 
         this.props.logIn(profile)

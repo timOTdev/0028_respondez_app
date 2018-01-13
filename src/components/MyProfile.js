@@ -15,12 +15,12 @@ const MyProfile = (props) => {
         {(avatar) ? (<img src={avatar} alt={avatar || ("")} />)
           : (<img src={blankPicture} alt={avatar || ("")} />)
         }
-        <p>Name: <span className="white">{name || "None"}</span></p>
-        <p>Bio: <span className="white">{bio || "None"}</span></p>
-        <p>Github: <a href={github}><span className="white">{github || "None"}</span></a></p>
-        <p>Blog: <a href={blog}><span className="white">{blog || "None"}</span></a></p>
-        <p>Avatar: <span className="white"><a href={avatar} target="_blank">Link</a></span></p>
-        <p>Uid: <span className="white">{uid}</span></p>
+        <p>Name: <span className="white">{name}</span></p>
+        { bio ? <p>Bio: <span className="white">{bio}</span></p> : null } 
+        { github ? <p>Github: <a href={github}><span className="white">{github}</span></a></p> : null }
+        { blog ? <p>Blog: <a href={blog}><span className="white">{blog}</span></a></p> : null }
+        { avatar ? <p>Avatar: <span className="white"><a href={avatar} target="_blank">Link</a></span></p> : null }
+        { uid ? <p>Uid: <span className="white">{uid}</span></p> : null }
       </div>
     </div>
   )
