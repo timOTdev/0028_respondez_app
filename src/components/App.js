@@ -6,7 +6,7 @@ import Header from './Header'
 import Main from './Main'
 import sampleEvents from '../data/sampleEvents'
 import sampleAttend from '../data/sampleAttend'
-import { app, auth, base } from '../helpers/base'
+import { auth, base } from '../helpers/base'
 
 class App extends Component {
   constructor() {
@@ -59,15 +59,16 @@ class App extends Component {
     this.setState({ userProfile, loggedIn: true  })
   }
 
-  logOut = () => {
+  logOut = (profile) => {
       let userProfile = {...this.state.userProfile}
-      userProfile = null
+      userProfile = profile
       this.setState({ userProfile, loggedIn: false })
   }
 
   loadEvents = () => {
     const eventsList = {...this.state.eventsList, ...sampleEvents.arr}
-    this.setState({ eventsList, attendList: sampleAttend })
+    const attendList = {...this.state.attendList, ...sampleAttend}
+    this.setState({ eventsList, attendList })
   }
 
   createEvent = (key) => {
@@ -83,11 +84,19 @@ class App extends Component {
     this.setState({ eventsList })
   }
 
-  deleteEvent = (key) => {
+  deleteEvent = (key, eidFromEventDetails) => {
     const eventsList = [...this.state.eventsList]
     eventsList.splice(key, 1)
+    
+    let attendList
+    const { uid } = this.state.userProfile
+    attendList = update({...this.state.attendList}, {
+      [uid]: {
+        $splice: [ [eidFromEventDetails, 1] ]
+      }
+    })
 
-    this.setState({ eventsList })
+    this.setState({ eventsList, attendList })
     this.toggleUpdateEvents()
   }
 
@@ -118,9 +127,9 @@ class App extends Component {
     // If uid exists, check to see if eid already exists in that list
     else if (attendList.hasOwnProperty(uid)) {
       const eidFromAttendList = userAttendList.map( (key, i) => key.eid)
-      // Does event already exists?
+      // Does event already exists?  If event exists, do nothing
       if (!eidFromAttendList.includes(eidFromEventDetails)) {
-        // If no event exists, push to array. If event exists, do nothing
+        // If no event exists, push to array.
         attendList = update(attendList, {
           [uid]: {
             $unshift: [newAttend]
@@ -223,7 +232,7 @@ class App extends Component {
           
           <footer>
             <div className="bottomnav" id="myBottomNav">
-              © 2018 <a href="http://timothyhoang.net/">Timothy Hoang</a> 
+            <a href="http://timothyhoang.net/">© 2018 Timothy Hoang</a> 
             </div>
           </footer>
         </div>

@@ -10,7 +10,6 @@ const app = firebase.initializeApp({
   messagingSenderId: "97205646561"
 })
 
-
 const auth = firebase.auth()
 const base = Rebase.createClass(app.database())
 const githubProvider = new firebase.auth.GithubAuthProvider();

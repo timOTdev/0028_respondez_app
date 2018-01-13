@@ -10,15 +10,15 @@ import { isEmpty } from '../helpers/helpers'
 
 class MyEvents extends Component {
   render() {
-    const {attendList} = this.props || null
-    const { uid } = this.props.userProfile || null
+    const { attendList } = this.props
+    const { uid } = this.props.userProfile
 
     return (
       <div>
         <h1 className="header2">My Events</h1>
         <p className="hr2">O</p>
 
-        {/* {!isEmpty(attendList) ? (attendList[uid].slice(0, 3).map( (details, key) => <MyEvent key={key} details={details} />)) : ""} */}
+        {(!isEmpty(attendList) && attendList[uid] !== undefined) ? attendList[uid].slice(0, 3).map( (details, key) => <MyEvent key={key} details={details} />) : ""}
 
         <div className="myEvents">
           <CreateEvents {...this.props} /> 

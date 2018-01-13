@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import '../style/style.css'
-import { app, auth, githubProvider } from '../helpers/base'
+import { auth, githubProvider } from '../helpers/base'
 
 class Header extends Component {
   signIn = () => {
@@ -11,13 +11,13 @@ class Header extends Component {
     auth.signInWithPopup(githubProvider)
       .then( (authData) => {
         const profile = { 
-          avatar: authData.additionalUserInfo.profile.avatar_url,
-          bio: authData.additionalUserInfo.profile.bio,
-          blog: authData.additionalUserInfo.profile.blog,
-          login: authData.additionalUserInfo.profile.login,
-          name: authData.additionalUserInfo.profile.name,
-          github: authData.additionalUserInfo.profile.html_url,
-          uid: authData.user.uid
+          avatar: authData.additionalUserInfo.profile.avatar_url || "Please add an avatar",
+          bio: authData.additionalUserInfo.profile.bio || "Please add a bio",
+          blog: authData.additionalUserInfo.profile.blog || "Please add a blog",
+          login: authData.additionalUserInfo.profile.login || "Please add a login",
+          name: authData.additionalUserInfo.profile.name || "Please add a name",
+          github: authData.additionalUserInfo.profile.html_url || "Please add a gitub",
+          uid: authData.user.uid || "Please add a uid"
         }
 
         this.props.logIn(profile)
@@ -27,13 +27,24 @@ class Header extends Component {
 
   signOut = () => {
       auth.signOut()
-      this.props.logOut()
+
+      const profile = { 
+        avatar: "",
+        bio: "",
+        blog: "",
+        login: "",
+        name: "",
+        github: "",
+        uid: ""
+      }
+
+      this.props.logOut(profile)
   }
   
   render() {
     const { loggedIn } = this.props
-    const signInButton = <button type="button" onClick={this.signIn}><span role="img" aria-label="closed lock with key icon">&#128272;</span></button>
-    const signOutButton = <button type="button" onClick={this.signOut}><span role="img" aria-label="open lock icon">&#128275;</span></button>
+    const signInButton = <a onClick={this.signIn}><span role="img" aria-label="closed lock with key icon">&#128272;</span></a>
+    const signOutButton = <a onClick={this.signOut}><span role="img" aria-label="open lock icon">&#128275;</span></a>
     const calendarIcon = <span role="img" aria-label="tear-off calendar icon">&#128198;</span>
 
     if(!this.props.user) {

@@ -11,8 +11,9 @@ class UpdateEvents extends Component {
   }
 
   removeEvent = (e, key) => {
-    const event = key
-    this.props.deleteEvent(event)
+    const { uid } = this.props.userProfile
+    const eidFromEventDetails = this.props.attendList[uid][key].eid
+    this.props.deleteEvent(key, eidFromEventDetails)
   }
 
   handleChange = (e, key) => {
