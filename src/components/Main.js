@@ -17,7 +17,6 @@ const Main = props => (
 
     <div className="right">
       {(props.loggedIn) ? (<MyEvents {...props} />) : null}
-      
     </div>
   </div>
 )

@@ -209,7 +209,7 @@ class App extends Component {
 
   render() {
     return (
-        <div>
+        <div id="container">
             <Header 
               {...this.state} 
               logIn={this.logIn} 
@@ -232,7 +232,7 @@ class App extends Component {
           
           <footer>
             <div className="bottomnav" id="myBottomNav">
-            <a href="http://timothyhoang.net/">© 2018 Timothy Hoang</a> 
+              <a href="http://timothyhoang.net/">© 2018 Timothy Hoang</a> 
             </div>
           </footer>
         </div>

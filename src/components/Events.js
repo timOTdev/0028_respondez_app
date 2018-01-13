@@ -16,7 +16,7 @@ const Events = props => (
       }
     </div>
     
-    <button onClick={props.loadEvents}>Load Samples</button>
+    {/* <button onClick={props.loadEvents}>Load Samples</button> */}
   </div>
 )
 
