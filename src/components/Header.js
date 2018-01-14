@@ -10,13 +10,13 @@ class Header extends Component {
 
     auth.signInWithPopup(githubProvider)
       .then( (authData) => {
+        const { avatar_url, bio, blog, name, login, html_url } = authData.additionalUserInfo.profile
         const profile = { 
-          avatar: authData.additionalUserInfo.profile.avatar_url,
-          bio: authData.additionalUserInfo.profile.bio,
-          blog: authData.additionalUserInfo.profile.blog,
-          login: authData.additionalUserInfo.profile.login,
-          name: authData.additionalUserInfo.profile.name || "FCCA Newbie",
-          github: authData.additionalUserInfo.profile.html_url,
+          avatar: avatar_url,
+          bio: bio,
+          blog: blog,
+          name: name || login,
+          github: html_url,
           uid: authData.user.uid
         }
 
@@ -32,7 +32,6 @@ class Header extends Component {
         avatar: "",
         bio: "",
         blog: "",
-        login: "",
         name: "",
         github: "",
         uid: ""

@@ -315,7 +315,7 @@ header button, input {
   background: none;
   color: white;
   font-family: 'Bellefair', cursive;
-  font-size: 1em;
+  /* font-size: 1em; */
   border-radius: 5%;
   margin: 5% auto;
   transition: all ease-in 0.3s;
@@ -329,13 +329,16 @@ header button, input {
 }
 
 .myEvents button:focus {
-  color: black;
-  background: gold;
+  outline: none;
 }
 
-.eventRemoveButton {
-  display: inline-block;
+.eventsLargeButton {
+  font-size: 1em;
+}
+
+.eventsSmallButton {
   width: fit-content;
+  font-size: 0.75em;
 }
 
 /* Footer */

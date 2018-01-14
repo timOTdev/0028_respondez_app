@@ -59,7 +59,7 @@ class CreateEvents extends Component {
           <textarea ref={(input) => {this.details = input}} required />
         </label>
 
-        <button type="submit">{checkmarkIcon} Save</button>
+        <button className="eventsSmallButton" type="submit">{checkmarkIcon} Save</button>
       </form>
     )
   }
@@ -69,7 +69,7 @@ class CreateEvents extends Component {
     
     return (
       <div className="renderForm">
-        <button type="submit" onClick={toggleCreateEvents}>Create Events</button>
+        <button className="eventsLargeButton" type="submit" onClick={toggleCreateEvents}>Create Events</button>
         {showCreateEvents ? this.renderForm() : null}
       </div>
     )

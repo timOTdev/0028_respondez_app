@@ -45,7 +45,7 @@ class UpdateEvents extends Component {
           <input type="text" name="time" defaultValue={event.time} placeholder="Time" onChange={(e) => this.handleChange(e, key)} required />
           <input type="text" name="location" defaultValue={event.location} placeholder="Location" onChange={(e) => this.handleChange(e, key)} required />
           <textarea type="text" name="details" defaultValue={event.details} placeholder="Details" onChange={(e) => this.handleChange(e, key)} required />
-          <button class="eventRemoveButton" type="button" onClick={(e) => this.removeEvent(e, key)}><span role="img" aria-label="cross mark icon">	&#10060;</span>Remove</button>
+          <button className="eventsSmallButton" type="button" onClick={(e) => this.removeEvent(e, key)}><span role="img" aria-label="cross mark icon">&#10060;</span>Remove</button>
       </div>
     )
   }
@@ -56,7 +56,7 @@ class UpdateEvents extends Component {
 
     return (
       <div className="renderEvents">
-        <button type="submit" onClick={toggleUpdateEvents}>Update Events</button>
+        <button className="eventsLargeButton" type="submit" onClick={toggleUpdateEvents}>Update Events</button>
         {showUpdateEvents ? (Object.keys(eventsList)
             .filter(key => uid === this.props.eventsList[key].uid)
             .map(this.renderEvents)) 
