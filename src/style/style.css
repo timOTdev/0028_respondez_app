@@ -184,6 +184,11 @@ header button, input {
 }
 
 /* Center */
+#RingLoader {
+  width: fit-content;
+  margin: 0 auto;
+}
+
 .Attendee {
   display: inline-block;
   vertical-align: top;

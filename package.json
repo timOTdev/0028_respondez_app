@@ -13,6 +13,7 @@
     "react-datetime": "^2.11.1",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17",
+    "react-spinners": "^0.2.5",
     "update-immutable": "^1.4.0"
   },
   "scripts": {

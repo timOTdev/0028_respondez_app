@@ -7,7 +7,8 @@ import { auth, githubProvider } from '../helpers/base'
 class Header extends Component {
   signIn = () => {
     console.log("Logging into Github!")
-
+    this.props.spinnerHandler()
+    
     auth.signInWithPopup(githubProvider)
       .then( (authData) => {
         const { avatar_url, bio, blog, name, login, html_url } = authData.additionalUserInfo.profile
@@ -19,7 +20,6 @@ class Header extends Component {
           github: html_url,
           uid: authData.user.uid
         }
-
         this.props.logIn(profile)
       })
       .catch( (err) => console.log("Error: " + err))

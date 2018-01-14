@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import update from 'update-immutable'
+import { RingLoader } from 'react-spinners'
 
 import '../style/style.css'
 import Header from './Header'
@@ -16,11 +17,16 @@ class App extends Component {
       eventsList: {},
       attendList: {},
       loggedIn: false,
+      loading: false,
       showCreateEvents: false,
       showUpdateEvents: false
     }
   }
   
+  componentWillMount() {
+    this.spinnerHandler()
+  }
+
   componentDidMount() {
     this.removeAuthListener = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -39,7 +45,7 @@ class App extends Component {
           context: this,
           state: 'attendList'
         })
-        this.setState({ loggedIn: true })
+        this.setState({ loggedIn: true, loading: false })
       } else {
         this.setState({ loggedIn: false })
       }
@@ -53,10 +59,14 @@ class App extends Component {
     base.removeBinding(this.attendList)
   }
 
+  spinnerHandler = () => {
+    this.setState({ loading: true })
+  }
+
   logIn = (profile) => {
     let userProfile = {...this.state.userProfile}
     userProfile = profile
-    this.setState({ userProfile, loggedIn: true  })
+    this.setState({ userProfile, loggedIn: true, loading: false })
   }
 
   logOut = (profile) => {
@@ -212,24 +222,35 @@ class App extends Component {
         <div id="container">
             <Header 
               {...this.state} 
+              spinnerHandler={this.spinnerHandler} 
               logIn={this.logIn} 
               logOut={this.logOut} 
               toggleDisplayMain={this.toggleDisplayMain}
             />
-            <Main 
-              {...this.state} 
-              loadEvents={this.loadEvents} 
-              createEvent={this.createEvent} 
-              updateEvent={this.updateEvent}
-              deleteEvent={this.deleteEvent} 
-              addRsvp={this.addRsvp}
-              removeRsvp={this.removeRsvp}
-              addComment={this.addComment}
-              removeComment={this.removeComment}
-              toggleCreateEvents={this.toggleCreateEvents}
-              toggleUpdateEvents={this.toggleUpdateEvents}
-            />
-          
+
+            { this.state.loading ? (
+                                    <div id="RingLoader">
+                                      <RingLoader
+                                        loading={this.state.loading} 
+                                        color={'gold'}
+                                        size={'100'}
+                                      />
+                                    </div>)
+                                  : <Main 
+                                      {...this.state} 
+                                      loadEvents={this.loadEvents} 
+                                      createEvent={this.createEvent} 
+                                      updateEvent={this.updateEvent}
+                                      deleteEvent={this.deleteEvent} 
+                                      addRsvp={this.addRsvp}
+                                      removeRsvp={this.removeRsvp}
+                                      addComment={this.addComment}
+                                      removeComment={this.removeComment}
+                                      toggleCreateEvents={this.toggleCreateEvents}
+                                      toggleUpdateEvents={this.toggleUpdateEvents}
+                                    />
+            }
+
           <footer>
             <div className="bottomnav" id="myBottomNav">
               <a href="http://timothyhoang.net/">© 2018 Timothy Hoang</a> 
