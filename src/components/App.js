@@ -233,7 +233,7 @@ class App extends Component {
                                       <RingLoader
                                         loading={this.state.loading} 
                                         color={'gold'}
-                                        size={'100'}
+                                        size={100}
                                       />
                                     </div>)
                                   : <Main 

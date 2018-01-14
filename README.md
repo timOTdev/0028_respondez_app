@@ -2,24 +2,29 @@
 
 # About
 - The Respondez App was named off of the popular expression "respondez s'il vous plait", or R.S.V.P. for short 
-- I want to built this out of the desire for our Free Code Camp Ashburn Group so we can manage our events external from popular platforms such as Facebook or Meetup
-
+- I want to built this out of the desire for our [Free Code Camp Ashburn Group](https://free-code-camp-ashburn.github.io/website/) so we can manage our events external from popular platforms such as Facebook or Meetup
+- Best used for other Free Code Camp Groups who want to have their own Event/RSVP/Comment system
 
 ## Features
 - Log in and authenticate with your Github account
-- Events, attendees, comments, attending list, and log in state persists in Firebase
-- Create new events, edit, delete events (Events section)
-- Add and remove RSVP's to different events (Events/Attendees section)
-- Create and delete comments under events (Events/Comments section)
-- Save a user's events attending list for each user that login (My Events section)
-- View user github description on hover over rsvp photo
-- View date and time comment was posted on hover
+- Event system for user to create, update, and remove their events
+- RSVP system for user to add and remove their responses
+- Comment system for user to write and delete their comments
+- Events attend system for user to view past attended events
+
+## Minor Features
+- Spinning loader during login and page loading
+- Deleted events are also removed from a user's attended list
+- View user github description on hover over rsvp photo of Attendees section
+- View date and time of comments on hover of Comments section
+- View location of events on hover of My Events section
 
 ## Technologies
-- [Create-React-App](https://github.com/facebookincubator/create-react-app)
+- [Create-React-App](https://github.com/facebookincubator/create-react-app) for the framework
 - [Firebase](https://firebase.google.com/) for database storage
 - [Immutability-Helper](https://github.com/kolodny/immutability-helper) for deep state manipulation
 - [Github Pages](https://github.com/tschaub/gh-pages) for app deployment 
+- [React Spinners](https://github.com/davidhu2000/react-spinners) for loading spinners
 - See package.json for other technologies
 
 # To run this project
@@ -35,7 +40,4 @@
 5. Run `npm start` to start the server
 6. The app should auto-load with Create React App, otherwise, navigate to `localhost:3000` on your browser
 
-==========
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+<!-- # To use this project for your own groups -->
