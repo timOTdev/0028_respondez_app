@@ -13,12 +13,13 @@ class Header extends Component {
       .then( (authData) => {
         const { avatar_url, bio, blog, name, login, html_url } = authData.additionalUserInfo.profile
         const profile = { 
-          avatar: avatar_url,
-          bio: bio,
-          blog: blog,
-          name: name || login,
-          github: html_url,
-          uid: authData.user.uid
+          avatar: avatar_url || "",
+          bio: bio || "",
+          blog: blog || "",
+          login: login || "",
+          name: name || "",
+          github: html_url || "",
+          uid: authData.user.uid || ""
         }
         this.props.logIn(profile)
       })
@@ -26,18 +27,20 @@ class Header extends Component {
   }
 
   signOut = () => {
-      auth.signOut()
+    console.log("Logging out of Github!")
+    auth.signOut()
 
-      const profile = { 
-        avatar: "",
-        bio: "",
-        blog: "",
-        name: "",
-        github: "",
-        uid: ""
-      }
+    const profile = { 
+      avatar: "",
+      bio: "",
+      blog: "",
+      login: "",
+      name: "",
+      github: "",
+      uid: ""
+    }
 
-      this.props.logOut(profile)
+    this.props.logOut(profile)
   }
   
   render() {

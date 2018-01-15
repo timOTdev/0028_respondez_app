@@ -4,7 +4,7 @@ import '../style/style.css'
 import blankPicture from '../data/blank-picture.png'
 
 const MyProfile = (props) => {
-    const { avatar, name, bio, github, blog } = props.userProfile
+    const { avatar, name, bio, github, login, blog } = props.userProfile
 
     return (
     <div className="MyProfile">
@@ -15,7 +15,7 @@ const MyProfile = (props) => {
         {(avatar) ? (<img src={avatar} alt={avatar || ("")} />)
           : (<img src={blankPicture} alt={avatar || ("")} />)
         }
-        <p>Name: <span className="white">{name}</span></p>
+        <p>Name: <span className="white">{name || login}</span></p>
         { bio ? <p>Bio: <span className="white">{bio}</span></p> : null } 
         { github ? <p>Github: <a href={github}><span className="white">{github}</span></a></p> : null }
         { blog ? <p>Blog: <a href={blog}><span className="white">{blog}</span></a></p> : null }

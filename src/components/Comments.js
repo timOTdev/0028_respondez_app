@@ -8,13 +8,14 @@ class Comments extends Component {
   addComment = (e) => {
     e.preventDefault();
     const { eventId } = this.props
-    const { uid, name } = this.props.userProfile;
+    const { uid, name, login } = this.props.userProfile;
     const time = Math.floor(Date.now() / 1000);
     const comment = this.refs.userComment.value;
     const newComment = {
       uid,
       time,
       name,
+      login,
       comment
     }
     this.props.addComment(eventId, newComment)
@@ -23,7 +24,7 @@ class Comments extends Component {
 
   render() {
     const { eventId, loggedIn } = this.props
-    const { name } = this.props.userProfile
+    const { name, login } = this.props.userProfile
     const comments = this.props.eventsList[eventId].comments
     const commentIcon = <span className="white" role="img" aria-label="speech balloon icon">&#128172; 0</span>
 
@@ -36,7 +37,7 @@ class Comments extends Component {
           }
           
           {loggedIn && <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
-            <span className="comment-name">{name}</span> 
+            <span className="comment-name">{name || login}</span> 
             <input className="comment-box" type="text" placeholder="writes..." ref="userComment" />
           </form>}
         </div>

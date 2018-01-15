@@ -12,14 +12,14 @@ class Comment extends Component {
   }
 
   render() { 
-    const { name, time, comment, uid } = this.props.comment
-    const { uid:userId } = this.props.userProfile
+    const { name, login, time, comment, uid } = this.props.comment
+    const { uid:userId  } = this.props.userProfile
     const humanTime = timeConverter(time)
     const deleteIcon = <span className="commentDeleteButton" role="img" aria-label="symbol for delete icon" onClick={this.removeComment}>&#9249;</span>
     
     return (
       <div className="comment-section" title={humanTime}>
-        <span className="comment-name">{name}</span> <span className="white">{comment}</span> {this.props.loggedIn && uid===userId && deleteIcon}
+        <span className="comment-name">{name || login}</span> <span className="white">{comment}</span> {this.props.loggedIn && uid===userId && deleteIcon}
       </div>
     )
   }

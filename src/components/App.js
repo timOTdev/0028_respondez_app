@@ -47,7 +47,7 @@ class App extends Component {
         })
         this.setState({ loggedIn: true, loading: false })
       } else {
-        this.setState({ loggedIn: false })
+        this.setState({ loggedIn: false, loading: false })
       }
     })
   }
@@ -78,6 +78,14 @@ class App extends Component {
   loadEvents = () => {
     const eventsList = {...this.state.eventsList, ...sampleEvents.arr}
     const attendList = {...this.state.attendList, ...sampleAttend}
+    this.setState({ eventsList, attendList })
+  }
+
+  removeEvents = () => {
+    let eventsList = {...this.state.eventsList}
+    let attendList = {...this.state.attendList}
+    eventsList = null
+    attendList = null
     this.setState({ eventsList, attendList })
   }
 
