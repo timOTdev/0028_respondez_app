@@ -18,7 +18,7 @@ class CreateEvents extends Component {
       time: timeExtract,
       location: this.location.value,
       details: this.details.value,
-      creator: this.props.userProfile.name,
+      creator: this.props.userProfile.name || this.props.userProfile.login,
       uid: this.props.userProfile.uid
       // date: this.date.value,
       // time: this.time.value,

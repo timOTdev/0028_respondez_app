@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import '../style/style.css'
 import '../style/react-datetime.css'
@@ -9,11 +11,23 @@ class UpdateEvents extends Component {
     return this.props.EventsList !== nextProps.eventsList
      || this.state.EventsList !== nextState.eventsList
   }
-
+  
   removeEvent = (e, key) => {
     const { uid } = this.props.userProfile
     const eidFromEventDetails = this.props.attendList[uid][key].eid
     this.props.deleteEvent(key, eidFromEventDetails)
+  }
+
+  confirmDelete = (e, key) => {
+    const event = this.props.eventsList[key]
+
+    confirmAlert({
+    title: `${(<p role="img" aria-label="thinking face icon">&#129300;</p>).props.children} Delete event?`,
+      message: `"${event.eventName}" will also be deleted from the personal list of all users that attended this event.`,
+      confirmLabel: 'Confirm',
+      cancelLabel: 'Cancel',
+      onConfirm: () => this.removeEvent(e, key),
+    })
   }
 
   handleChange = (e, key) => {
@@ -35,7 +49,7 @@ class UpdateEvents extends Component {
   
   renderEvents = (key) => {
     const event = this.props.eventsList[key]
-    
+
     return(
       <div className="renderEvents" key={key}>
           <label>
@@ -61,7 +75,7 @@ class UpdateEvents extends Component {
             <textarea type="text" name="details" defaultValue={event.details} placeholder="Details" onChange={(e) => this.handleChange(e, key)} required />
           </label>
 
-          <button className="eventsSmallButton" type="button" onClick={(e) => this.removeEvent(e, key)}><span role="img" aria-label="cross mark icon">&#10060;</span>Remove</button>
+          <button className="eventsSmallButton" onClick={(e) => this.confirmDelete(e, key)} type="button"><span role="img" aria-label="cross mark icon">&#10060;</span>Remove</button>
       </div>
     )
   }

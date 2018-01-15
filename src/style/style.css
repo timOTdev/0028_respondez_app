@@ -333,7 +333,7 @@ header button, input {
   font-family: 'Bellefair', cursive;
   border-radius: 5%;
   margin: 5% auto;
-  transition: all ease-in 0.3s;
+  transition: all ease 0.3s;
 }
 
 .myEvents button:hover {
