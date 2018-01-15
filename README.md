@@ -1,7 +1,8 @@
 <figure><img src="./public/respondez-app.png" alt="The Respondez App" style="width: 60%; display: block; margin-left: auto; margin-right: auto;"/><figcaption style=" text-align: center;">Respondez App</figcaption></figure>
 
 # About
-- The Respondez App was named off of the popular expression "respondez s'il vous plait", or R.S.V.P. for short 
+- The Respondez App is a lightweight event management system
+- It was named off of the popular expression "respondez s'il vous plait", or R.S.V.P. for short 
 - I want to built this out of the desire for our [Free Code Camp Ashburn Group](https://free-code-camp-ashburn.github.io/website/) so we can manage our events external from popular platforms such as Facebook or Meetup
 - Best used for other Free Code Camp Groups who want to have their own Event/RSVP/Comment system
 
@@ -13,6 +14,7 @@
 - Events attend system for user to view past attended events
 
 ## Minor Features
+- Rule of 3: The event list, user attended list, and the update event lists will only show the latest 3 entries respectively
 - Spinning loader during login and page loading
 - Deleted events are also removed from a user's attended list
 - View user github description on hover over rsvp photo of Attendees section

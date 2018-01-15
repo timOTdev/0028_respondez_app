@@ -89,6 +89,7 @@ class UpdateEvents extends Component {
         <button className="eventsLargeButton" type="submit" onClick={toggleUpdateEvents}>Update Events</button>
         {showUpdateEvents ? (Object.keys(eventsList)
             .filter(key => uid === this.props.eventsList[key].uid)
+            .slice(0, 3)
             .map(this.renderEvents)) 
           : undefined}
       </div>
