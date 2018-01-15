@@ -30,6 +30,7 @@ class App extends Component {
   componentDidMount() {
     this.removeAuthListener = auth.onAuthStateChanged((user) => {
       if (user) {
+        this.spinnerHandler()
         this.userRef = base.syncState('userProfile',
         {
           context: this,

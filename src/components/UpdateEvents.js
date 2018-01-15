@@ -22,7 +22,7 @@ class UpdateEvents extends Component {
     const event = this.props.eventsList[key]
 
     confirmAlert({
-    title: `${(<p role="img" aria-label="thinking face icon">&#129300;</p>).props.children} Delete event?`,
+    title: `${(<span role="img" aria-label="thinking face icon">&#129300;</span>).props.children} Delete event?`,
       message: `"${event.eventName}" will also be deleted from the personal list of all users that attended this event.`,
       confirmLabel: 'Confirm',
       cancelLabel: 'Cancel',

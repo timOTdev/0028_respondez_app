@@ -118,6 +118,14 @@ a {
   text-decoration: underline;
 }
 
+.bellefair {
+  font-family: 'Bellefair', cursive;
+}
+
+.rochester {
+  font-family: 'Rochester', cursive;
+}
+
 /* Header */
 header {
   margin-bottom: 3%;
