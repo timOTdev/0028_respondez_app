@@ -9,7 +9,8 @@ const Attendee = props => {
     <div className="Attendee">
       <a href={github|| ""}  target="_blank" >
         <img src={avatar || ""} 
-          alt={name || login}  title={bio} />
+             alt={name || login}  
+             title={bio} />
       </a>
       <p>{name || login}</p> 
     </div>

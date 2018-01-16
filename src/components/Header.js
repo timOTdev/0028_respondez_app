@@ -53,9 +53,15 @@ class Header extends Component {
       return (
       <header>
         <nav>
-          <div className="topnav" id="myTopnav">
-            {(!loggedIn) && signInButton}
-            {loggedIn && signOutButton}
+          <div className="topnav">
+            { !loggedIn && signInButton }
+            { loggedIn && signOutButton }
+            
+            Development Version
+
+            <button onClick={this.props.loadEvents}>Load Samples</button>
+            <button onClick={this.props.unloadEvents}>Unload Samples</button>
+            
           </div>
         </nav>
         <p className="hr1">LOPOL</p>
@@ -69,6 +75,7 @@ class Header extends Component {
   }
 }
 
+// Remove in production
 Header.propTypes = {
   signIn: PropTypes.func,
   signOut: PropTypes.func,

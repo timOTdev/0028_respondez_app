@@ -7,14 +7,13 @@ const MyProfile = (props) => {
     const { avatar, name, bio, github, login, blog } = props.userProfile
 
     return (
-    <div className="MyProfile">
+    <div>
       <h1 className="header2">My Profile</h1>
       <p className="hr2">O</p>
 
       <div className="myProfile">
-        {(avatar) ? (<img src={avatar} alt={avatar || ("")} />)
-          : (<img src={blankPicture} alt={avatar || ("")} />)
-        }
+        { avatar ? <img src={avatar} alt={avatar || ("")} />
+                 : <img src={blankPicture} alt={avatar || ("")} /> }
         <p>Name: <span className="white">{name || login}</span></p>
         { bio ? <p>Bio: <span className="white">{bio}</span></p> : null } 
         { github ? <p>Github: <a href={github}><span className="white">{github}</span></a></p> : null }

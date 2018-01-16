@@ -15,8 +15,6 @@ const Events = props => (
           .map(key => <Event key={key} eventId={key} {...props} details={props.eventsList[key]} />)
       }
     </div>
-    
-    {/* <button onClick={props.loadEvents}>Load Samples</button> */}
   </div>
 )
 

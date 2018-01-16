@@ -20,8 +20,6 @@ class CreateEvents extends Component {
       details: this.details.value,
       creator: this.props.userProfile.name || this.props.userProfile.login,
       uid: this.props.userProfile.uid
-      // date: this.date.value,
-      // time: this.time.value,
     }
     this.props.createEvent(event)
     this.formReset.reset()
@@ -38,25 +36,33 @@ class CreateEvents extends Component {
     return (
       <form className="eventForm" ref={(input) => this.formReset = input} onSubmit={(e) => this.saveEvent(e)}>
         <label>{memoIcon} Event Name
-          <input type="text" ref={(input) => (this.eventName = input)} required />
+          <input type="text" 
+                 ref={(input) => (this.eventName = input)} 
+                 required />
         </label>
 
         <label>{calendarIcon} Date
-          <Calendar dateFormat='MMMM Do, YYYY' timeFormat={false} ref={(input) => {this.date = input}} required/>
-          {/* <input type="text" ref={(input) => {this.date = input}} placeholder="Date" required /> */}
+          <Calendar dateFormat='MMMM Do, YYYY' 
+                    timeFormat={false} ref={(input) => {this.date = input}} 
+                    required/>
         </label>
 
         <label>{watchIcon} Time
-          <Calendar timeFormat='h:mm a' dateFormat={false} ref={(input) => {this.date = input}} required/>
-          {/* <input type="text" ref={(input) => {this.time = input}} placeholder="Time" required /> */}
+          <Calendar timeFormat='h:mm a' 
+                    dateFormat={false} 
+                    ref={(input) => {this.date = input}} 
+                    required/>
         </label>
 
         <label>{buildingIcon} Location
-          <input type="text" ref={(input) => {this.location = input}} required />
+          <input type="text" 
+                 ref={(input) => {this.location = input}} 
+                 required />
         </label>
 
         <label>{penIcon} Details
-          <textarea ref={(input) => {this.details = input}} required />
+          <textarea ref={(input) => {this.details = input}} 
+                    required />
         </label>
 
         <button className="eventsSmallButton" type="submit">{checkmarkIcon} Save</button>
@@ -68,14 +74,20 @@ class CreateEvents extends Component {
     const { toggleCreateEvents, showCreateEvents } = this.props
     
     return (
-      <div className="renderForm">
-        <button className="eventsLargeButton" type="submit" onClick={toggleCreateEvents}>Create Events</button>
-        {showCreateEvents ? this.renderForm() : null}
+      <div>
+        <button className="eventsLargeButton" 
+                type="submit" 
+                onClick={toggleCreateEvents}>
+                Create Events
+        </button>
+        
+        { showCreateEvents ? this.renderForm() : null }
       </div>
     )
   }
 }
 
+// Remove in production
 CreateEvents.propTypes = {
   saveEvent: PropTypes.func,
 }

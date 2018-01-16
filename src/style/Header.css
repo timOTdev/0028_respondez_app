@@ -38,8 +38,3 @@ header button, input {
   background-color: #4CAF50;
   color: white;
 }
-
-.header3 img {
-  width: 50px;
-  filter: rgb(255,0,0);
-}

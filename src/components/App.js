@@ -3,12 +3,12 @@ import update from 'update-immutable'
 import { RingLoader } from 'react-spinners'
 
 import '../style/App.css'
-import '../style/Footer.css'
 import Header from './Header'
 import Main from './Main'
+import Footer from './Footer'
+import { auth, base } from '../helpers/base'
 import sampleEvents from '../data/sampleEvents'
 import sampleAttend from '../data/sampleAttend'
-import { auth, base } from '../helpers/base'
 
 class App extends Component {
   constructor() {
@@ -47,6 +47,7 @@ class App extends Component {
           context: this,
           state: 'attendList'
         })
+
         this.setState({ loggedIn: true, loading: false })
       } else {
         this.setState({ loggedIn: false, loading: false })
@@ -77,12 +78,14 @@ class App extends Component {
       this.setState({ userProfile, loggedIn: false })
   }
 
-  loadEvents = () => {
+  // Remove in production
+  loadEvents = () => { 
     const eventsList = {...this.state.eventsList, ...sampleEvents.arr}
     const attendList = {...this.state.attendList, ...sampleAttend}
     this.setState({ eventsList, attendList })
   }
 
+  // Remove in production
   unloadEvents = () => {
     let eventsList = {...this.state.eventsList}
     let attendList = {...this.state.attendList}
@@ -112,7 +115,7 @@ class App extends Component {
     const { uid } = this.state.userProfile
     attendList = update({...this.state.attendList}, {
       [uid]: {
-        $splice: [ [eidFromEventDetails, 1] ]
+        $splice: [[ eidFromEventDetails, 1 ]]
       }
     })
 
@@ -164,15 +167,15 @@ class App extends Component {
     const eventsList = update({...this.state.eventsList}, {
       [eventId]: {
         attendees: {
-          $splice: [ [rsvpToRemove, 1] ]
+          $splice: [[ rsvpToRemove, 1 ]]
         }
       }
     })
   
+    let eidFromAttendList
     let attendList = {...this.state.attendList}
     const { uid } = this.state.userProfile
     const userAttendList = attendList[uid]
-    let eidFromAttendList
 
     if (userAttendList !== undefined) {
       eidFromAttendList = userAttendList.map( (key, i) => key.eid)
@@ -182,7 +185,7 @@ class App extends Component {
         const index = eidFromAttendList.indexOf(eidFromEventDetails)
         attendList = update({...this.state.attendList}, {
           [uid]: {
-            $splice: [ [index, 1] ]
+            $splice: [[ index, 1 ]]
           }
         })
       }
@@ -200,6 +203,7 @@ class App extends Component {
         }
       }
     })
+
     this.setState({ eventsList })
   }
 
@@ -208,10 +212,11 @@ class App extends Component {
     eventsList = update(eventsList, {
       [eventId]: {
         comments: {
-          $splice: [ [commentId, 1] ]
+          $splice: [[ commentId, 1 ]]
         }
       }
     })
+
     this.setState({ eventsList })
   }
 
@@ -228,45 +233,43 @@ class App extends Component {
   }
 
   render() {
+    const { loading } = this.state
     return (
-        <div id="container">
-            <Header 
-              {...this.state} 
-              spinnerHandler={this.spinnerHandler} 
-              logIn={this.logIn} 
-              logOut={this.logOut} 
-              toggleDisplayMain={this.toggleDisplayMain}
-            />
+      <div id="container">
+        <Header 
+          {...this.state} 
+          spinnerHandler={this.spinnerHandler} 
+          logIn={this.logIn} 
+          logOut={this.logOut} 
+          loadEvents={this.loadEvents} // Remove in production
+          unloadEvents={this.unloadEvents} // Remove in production
+          toggleDisplayMain={this.toggleDisplayMain}
+        />
 
-            { this.state.loading ? (
-                                    <div id="RingLoader">
-                                      <RingLoader
-                                        loading={this.state.loading} 
-                                        color={'gold'}
-                                        size={100}
-                                      />
-                                    </div>)
-                                  : <Main 
-                                      {...this.state} 
-                                      loadEvents={this.loadEvents} 
-                                      createEvent={this.createEvent} 
-                                      updateEvent={this.updateEvent}
-                                      deleteEvent={this.deleteEvent} 
-                                      addRsvp={this.addRsvp}
-                                      removeRsvp={this.removeRsvp}
-                                      addComment={this.addComment}
-                                      removeComment={this.removeComment}
-                                      toggleCreateEvents={this.toggleCreateEvents}
-                                      toggleUpdateEvents={this.toggleUpdateEvents}
-                                    />
-            }
+        { loading ? (
+                    <div id="RingLoader">
+                      <RingLoader
+                        loading={this.state.loading} 
+                        color={'gold'}
+                        size={100}
+                      />
+                    </div>)
+                  : <Main 
+                      {...this.state} 
+                      createEvent={this.createEvent} 
+                      updateEvent={this.updateEvent}
+                      deleteEvent={this.deleteEvent} 
+                      addRsvp={this.addRsvp}
+                      removeRsvp={this.removeRsvp}
+                      addComment={this.addComment}
+                      removeComment={this.removeComment}
+                      toggleCreateEvents={this.toggleCreateEvents}
+                      toggleUpdateEvents={this.toggleUpdateEvents}
+                    />
+        }
 
-          <footer>
-            <div className="bottomnav" id="myBottomNav">
-              <a href="http://timothyhoang.net/">© 2018 Timothy Hoang</a> 
-            </div>
-          </footer>
-        </div>
+        <Footer />
+      </div>
     )
   }
 }

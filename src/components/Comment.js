@@ -19,12 +19,13 @@ class Comment extends Component {
     
     return (
       <div className="comment-section" title={humanTime}>
-        <span className="comment-name">{name || login}</span> <span className="white">{comment}</span> {this.props.loggedIn && uid===userId && deleteIcon}
+        <span className="comment-name">{name || login}</span> <span className="white">{comment}</span> { this.props.loggedIn && uid === userId && deleteIcon }
       </div>
     )
   }
 }
 
+// Remove in production
 Comment.propTypes = {
   removeComment: PropTypes.func,
 }

@@ -4,7 +4,7 @@ import '../style/Events.css'
 import Attendees from './Attendees'
 import Comments from './Comments'
 
-const Event = props => {
+const Event = (props) => {
   const { eventName, date, time, location, creator, details } = props.details
   
   return (

@@ -18,7 +18,7 @@ class MyEvents extends Component {
         <h1 className="header2">My Events</h1>
         <p className="hr2">O</p>
 
-        {(!isEmpty(attendList) && attendList[uid] !== undefined) ? attendList[uid].slice(0, 3).map( (details, key) => <MyEvent key={key} details={details} />) : ""}
+        { (!isEmpty(attendList) && attendList[uid] !== undefined) ? attendList[uid].slice(0, 3).map( (details, key) => <MyEvent key={key} details={details} />) : "" }
 
         <div className="myEvents">
           <CreateEvents {...this.props} /> 
@@ -29,6 +29,7 @@ class MyEvents extends Component {
   }
 }
 
+// Remove in production
 MyEvents.propTypes = {
   MyEvent: PropTypes.func,
 }

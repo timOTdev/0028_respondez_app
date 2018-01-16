@@ -6,11 +6,11 @@ import Comment from './Comment'
 
 class Comments extends Component {
   addComment = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const { eventId } = this.props
-    const { uid, name, login } = this.props.userProfile;
-    const time = Math.floor(Date.now() / 1000);
-    const comment = this.refs.userComment.value;
+    const { uid, name, login } = this.props.userProfile
+    const time = Math.floor(Date.now() / 1000)
+    const comment = this.refs.userComment.value
     const newComment = {
       uid,
       time,
@@ -30,13 +30,12 @@ class Comments extends Component {
 
     return (
       <div>
-        <div className="comments-section">
+        <div>
           <h3 className="header3">Comments</h3>
-          {(comments) ? comments.map( (comment, i) => <Comment key={i} commentId={i} comment={comment} {...this.props} />)
-            : <p>{commentIcon}</p>
-          }
+          { comments ? comments.map( (comment, i) => <Comment key={i} commentId={i} comment={comment} {...this.props} />)
+            : <p>{commentIcon}</p> }
           
-          {loggedIn && <form className="comment-form" ref="commentForm" onSubmit={this.addComment}>
+          {loggedIn && <form ref="commentForm" onSubmit={this.addComment}>
             <span className="comment-name">{name || login}</span> 
             <input className="comment-box" type="text" placeholder="writes..." ref="userComment" />
           </form>}
@@ -48,6 +47,7 @@ class Comments extends Component {
   }
 }
 
+// Remove in production
 Comments.propTypes = {
   addComment: PropTypes.func,
 }

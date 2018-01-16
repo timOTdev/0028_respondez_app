@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../style/MyEvents.css'
 
-const MyEvent = props => {
+const MyEvent = (props) => {
   const { eventName, date, time, location } = props.details
 
   return (

@@ -12,7 +12,7 @@ class Attendees extends Component {
     const { eid, date, eventName, location, time } = this.props.details
     const newAttendee = this.props.userProfile
     const targetAttendees = this.props.eventsList[eventId].attendees
-    var arr = []
+    let arr = []
 
     if (targetAttendees) {
       for (let key of targetAttendees) { 
@@ -56,21 +56,21 @@ class Attendees extends Component {
     const peopleIcon = <span className="white" role="img" aria-label="busts in silhouette icon">&#128101; 0</span>
     
     return (
-      <div className="attendees-section">
+      <div>
         <h3 className="header3">Attendees</h3>
-        {(targetAttendees) ? targetAttendees.map( (attendee, i) => <Attendee key={i} attendee={attendee} />)
-          : <p>{peopleIcon}</p> 
-        } 
+        { targetAttendees ? targetAttendees.map( (attendee, i) => <Attendee key={i} attendee={attendee} />)
+                           : <p>{peopleIcon}</p> } 
         
         <div>
-          {loggedIn && rsvpNo}
-          {loggedIn && rsvpYes}
+          { loggedIn && rsvpNo }
+          { loggedIn && rsvpYes }
         </div>
       </div>
     )
   }
 }
 
+// Remove in production
 Attendees.propTypes = {
   rsvpYes: PropTypes.func,
   rsvpNo: PropTypes.func,

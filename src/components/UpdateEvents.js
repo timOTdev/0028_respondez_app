@@ -7,11 +7,6 @@ import '../style/MyEvents.css'
 import '../style/react-datetime.css'
 
 class UpdateEvents extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.EventsList !== nextProps.eventsList
-     || this.state.EventsList !== nextState.eventsList
-  }
-  
   removeEvent = (e, key) => {
     const { uid } = this.props.userProfile
     const eidFromEventDetails = this.props.attendList[uid][key].eid
@@ -22,7 +17,7 @@ class UpdateEvents extends Component {
     const event = this.props.eventsList[key]
 
     confirmAlert({
-    title: `${(<span role="img" aria-label="thinking face icon">&#129300;</span>).props.children} Delete event?`,
+      title: `${(<span role="img" aria-label="thinking face icon">&#129300;</span>).props.children} Delete event?`,
       message: `"${event.eventName}" will also be deleted from the personal list of all users that attended this event.`,
       confirmLabel: 'Confirm',
       cancelLabel: 'Cancel',
@@ -35,15 +30,8 @@ class UpdateEvents extends Component {
     const updatedEvent = {
       ...event,
       [e.target.name] : e.target.value
-      // eventName: this.eventName.value,
-      // date: dateExtract,
-      // date: this.date.value,
-      // time: timeExtract,
-      // time: this.time.value,
-      // location: this.location.value,
-      // details: this.details.value,
-      // creator: this.creator.value,
     }
+
     this.props.updateEvent(key, updatedEvent)
   }
   
@@ -53,29 +41,56 @@ class UpdateEvents extends Component {
     return(
       <div className="renderEvents" key={key}>
           <label>
-            <input type="text" name="eventName" defaultValue={event.eventName} placeholder="Event Name" onInput={(e) => this.handleChange(e, key)} required />
+            <input type="text" 
+                   name="eventName" 
+                   defaultValue={event.eventName} 
+                   placeholder="Event Name" 
+                   onInput={(e) => this.handleChange(e, key)} 
+                   required />
           </label>
           
           <label>
-            <input type="text" name="date" defaultValue={event.date} placeholder="Date" onChange={(e) => this.handleChange(e, key)} required />
-            {/* <Calendar dateFormat='MMMM Do, YYYY' timeFormat={false} type="date" name="date" onInput={event.date} placeholder="Date" onChange={(e) => this.handleChange(e, key)} required /> */}
+            <input type="text" 
+                   name="date" 
+                   defaultValue={event.date} 
+                   placeholder="Date" 
+                   onChange={(e) => this.handleChange(e, key)} 
+                   required />
           </label>
 
 
           <label>
-            <input type="text" name="time" defaultValue={event.time} placeholder="Time" onChange={(e) => this.handleChange(e, key)} required />
-            {/* <Calendar timeFormat='h:mm a' dateFormat={false} type="text" name="time" defaultValue={event.time} placeholder="Time" onChange={(e) => this.handleChange(e, key)} required /> */}
+            <input type="text" 
+                   name="time" 
+                   defaultValue={event.time} 
+                   placeholder="Time" 
+                   onChange={(e) => this.handleChange(e, key)} 
+                   required />
           </label>
 
           <label>
-            <input type="text" name="location" defaultValue={event.location} placeholder="Location" onChange={(e) => this.handleChange(e, key)} required />
+            <input type="text" 
+                   name="location" 
+                   defaultValue={event.location} 
+                   placeholder="Location" 
+                   onChange={(e) => this.handleChange(e, key)} 
+                   required />
           </label>
 
           <label>
-            <textarea type="text" name="details" defaultValue={event.details} placeholder="Details" onChange={(e) => this.handleChange(e, key)} required />
+            <textarea type="text" 
+                      name="details" 
+                      defaultValue={event.details} 
+                      placeholder="Details" 
+                      onChange={(e) => this.handleChange(e, key)} 
+                      required />
           </label>
 
-          <button className="eventsSmallButton" onClick={(e) => this.confirmDelete(e, key)} type="button"><span role="img" aria-label="cross mark icon">&#10060;</span>Remove</button>
+          <button className="eventsSmallButton" 
+                  onClick={(e) => this.confirmDelete(e, key)} 
+                  type="button">
+                    <span role="img" aria-label="cross mark icon">&#10060;</span>Remove
+          </button>
       </div>
     )
   }
@@ -87,16 +102,17 @@ class UpdateEvents extends Component {
     return (
       <div className="renderEvents">
         <button className="eventsLargeButton" type="submit" onClick={toggleUpdateEvents}>Update Events</button>
-        {showUpdateEvents ? (Object.keys(eventsList)
-            .filter(key => uid === this.props.eventsList[key].uid)
-            .slice(0, 3)
-            .map(this.renderEvents)) 
-          : undefined}
+        { showUpdateEvents ? (Object.keys(eventsList)
+                            .filter(key => uid === this.props.eventsList[key].uid)
+                            .slice(0, 3)
+                            .map(this.renderEvents)) 
+                           : undefined }
       </div>
     )
   }
 }  
 
+// Remove in production
 UpdateEvents.propTypes = {
   removeEvent: PropTypes.func,
   handleChange: PropTypes.func,

@@ -7,42 +7,41 @@
 html {
   height: 100%;
 }
-body {
-  min-height: 100%;
-  position: relative;
-  padding-bottom: 1em;
 
+body {
+  background: url(../data/ornate-black.jpg) repeat-y;
+  position: relative;
   margin: 0;
   padding: 0;
+  padding-bottom: 1em;
+  min-height: 100%;
   text-align: center;
-  font-size: 1.5em;
   color: gold;
-  background: url(../data/ornate-black.jpg) repeat-y;
+  font-size: 1.5em;
   font-family: 'Bellefair';
 }
 
 .left, .center, .right { 
-  width: 20%;
-  display: inline-block;
-  vertical-align: top;
-  word-wrap: break-word;
   margin: 0 auto; 
   padding: 0 1%;
+  width: 20%;
+  vertical-align: top;
+  display: inline-block;
+  word-wrap: break-word;
 }
 
 .center {
+  padding: 0 1%;
+  width: 40%;
   border-right: 1px solid gray;
   border-left: 1px solid gray;
-  width: 40%;
-  padding: 0 1%;
 }
 
 button {
-  padding: 1%;
-  margin: 2% auto;
-  font-size: 0.75em;
-  text-align: center;
   margin: 0 auto;
+  padding: 1%;
+  text-align: center;
+  font-size: 0.75em;
 }
 
 a {
@@ -51,59 +50,58 @@ a {
 }
 
 .header1 {
-  color: gold;
-  font-family: 'Rochester', cursive;
-  font-size: 4em;
-  text-shadow: 3px 3px dimgray;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  color: gold;
+  font-size: 4em;
+  font-family: 'Rochester', cursive;
+  text-shadow: 3px 3px dimgray;
   
 }
 .header2 {
-  color: gold;
-  font-family: 'Rochester', cursive;
-  font-size: 2em;
-  text-shadow: 1px 1px black;
-  padding: 0;
   margin: 0 auto;
+  padding: 0;
+  color: gold;
+  font-size: 2em;
+  font-family: 'Rochester', cursive;
+  text-shadow: 1px 1px black;
 }
 
 .header3 {
-  color: goldenrod;
-  font-family: 'Rochester', cursive;
-  font-size: 1em;
-  text-shadow: 1px 1px black;
-  padding: 0;
   margin: 0 auto;
+  padding: 0;
+  color: goldenrod;
+  font-size: 1em;
+  font-family: 'Rochester', cursive;
+  text-shadow: 1px 1px black;
 }
 
 .hr1 {
-  color: dimgray;
-  font-family: 'decodividers';
-  max-width: 90%;
-  font-size: 3rem;
   margin: 1.5% auto;
+  max-width: 90%;
   overflow: hidden;
+  color: dimgray;
+  font-size: 3rem;
+  font-family: 'decodividers';
 }
 
 .hr2 {
-  font-family: 'decodividers';
+  margin: 0 auto;
   max-width: 90%;
+  overflow: hidden;
   color: dimgray;
   font-size: 2rem;
-  margin: 0 auto;
-  overflow: hidden;
+  font-family: 'decodividers';
 }
 
 .hr3 {
-  font-family: 'decodividers';
+  margin: 0 auto;
+  padding: 5%;
   max-width: 90%;
   color: dimgray;
   font-size: 2rem;
-  margin: 0 auto;
+  font-family: 'decodividers';
   overflow: hidden;
-  padding: 5%;
-  margin: 0 auto;
 }
 
 .white {
