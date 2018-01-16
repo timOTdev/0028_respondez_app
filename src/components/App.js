@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import update from 'update-immutable'
 import { RingLoader } from 'react-spinners'
 
-import '../style/style.css'
+import '../style/App.css'
+import '../style/Footer.css'
 import Header from './Header'
 import Main from './Main'
 import sampleEvents from '../data/sampleEvents'
@@ -82,7 +83,7 @@ class App extends Component {
     this.setState({ eventsList, attendList })
   }
 
-  removeEvents = () => {
+  unloadEvents = () => {
     let eventsList = {...this.state.eventsList}
     let attendList = {...this.state.attendList}
     eventsList = null

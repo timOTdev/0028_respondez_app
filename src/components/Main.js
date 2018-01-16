@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../style/style.css'
+import '../style/App.css'
 import MyProfile from './MyProfile'
 import Events from './Events'
 import MyEvents from './MyEvents'
@@ -22,5 +22,3 @@ const Main = props => (
 )
 
 export default Main
-
-

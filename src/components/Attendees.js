@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import '../style/style.css'
+import '../style/Events.css'
 import Attendee from './Attendee'
 
 class Attendees extends Component {

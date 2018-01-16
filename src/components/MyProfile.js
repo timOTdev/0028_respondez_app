@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../style/style.css'
+import '../style/MyProfile.css'
 import blankPicture from '../data/blank-picture.png'
 
 const MyProfile = (props) => {

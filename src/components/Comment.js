@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import '../style/style.css'
+import '../style/Events.css'
 import { timeConverter } from '../helpers/helpers.js'
 
 class Comment extends Component {  
@@ -30,4 +30,3 @@ Comment.propTypes = {
 }
 
 export default Comment
-

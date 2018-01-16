@@ -1,0 +1,19 @@
+/* For Left Column */
+.myProfile {
+  padding-top: 5%;
+}
+
+.profileForm > * {
+  display: block;
+  margin: 1%;
+  padding: 1%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.MyProfile img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 25%;
+  border: 2px solid gold;
+}

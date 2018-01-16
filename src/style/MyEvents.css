@@ -1,0 +1,62 @@
+/* For Right Column */
+.myEvents {
+  padding-top: 5%;
+}
+
+.eventForm > *,
+.profileForm > *, 
+.renderEvents > * {
+  display: inline-block;
+  padding: 1%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 1%;
+}
+
+.eventForm input,
+.renderEvents input {
+  font-size: 1em;
+  font-family: 'Bellefair', cursive;
+}
+
+.eventForm textarea,
+.renderEvents textarea {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1em;
+  font-family: 'Bellefair', cursive;
+  background: white;
+}
+
+.myEvents button {
+  display: block;
+  border: 2px solid gold;
+  background: none;
+  color: white;
+  font-family: 'Bellefair', cursive;
+  border-radius: 5%;
+  margin: 5% auto;
+  transition: all ease 0.3s;
+}
+
+.myEvents button:hover {
+  transform: scale(1.10);
+  cursor: pointer;
+  color: black;
+  background: gold;
+}
+
+.myEvents button:focus {
+  outline: none;
+}
+
+.eventsLargeButton {
+  font-size: 1em;
+}
+
+.eventsSmallButton {
+  width: fit-content;
+  font-size: 0.75em;
+}

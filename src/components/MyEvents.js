@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import '../style/style.css'
+import '../style/MyEvents.css'
 import '../style/react-datetime.css'
 import CreateEvents from './CreateEvents'
 import MyEvent from './MyEvent'

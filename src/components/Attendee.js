@@ -1,15 +1,15 @@
 import React from 'react'
 
-import '../style/style.css'
+import '../style/Events.css'
 
 const Attendee = props => {
   const { avatar, bio, name, github, login } = props.attendee
-  login
+  
   return (
     <div className="Attendee">
       <a href={github|| ""}  target="_blank" >
         <img src={avatar || ""} 
-          alt={name || ""}  title={bio} />
+          alt={name || login}  title={bio} />
       </a>
       <p>{name || login}</p> 
     </div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
-import '../style/style.css'
+import '../style/MyEvents.css'
 import '../style/react-datetime.css'
 
 class UpdateEvents extends Component {
