@@ -7,21 +7,27 @@ import '../style/MyEvents.css'
 import '../style/react-datetime.css'
 
 class UpdateEvents extends Component {
-  removeEvent = (e, key) => {
+  removeEvent = (e, key, eidFromEventsList) => {
     const { uid } = this.props.userProfile
-    const eidFromEventDetails = this.props.attendList[uid][key].eid
-    this.props.deleteEvent(key, eidFromEventDetails)
+    let eidInAttendList
+
+    if (this.props.attendList[uid] !== undefined) {
+      this.props.attendList[uid].map( (key, i) => (eidFromEventsList === key.eid) ? (eidInAttendList = i) : null )
+    }
+    
+    this.props.deleteEvent(key, eidInAttendList)
   }
 
   confirmDelete = (e, key) => {
     const event = this.props.eventsList[key]
+    const eidFromEventsList = event.eid
 
     confirmAlert({
       title: `${(<span role="img" aria-label="thinking face icon">&#129300;</span>).props.children} Delete event?`,
       message: `"${event.eventName}" will also be deleted from the personal list of all users that attended this event.`,
       confirmLabel: 'Confirm',
       cancelLabel: 'Cancel',
-      onConfirm: () => this.removeEvent(e, key),
+      onConfirm: () => this.removeEvent(e, key, eidFromEventsList),
     })
   }
 

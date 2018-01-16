@@ -107,20 +107,28 @@ class App extends Component {
     this.setState({ eventsList })
   }
 
-  deleteEvent = (key, eidFromEventDetails) => {
+  deleteEvent = (key, eidInAttendList) => {
     const eventsList = [...this.state.eventsList]
     eventsList.splice(key, 1)
-    
+
     let attendList
     const { uid } = this.state.userProfile
-    attendList = update({...this.state.attendList}, {
-      [uid]: {
-        $splice: [[ eidFromEventDetails, 1 ]]
-      }
-    })
+    if (eidInAttendList === undefined) {
+      console.log("No RSVP found in attendList")
+    } else {
+      attendList = update({...this.state.attendList}, {
+        [uid]: {
+          $splice: [[ eidInAttendList, 1 ]]
+        }
+      })
+    }
 
-    this.setState({ eventsList, attendList })
-    this.toggleUpdateEvents()
+    if (attendList !== undefined) {
+      this.setState({ eventsList, attendList })
+      this.toggleUpdateEvents()
+    } else {
+      this.setState({ eventsList })
+    }
   }
 
   addRsvp = (eventId, newAttendee, newAttend) => {
