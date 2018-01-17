@@ -35,10 +35,10 @@ class Comments extends Component {
           { comments ? comments.map( (comment, i) => <Comment key={i} commentId={i} comment={comment} {...this.props} />)
             : <p>{commentIcon}</p> }
           
-          {loggedIn && <form ref="commentForm" onSubmit={this.addComment}>
+          { loggedIn && <form ref="commentForm" onSubmit={this.addComment}>
             <span className="comment-name">{name || login}</span> 
             <input className="comment-box" type="text" placeholder="writes..." ref="userComment" />
-          </form>}
+          </form> }
         </div>
 
         <p className="hr3">OPO</p>

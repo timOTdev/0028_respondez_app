@@ -47,7 +47,6 @@ class App extends Component {
           context: this,
           state: 'attendList'
         })
-
         this.setState({ loggedIn: true, loading: false })
       } else {
         this.setState({ loggedIn: false, loading: false })
@@ -73,9 +72,9 @@ class App extends Component {
   }
 
   logOut = (profile) => {
-      let userProfile = {...this.state.userProfile}
-      userProfile = profile
-      this.setState({ userProfile, loggedIn: false })
+    let userProfile = {...this.state.userProfile}
+    userProfile = profile
+    this.setState({ userProfile, loggedIn: false })
   }
 
   // Remove in production
@@ -128,6 +127,7 @@ class App extends Component {
       this.toggleUpdateEvents()
     } else {
       this.setState({ eventsList })
+      this.toggleUpdateEvents()
     }
   }
 
@@ -211,7 +211,6 @@ class App extends Component {
         }
       }
     })
-
     this.setState({ eventsList })
   }
 
@@ -224,7 +223,6 @@ class App extends Component {
         }
       }
     })
-
     this.setState({ eventsList })
   }
 
@@ -242,6 +240,7 @@ class App extends Component {
 
   render() {
     const { loading } = this.state
+    
     return (
       <div id="container">
         <Header 

@@ -7,7 +7,7 @@ import '../style/MyEvents.css'
 import '../style/react-datetime.css'
 
 class UpdateEvents extends Component {
-  removeEvent = (e, key, eidFromEventsList) => {
+  removeEvent = (key, eidFromEventsList) => {
     const { uid } = this.props.userProfile
     let eidInAttendList
 
@@ -27,7 +27,7 @@ class UpdateEvents extends Component {
       message: `"${event.eventName}" will also be deleted from the personal list of all users that attended this event.`,
       confirmLabel: 'Confirm',
       cancelLabel: 'Cancel',
-      onConfirm: () => this.removeEvent(e, key, eidFromEventsList),
+      onConfirm: () => this.removeEvent(key, eidFromEventsList),
     })
   }
 

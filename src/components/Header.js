@@ -10,7 +10,7 @@ class Header extends Component {
     this.props.spinnerHandler()
     
     auth.signInWithPopup(githubProvider)
-      .then( (authData) => {
+      .then((authData) => {
         const { avatar_url, bio, blog, name, login, html_url } = authData.additionalUserInfo.profile
         const profile = { 
           avatar: avatar_url || "",
@@ -23,7 +23,7 @@ class Header extends Component {
         }
         this.props.logIn(profile)
       })
-      .catch( (err) => console.log("Error: " + err))
+      .catch((err) => console.log("Error: " + err))
   }
 
   signOut = () => {
@@ -39,7 +39,6 @@ class Header extends Component {
       github: "",
       uid: ""
     }
-
     this.props.logOut(profile)
   }
   

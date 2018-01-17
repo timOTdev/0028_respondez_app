@@ -34,7 +34,9 @@ class CreateEvents extends Component {
     const checkmarkIcon = <span role="img" aria-label="heavy check mark icon">&#10004;</span>
 
     return (
-      <form className="eventForm" ref={(input) => this.formReset = input} onSubmit={(e) => this.saveEvent(e)}>
+      <form className="eventForm" 
+            ref={(input) => this.formReset = input} 
+            onSubmit={(e) => this.saveEvent(e)}>
         <label>{memoIcon} Event Name
           <input type="text" 
                  ref={(input) => (this.eventName = input)} 
