@@ -56,8 +56,10 @@ class Header extends Component {
             { !loggedIn && signInButton }
             { loggedIn && signOutButton }
             
+            {/* Remove in Production */}
             Development Version
 
+            {/* Remove in Production */}
             <button onClick={this.props.loadEvents}>Load Samples</button>
             <button onClick={this.props.unloadEvents}>Unload Samples</button>
             

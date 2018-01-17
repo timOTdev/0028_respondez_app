@@ -24,7 +24,7 @@ class UpdateEvents extends Component {
 
     confirmAlert({
       title: `${(<span role="img" aria-label="thinking face icon">&#129300;</span>).props.children} Delete event?`,
-      message: `"${event.eventName}" will also be deleted from the personal list of all users that attended this event.`,
+      message: `"${event.eventName}" will also be deleted from your attend list but not other users if they've already RSVP.`,
       confirmLabel: 'Confirm',
       cancelLabel: 'Cancel',
       onConfirm: () => this.removeEvent(key, eidFromEventsList),
